@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5d3bc8fafed1a794695b99d0e633fc85
+guid: f0bf723fe548c8746b44f64175136181
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -991942978722326572
-    second: green_button_0
+      213: 9072708013642180344
+    second: shop_basket_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: green_button_0
+      name: shop_basket_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 14
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4d710dbcd19eb32f0800000000000000
-      internalID: -991942978722326572
+      spriteID: 8f66bff7edbb8ed70800000000000000
+      internalID: 9072708013642180344
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shop_basket_0: 9072708013642180344
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
