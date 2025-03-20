@@ -50,7 +50,7 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W) && lastGrounded > 0f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             lastGrounded = 0f;
         }
