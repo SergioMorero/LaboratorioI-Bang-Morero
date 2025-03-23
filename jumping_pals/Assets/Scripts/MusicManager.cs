@@ -12,23 +12,20 @@ public class AudioManager : MonoBehaviour
     void Start() {
         MusicSource.clip = intro;
         MusicSource.Play();
-        // StartCoroutine(PlayMainMenuLoopAfterIntro());
+        StartCoroutine(WaitForIntroToEnd());
     }
 
-    void Update() {
-        if (MusicSource.isPlaying == false) {
-            MusicSource.clip = mainmenu_loop;
-            MusicSource.Play();
+    private System.Collections.IEnumerator WaitForIntroToEnd()
+    {
+        // Wait until the intro finishes playing
+        while (MusicSource.isPlaying)
+        {
+            yield return null; // Wait until next frame
         }
-    }
 
-    private System.Collections.IEnumerator PlayMainMenuLoopAfterIntro() {
-        // Wait until the intro clip finishes
-        yield return new WaitForSeconds(intro.length);
-
-        // Switch to the looping track
+        // Play the main menu loop immediately
         MusicSource.clip = mainmenu_loop;
-        MusicSource.loop = true; // Ensure the loop is enabled
+        MusicSource.loop = true;
         MusicSource.Play();
     }
 }
