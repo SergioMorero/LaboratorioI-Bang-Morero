@@ -13,3 +13,5 @@ achivements(String player_ID, bool ach1, bool ach2, ..., bool achn)
 	May not be the optimal option
 
 characters(String player_ID, bool char1, bool char2, ..., bool charn)
+
+stats(String username, int max_score, int coins, int jumps, int enemies_killed, int total_runs, ...)

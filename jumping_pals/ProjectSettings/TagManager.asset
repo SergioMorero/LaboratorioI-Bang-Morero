@@ -49,5 +49,8 @@ TagManager:
   - name: title
     uniqueID: 15967815
     locked: 0
+  - name: settings_icons
+    uniqueID: 3159309137
+    locked: 0
   m_RenderingLayers:
   - Default
