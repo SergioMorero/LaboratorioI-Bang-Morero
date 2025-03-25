@@ -1,4 +1,5 @@
-player(String ID, String username, String email, int max_score)
+player(String ID, String username, String email, int max_score, int coins)
+ID and username could be unified (no repeated username)
 
 max_scores(player_ID) (Always sorted)
 when finishing a run:
