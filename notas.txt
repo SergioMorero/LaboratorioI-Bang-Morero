@@ -1,0 +1,18 @@
+crear dos pares de muros
+	Cuando un muro queda por debajo de la cámara,
+	se destruye y crea un nuevo par de muros por
+	encima del siguiente muro
+
+Personaje aleatorio
+
+Personajes especiales:
+
+* Moneda: Posee una animación continua de giro
+  (ciclo de 4 sprites)
+* Dado:
+	+ Al iniciar una partida, selecciona un
+	  color aleatorio (rojo, verde, azul,
+	  amarillo, negro o blanco)
+	+ Al saltar, cambia a un número aleatorio
+	  de 1 a 6 (posee rotaciones de números,
+	  como el seis en = o ||)
