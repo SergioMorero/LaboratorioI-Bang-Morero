@@ -32,3 +32,6 @@ Thumbs.db
 
 # Database
 *.db
+
+#Misc
+credential.py
