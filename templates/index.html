@@ -7,7 +7,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jumping Pals</title>
-
+    <style>
+        .tab {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        .tab-buttons {
+            display: flex;
+        }
+        .tab-buttons button {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+        .tab-buttons button.active {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,21 +35,88 @@
 
     <!-- Embed del juego Unity -->
     <!-- <iframe src="path_to_webgl_build/index.html" width="800" height="600"></iframe> -->
+
+    <!-- Placeholder para el embed del juego -->
     <img src="https://i.pinimg.com/736x/e3/24/f7/e324f790cfe0a51d76f98356475cc408.jpg" width="238" height="375" alt="Imagen temporal del videojuego">
 
-    <h2>Crear Usuario</h2>
+    <!-- Tab selection -->
+    <div class="tab-buttons">
+        <button onclick="openTab(event, 'createUserTab')" class="active">Create User</button>
+        <button onclick="openTab(event, 'modifyUserTab')">Modify User</button>
+        <button onclick="openTab(event, 'deleteUserTab')">Delete User</button>
+    </div>
 
-    <form id="addUserForm">
-        <label for="name">Username:</label>
-        <input type="text" id="name" placeholder="username" required><br><br>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="password" required><br><br>
+    <!-- Create New User -->
+    <div id="createUserTab" class="tab" style="display: block;">
+        <h2>Crear Usuario</h2>
 
-        <button type="submit">Create User</button>
-    </form>
+        <form id="addUserForm">
+            <label for="name">Username:</label>
+            <input type="text" id="name" placeholder="username" required><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="password" required><br><br>
+
+            <button type="submit">Create User</button>
+        </form>
+    </div>
+
+    <!-- Modify User -->
+    <div id="modifyUserTab" class="tab">
+        <h2>Modificar Usuario</h2>
+
+        <form id="ModifyUserForm">
+            <label for="currentName">Current Username:</label>
+            <input type="text" id="currentName" placeholder="username" required><br><br>
+
+            <label for="currentPassword">Current Password:</label>
+            <input type="password" id="currentPassword" placeholder="password" required><br><br>
+
+            <br><br>
+
+            <label for="newName">New Username:</label>
+            <input type="text" id="newName" placeholder="new username (optional)"><br><br>
+
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" placeholder="new password (optional)"><br><br>
+
+            <button type="submit">Modify User</button>
+        </form>
+    </div>
+
+    <!-- Delete User -->
+    <div id="deleteUserTab" class="tab">
+        <h2>Eliminar Usuario</h2>
+
+        <form id="deleteUserForm">
+            <label for="deleteName">Username:</label>
+            <input type="text" id="deleteName" placeholder="username" required><br><br>
+
+            <label for="deletePassword">Password:</label>
+            <input type="password" id="deletePassword" placeholder="password" required><br><br>
+
+            <button type="submit">Delete User</button>
+        </form>
+    </div>
 
     <script>
+        // Open tabs
+        function openTab(event, tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-buttons")[0].children;
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.classList.add("active");
+        }
+
+        // Add new users to database
         document.getElementById('addUserForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -59,28 +145,8 @@
             document.getElementById('name').value = '';
             document.getElementById('password').value = '';
         });
-    </script>
 
-    <h2>Modificar Usuario</h2>
-
-    <form id="ModifyUserForm">
-        <label for="currentName">Current Username:</label>
-        <input type="text" id="currentName" placeholder="username" required><br><br>
-
-        <label for="currentPassword">Current Password:</label>
-        <input type="password" id="currentPassword" placeholder="password" required><br><br>
-
-        <br><br>
-        <label for="newName">New Username:</label>
-        <input type="text" id="newName" placeholder="new username (optional)"><br><br>
-
-        <label for="newPassword">New Password:</label>
-        <input type="password" id="newPassword" placeholder="new password (optional)"><br><br>
-
-        <button type="submit">Modify User</button>
-    </form>
-
-    <script>
+        // Modify username or password from existing user in database
         document.getElementById('ModifyUserForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -112,21 +178,8 @@
             document.getElementById('newName').value = '';
             document.getElementById('newPassword').value = '';
         });
-    </script>
 
-    <h2>Eliminar Usuario</h2>
-
-    <form id="deleteUserForm">
-        <label for="deleteName">Username:</label>
-        <input type="text" id="deleteName" placeholder="username" required><br><br>
-
-        <label for="deletePassword">Password:</label>
-        <input type="password" id="deletePassword" placeholder="password" required><br><br>
-
-        <button type="submit">Delete User</button>
-    </form>
-
-    <script>
+        // Delete user from database
         document.getElementById('deleteUserForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
