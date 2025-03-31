@@ -7,12 +7,12 @@ using UnityEngine;
 public class PlatformGenerator : MonoBehaviour
 {
 
-    [SerializeField] private Transform player;
+    private GameObject player;
     [SerializeField] private Transform platform1;
     [SerializeField] private Transform platform2;
 
     [SerializeField] private Transform patrolEnemy;
-    private float lastPlatformHeigh = 17;
+    private float lastPlatformHeigh = 15;
     private float lastPlayerGroundedHeigh;
     private Movement playerMovement;
     private float[] horizontalValues = new float[8];
@@ -23,6 +23,7 @@ public class PlatformGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         playerMovement = player.GetComponent<Movement>();
         horizontalValues[0] = -13;
         horizontalValues[1] = -9;
@@ -44,30 +45,32 @@ public class PlatformGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (playerMovement.isGrounded && player.transform.position.y > lastPlayerGroundedHeigh + 3)
+        if (player != null)
         {
-            int chanceOfEnemy = Random.Range(0, 5);
-            float heighIncrease = verticalValues[Random.Range(0, 3)];
-            float xPosition = horizontalValues[Random.Range(0, 8)];
-            while (Mathf.Abs(xPosition - lastXPosition) > 19)
+            if (playerMovement.isGrounded && player.transform.position.y > lastPlayerGroundedHeigh + 3)
             {
-                xPosition = horizontalValues[Random.Range(0, 8)];
-            }
-            Instantiate(platforms[Random.Range(0, 4)], new Vector3(xPosition, lastPlatformHeigh + heighIncrease, 0), Quaternion.identity);
-            lastXPosition = xPosition;
-            lastPlatformHeigh += heighIncrease;
+                int chanceOfEnemy = Random.Range(0, 5);
+                float heighIncrease = verticalValues[Random.Range(0, 3)];
+                float xPosition = horizontalValues[Random.Range(0, 8)];
+                while (Mathf.Abs(xPosition - lastXPosition) > 19)
+                {
+                    xPosition = horizontalValues[Random.Range(0, 8)];
+                }
+                Instantiate(platforms[Random.Range(0, 4)], new Vector3(xPosition, lastPlatformHeigh + heighIncrease, 0), Quaternion.identity);
+                lastXPosition = xPosition;
+                lastPlatformHeigh += heighIncrease;
 
-            if (chanceOfEnemy == 3)
+                if (chanceOfEnemy == 3)
+                {
+                    Instantiate(patrolEnemy, new Vector3(xPosition, lastPlatformHeigh + 1, 0), Quaternion.identity);
+                }
+            }
+
+
+            if (playerMovement.isGrounded)
             {
-                Instantiate(patrolEnemy, new Vector3(xPosition, lastPlatformHeigh, 0), Quaternion.identity);
+                lastPlayerGroundedHeigh = player.transform.position.y;
             }
-        }
-
-        
-        if (playerMovement.isGrounded)
-        {
-            lastPlayerGroundedHeigh = player.transform.position.y;
         }
     }
 

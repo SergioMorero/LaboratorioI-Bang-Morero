@@ -1,37 +1,13 @@
 fileFormatVersion: 2
-guid: d5b1e8090f51ae940829944bec9d776d
+guid: d714abad42e2ab044bc6b51461fee801
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2914503216214332612
-    second: loading_0
+      213: 559631843559397421
+    second: Login_0
   - first:
-      213: -3243969905789220278
-    second: loading_1
-  - first:
-      213: -2240947139059371774
-    second: loading_2
-  - first:
-      213: -9038400482918282348
-    second: loading_3
-  - first:
-      213: 3541541065571182360
-    second: loading_4
-  - first:
-      213: -6469537607060608100
-    second: loading_5
-  - first:
-      213: -6746097347225962745
-    second: loading_6
-  - first:
-      213: -176354558837914207
-    second: loading_7
-  - first:
-      213: 4675115675929687159
-    second: loading_8
-  - first:
-      213: -3702057662703198419
-    second: loading_9
+      213: -2169570056348474463
+    second: Login_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -140,100 +116,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: loading_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 72
-        width: 69
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c3bafcc34ca9d87d0800000000000000
-      internalID: -2914503216214332612
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: loading_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 54
-        width: 69
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a4a4067de8a1bf2d0800000000000000
-      internalID: -3243969905789220278
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: loading_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 36
-        width: 69
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 20130f7337e86e0e0800000000000000
-      internalID: -2240947139059371774
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: loading_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 18
-        width: 69
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 49bcfe5f5a6219280800000000000000
-      internalID: -9038400482918282348
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: loading_4
+      name: Login_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 69
+        width: 37
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -243,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 81724d2d5d4162130800000000000000
-      internalID: 3541541065571182360
+      spriteID: d28da58523634c700800000000000000
+      internalID: 559631843559397421
       vertices: []
       indices: 
       edges: []
@@ -253,7 +141,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d4df5caa78a3b9947bc5acdbba1ea743
+    spriteID: a3c1392871eb8db4ab866c4c20d9d44d
     internalID: 0
     vertices: []
     indices: 
@@ -263,11 +151,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      loading_0: -2914503216214332612
-      loading_1: -3243969905789220278
-      loading_2: -2240947139059371774
-      loading_3: -9038400482918282348
-      loading_4: 3541541065571182360
+      Login_0: 559631843559397421
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
