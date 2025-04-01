@@ -7,7 +7,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jumping Pals</title>
+    <link rel="icon" type="image/x-ico" href="http://localhost:8000/favicon.ico" />
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            background-color: #ffffff;
+            color: #000000;
+            flex-direction: column;
+            text-align: center;
+        }
+        .container {
+            max-width: 100%;
+        }
+        img {
+            max-width: 100%;
+            max-height:100%;
+            margin-bottom: 14px;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated; 
+        }
+
         .tab {
             display: none;
             padding: 20px;
@@ -30,17 +52,19 @@
 </head>
 
 <body>
+    <img src="http://localhost:8000/jumpal_logo.png" width="440" height="240" alt="Imagen temporal del videojuego">
+</body>
 
-    <h1>Jumping Pals</h1>
+<body>
 
     <!-- Embed del juego Unity -->
     <!-- <iframe src="path_to_webgl_build/index.html" width="800" height="600"></iframe> -->
 
     <!-- Placeholder para el embed del juego -->
-    <img src="https://i.pinimg.com/736x/e3/24/f7/e324f790cfe0a51d76f98356475cc408.jpg" width="238" height="375" alt="Imagen temporal del videojuego">
+    <!-- <img src="https://i.pinimg.com/736x/e3/24/f7/e324f790cfe0a51d76f98356475cc408.jpg" width="238" height="375" alt="Imagen temporal del videojuego"> -->
 
     <!-- Actual placeholder -->
-    <!-- <img src="media/placeholder.jpg" width="240" height="135" alt="Imagen temporal del videojuego"> -->
+    <img src="http://localhost:8000/placeholder.png" width="960" height="540" alt="Imagen temporal del videojuego">
 
     <!-- Tab selection -->
     <div class="tab-buttons">
