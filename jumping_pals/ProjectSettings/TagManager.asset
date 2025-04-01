@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Floor
+  - Death Bar
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - title
   - Floor
   - Wall
-  - 
-  - 
+  - enemy
+  - player
   - 
   - 
   - 
@@ -51,6 +53,12 @@ TagManager:
     locked: 0
   - name: settings_icons
     uniqueID: 3159309137
+    locked: 0
+  - name: player
+    uniqueID: 2995945311
+    locked: 0
+  - name: UI
+    uniqueID: 1090421965
     locked: 0
   m_RenderingLayers:
   - Default

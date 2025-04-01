@@ -28,6 +28,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private LayerMask floor;
     [SerializeField] private LayerMask enemy;
 
+    [SerializeField] private PauseManager pauseManager;
+    [SerializeField] private GameObject deathMessage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +52,7 @@ public class Movement : MonoBehaviour
 
         if (hitEnemyLeft.collider != null || hitEnemyUpLeft.collider != null || hitEnemyDownLeft.collider != null || hitEnemyRight.collider != null || hitEnemyUpRight.collider != null || hitEnemyDownRight.collider != null)
         {
+            deathMessage.SetActive(true);
             Destroy(this.gameObject);
         } 
 
@@ -73,7 +77,7 @@ public class Movement : MonoBehaviour
             lastGrounded -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && lastGrounded > 0f)
+        if (Input.GetKeyDown(KeyCode.W) && lastGrounded > 0f && !pauseManager.isPaused)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
@@ -86,6 +90,7 @@ public class Movement : MonoBehaviour
         if(other.CompareTag("Death Bar"))
         {
             Debug.Log("Has Muerto");
+            deathMessage.SetActive(true);
             Destroy(this.gameObject);
         }
     }
