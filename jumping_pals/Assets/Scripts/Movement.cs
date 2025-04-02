@@ -30,6 +30,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private PauseManager pauseManager;
     [SerializeField] private GameObject deathMessage;
+    [SerializeField] private GameObject pauseButton;
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +53,7 @@ public class Movement : MonoBehaviour
 
         if (hitEnemyLeft.collider != null || hitEnemyUpLeft.collider != null || hitEnemyDownLeft.collider != null || hitEnemyRight.collider != null || hitEnemyUpRight.collider != null || hitEnemyDownRight.collider != null)
         {
-            deathMessage.SetActive(true);
-            Destroy(this.gameObject);
+            die();
         } 
 
 
@@ -89,10 +89,14 @@ public class Movement : MonoBehaviour
     {
         if(other.CompareTag("Death Bar"))
         {
-            Debug.Log("Has Muerto");
-            deathMessage.SetActive(true);
-            Destroy(this.gameObject);
+            die();
         }
+    }
+
+    private void die() {
+        deathMessage.SetActive(true);
+            pauseButton.SetActive(false);
+            Destroy(this.gameObject);
     }
 
 
