@@ -12,7 +12,8 @@ public class PlatformGenerator : MonoBehaviour
     [SerializeField] private Transform platform2;
 
     [SerializeField] private Transform patrolEnemy;
-    private float lastPlatformHeigh = 15;
+    [SerializeField] private AudioManager audioManager;
+    private float lastPlatformHeigh = 10.5;
     private float lastPlayerGroundedHeigh;
     private Movement playerMovement;
     private float[] horizontalValues = new float[8];

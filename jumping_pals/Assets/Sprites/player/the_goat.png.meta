@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: 1b5e88331cac0ea489eaf4466d572867
+guid: 9df58cfb695640d4895df02a98959cfb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8868729072188591806
-    second: duck_0
+      213: 3741748815463332517
+    second: the_goat_0
   - first:
-      213: -8294748474342274760
-    second: duck_1
+      213: -6265025775293763305
+    second: the_goat_1
   - first:
-      213: 8781019514964437993
-    second: duck_2
+      213: -7011855668383848649
+    second: the_goat_2
   - first:
-      213: 7708609292541582763
-    second: duck_3
+      213: 5173073196624029951
+    second: the_goat_3
   - first:
-      213: 9075362701424418546
-    second: duck_4
+      213: -2030338556665615555
+    second: the_goat_4
   - first:
-      213: 3317177067112860294
-    second: duck_5
+      213: -6120806886937085834
+    second: the_goat_5
   - first:
-      213: 1033602697210819807
-    second: duck_6
+      213: 7703546116091475110
+    second: the_goat_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -93,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,159 +127,172 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: duck
+      name: the_goat_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 16
+        height: 15
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebe0bf44a1e041b70800000000000000
-      internalID: 8868729072188591806
+      spriteID: 5aa3e6819bc5de330800000000000000
+      internalID: 3741748815463332517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: duck_1
+      name: the_goat_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 15
         y: 0
-        width: 16
-        height: 16
+        width: 17
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8398d95c53223ec80800000000000000
-      internalID: -8294748474342274760
+      spriteID: 711f2fa30482e09a0800000000000000
+      internalID: -6265025775293763305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: duck_2
+      name: the_goat_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 31
         y: 0
-        width: 16
-        height: 16
+        width: 17
+        height: 15
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9eb6a3b99b27cd970800000000000000
-      internalID: 8781019514964437993
+      spriteID: 737eba58b62e0be90800000000000000
+      internalID: -7011855668383848649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: duck_3
+      name: the_goat_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 47
         y: 0
-        width: 16
-        height: 16
+        width: 17
+        height: 15
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bad57324f4b7afa60800000000000000
-      internalID: 7708609292541582763
+      spriteID: ff8aed90aa27ac740800000000000000
+      internalID: 5173073196624029951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: duck_4
+      name: the_goat_4
       rect:
         serializedVersion: 2
-        x: 64
+        x: 63
         y: 0
-        width: 16
+        width: 17
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2fe5b3a2b4a22fd70800000000000000
-      internalID: 9075362701424418546
+      spriteID: d3baa2407d9c2d3e0800000000000000
+      internalID: -2030338556665615555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: duck_5
+      name: the_goat_5
       rect:
         serializedVersion: 2
-        x: 80
+        x: 79
         y: 0
-        width: 16
-        height: 16
+        width: 17
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 68a8556a7faf80e20800000000000000
-      internalID: 3317177067112860294
+      spriteID: 678b955d0968e0ba0800000000000000
+      internalID: -6120806886937085834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: duck_6
+      name: the_goat_6
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 16
-        height: 16
+        x: 95
+        y: 1
+        width: 17
+        height: 15
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd4f2264d28185e00800000000000000
-      internalID: 1033602697210819807
+      spriteID: 6a4f870a06e78ea60800000000000000
+      internalID: 7703546116091475110
       vertices: []
       indices: 
       edges: []
@@ -288,7 +301,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 23b967505848f1a45ae56430867a7063
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -298,13 +311,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      duck: 8868729072188591806
-      duck_1: -8294748474342274760
-      duck_2: 8781019514964437993
-      duck_3: 7708609292541582763
-      duck_4: 9075362701424418546
-      duck_5: 3317177067112860294
-      duck_6: 1033602697210819807
+      the_goat_0: 3741748815463332517
+      the_goat_1: -6265025775293763305
+      the_goat_2: -7011855668383848649
+      the_goat_3: 5173073196624029951
+      the_goat_4: -2030338556665615555
+      the_goat_5: -6120806886937085834
+      the_goat_6: 7703546116091475110
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

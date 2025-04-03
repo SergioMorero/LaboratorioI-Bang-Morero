@@ -6,6 +6,9 @@ using UnityEngine.Serialization;
 
 public class Movement : MonoBehaviour
 {
+
+    [Header("---------- Variables ----------")]
+
     private Rigidbody2D rb;
     private float MovX;
     [SerializeField] private float coyoteTime;
@@ -28,9 +31,12 @@ public class Movement : MonoBehaviour
     [SerializeField] private LayerMask floor;
     [SerializeField] private LayerMask enemy;
 
+    [Header("---------- Objects ----------")]
+
     [SerializeField] private PauseManager pauseManager;
     [SerializeField] private GameObject deathMessage;
     [SerializeField] private GameObject pauseButton;
+    [SerializeField] private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +88,7 @@ public class Movement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             lastGrounded = 0f;
+            audioManager.playJumping();
         }
     }
 
@@ -97,6 +104,8 @@ public class Movement : MonoBehaviour
         deathMessage.SetActive(true);
             pauseButton.SetActive(false);
             Destroy(this.gameObject);
+            audioManager.stopMusic();
+            audioManager.playGameOver();
     }
 
 
@@ -113,6 +122,10 @@ public class Movement : MonoBehaviour
         Gizmos.DrawRay(transform.position, Vector3.right);
         Gizmos.DrawRay(transform.position + Vector3.up * 0.75f, Vector3.right);
         Gizmos.DrawRay(transform.position + Vector3.down * 0.75f, Vector3.right);
+    }
+
+    public void playEnemy() {
+        audioManager.playEnemy();
     }
 
 }

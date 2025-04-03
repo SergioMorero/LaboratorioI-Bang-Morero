@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Death Bar
   - Enemy
+  - AudioManager
   layers:
   - Default
   - TransparentFX
