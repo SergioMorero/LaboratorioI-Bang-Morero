@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - Wall
-  - Floor
-  - Death Bar
-  - Enemy
-  - AudioManager
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -16,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - title
-  - Floor
-  - Wall
-  - enemy
-  - player
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -45,21 +40,6 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: background
-    uniqueID: 3917306927
-    locked: 0
-  - name: title
-    uniqueID: 15967815
-    locked: 0
-  - name: settings_icons
-    uniqueID: 3159309137
-    locked: 0
-  - name: player
-    uniqueID: 2995945311
-    locked: 0
-  - name: UI
-    uniqueID: 1090421965
     locked: 0
   m_RenderingLayers:
   - Default

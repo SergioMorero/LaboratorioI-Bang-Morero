@@ -41,8 +41,8 @@ public class Enemy1 : MonoBehaviour
     {
         //Attacked
         hitHead = Physics2D.Raycast(transform.position, Vector2.up, 1.05f, playerLayer);
-        hitHeadLeft = Physics2D.Raycast(transform.position + Vector3.left * 0.5f, Vector2.up, 1.05f, playerLayer);
-        hitHeadRight = Physics2D.Raycast(transform.position + Vector3.right * 0.5f, Vector2.up, 1.05f, playerLayer);
+        hitHeadLeft = Physics2D.Raycast(transform.position + Vector3.left * 0.6f, Vector2.up, 1.05f, playerLayer);
+        hitHeadRight = Physics2D.Raycast(transform.position + Vector3.right * 0.6f, Vector2.up, 1.05f, playerLayer);
 
         gotHit = (hitHead.collider != null || hitHeadLeft.collider != null || hitHeadRight.collider != null);
         if (gotHit)
@@ -80,7 +80,7 @@ public class Enemy1 : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, Vector3.up * 1.05f);
-        Gizmos.DrawRay(transform.position + Vector3.left * 0.5f, Vector3.up * 1.05f);
-        Gizmos.DrawRay(transform.position + Vector3.right * 0.5f, Vector3.up * 1.05f);
+        Gizmos.DrawRay(transform.position + Vector3.left * 0.6f, Vector3.up * 1.05f);
+        Gizmos.DrawRay(transform.position + Vector3.right * 0.6f, Vector3.up * 1.05f);
     }
 }
