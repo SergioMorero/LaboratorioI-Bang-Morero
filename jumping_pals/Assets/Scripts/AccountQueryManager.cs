@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
+using System.Text;
 
 public class AccountQueryManager : MonoBehaviour {
 
@@ -50,7 +51,7 @@ public class AccountQueryManager : MonoBehaviour {
 
         if (request.result == UnityWebRequest.Result.Success)
         {
-            Debug.Log("¡Conexión con el servidor exitosa!: ");
+            Debug.Log("¡Conexión con el servidor exitosa!: " + request.downloadHandler.text);
         }
         else
         {
@@ -63,19 +64,36 @@ public class AccountQueryManager : MonoBehaviour {
 
         string route = "/create-user";
 
-        /*
-        List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
-        formData.Add(new MultipartFormDataSection("field1=name&field2=password"));
-        formData.Add(new MultipartFormFileSection(name, password));
-         */
+        UserData data = new UserData { name = name, password = password };
+        string json = JsonUtility.ToJson(data);
+        Debug.Log("JSON: " + json);
 
-        string data = "{ \"name\": " + name + ", \"password: " + password + " }";
 
-        Debug.Log("Got JSON");
+        // string data = "{\"name\": " + name + ", \"password\": " + password + "}";
+        
+        /* 
+        Dictionary<string, string> data = new Dictionary<string, string>();
+        data["name"] = name;
+        data["password"] = password;
+        */
 
-        UnityWebRequest request = UnityWebRequest.PostWwwForm(serverUrl + route, data);
+        //Debug.Log("Got data: " + data);
+
+        UnityWebRequest request = new UnityWebRequest(serverUrl + route, "POST");
+        Debug.Log("Created request");
+        request.SetRequestHeader("Content-Type", "application/json");
+        Debug.Log("Set request header");
+
+        byte[] raw = Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(raw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        Debug.Log("JSON: " + json);
+
         yield return request.SendWebRequest();
+
         Debug.Log("Request sent");
+
         if (request.result == UnityWebRequest.Result.Success) {
             Debug.Log("Usuario Creado: " + request.downloadHandler.text);
         } else {
@@ -101,5 +119,11 @@ public class AccountQueryManager : MonoBehaviour {
             Debug.Log("Error en la creación: " + request.error);
         }
     }
+
+    [System.Serializable]
+    public class UserData {
+        public string name;
+        public string password;
+}
 
 }
