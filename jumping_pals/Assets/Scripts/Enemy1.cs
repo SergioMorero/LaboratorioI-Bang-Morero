@@ -7,6 +7,8 @@ using UnityEngine;
 public class Enemy1 : MonoBehaviour
 {
 
+    [Header("---------- Varialbes ----------")]
+
     [SerializeField] private float speed;
     private RaycastHit2D hitFloor;
     private RaycastHit2D hitFloorLeft;
@@ -23,12 +25,15 @@ public class Enemy1 : MonoBehaviour
 
     public LayerMask floor;
 
+    private Movement audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         playerRB = player.GetComponent<Rigidbody2D>();
+        audioManager = player.GetComponent<Movement>();
     }
 
     // Update is called once per frame
@@ -45,6 +50,7 @@ public class Enemy1 : MonoBehaviour
             playerRB.linearVelocity -= new Vector2(0, playerRB.linearVelocity.y);
             playerRB.AddForce(new Vector2(-2 * playerRB.linearVelocity.x, 20), ForceMode2D.Impulse);
             Destroy(this.gameObject);
+            audioManager.playEnemy();
         }
 
 

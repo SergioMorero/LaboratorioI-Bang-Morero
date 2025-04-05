@@ -5,8 +5,9 @@ public class PauseManager : MonoBehaviour {
 
     public bool isPaused;
 
-    public Button pauseButton;
-    public Button resumeButton;
+    [SerializeField] private Button pauseButton;
+    [SerializeField] private Button resumeButton;
+    [SerializeField] private GameObject pausePannel;
 
     void Start() {
         isPaused = false;
@@ -18,14 +19,16 @@ public class PauseManager : MonoBehaviour {
         }
     }
 
-    void Pause() {
+    public void Pause() {
         isPaused = true;
         Time.timeScale = 0f;
+        pausePannel.SetActive(true);
     }
 
-    void Resume() {
+    public void Resume() {
         isPaused = false;
         Time.timeScale = 1f;
+        pausePannel.SetActive(false);
     }
 
 }

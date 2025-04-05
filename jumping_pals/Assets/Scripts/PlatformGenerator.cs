@@ -15,6 +15,7 @@ public class PlatformGenerator : MonoBehaviour
 
     [SerializeField] private Transform laser;
     private float lastPlatformHeigh = 15;
+    [SerializeField] private AudioManager audioManager;
     private float lastPlayerGroundedHeigh;
     private Movement playerMovement;
     private float[] horizontalValues = new float[8];
