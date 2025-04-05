@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Death Bar
   - Enemy
+  - Laser
   layers:
   - Default
   - TransparentFX

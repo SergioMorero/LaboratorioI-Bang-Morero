@@ -44,12 +44,12 @@ public class Movement : MonoBehaviour
     void Update()
     {
         //Attacked
-        hitEnemyLeft = Physics2D.Raycast(transform.position, Vector3.left, 1, enemy);
-        hitEnemyUpLeft = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector3.left, 1, enemy);
-        hitEnemyDownLeft = Physics2D.Raycast(transform.position + Vector3.down * 0.75f, Vector3.left, 1, enemy);
-        hitEnemyRight = Physics2D.Raycast(transform.position, Vector3.right, 1, enemy);
-        hitEnemyUpRight = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector3.right, 1, enemy);
-        hitEnemyDownRight = Physics2D.Raycast(transform.position + Vector3.down * 0.75f, Vector3.right, 1, enemy);
+        hitEnemyLeft = Physics2D.Raycast(transform.position, Vector3.left, 1.25f, enemy);
+        hitEnemyUpLeft = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector3.left, 1.25f, enemy);
+        hitEnemyDownLeft = Physics2D.Raycast(transform.position + Vector3.down * 0.55f, Vector3.left, 1.25f, enemy);
+        hitEnemyRight = Physics2D.Raycast(transform.position, Vector3.right, 1.25f, enemy);
+        hitEnemyUpRight = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector3.right, 1.25f, enemy);
+        hitEnemyDownRight = Physics2D.Raycast(transform.position + Vector3.down * 0.55f, Vector3.right, 1.25f, enemy);
 
         if (hitEnemyLeft.collider != null || hitEnemyUpLeft.collider != null || hitEnemyDownLeft.collider != null || hitEnemyRight.collider != null || hitEnemyUpRight.collider != null || hitEnemyDownRight.collider != null)
         {
@@ -59,8 +59,8 @@ public class Movement : MonoBehaviour
 
         //Movement
         hitFloor = Physics2D.Raycast(transform.position + Vector3.down * 0.75f, Vector2.down, 0.75f, floor);
-        hitFloorLeft = Physics2D.Raycast(transform.position + Vector3.left * 0.5f + Vector3.down * 0.75f, Vector2.down, 0.75f, floor);
-        hitFloorRight = Physics2D.Raycast(transform.position + Vector3.right * 0.5f + Vector3.down * 0.75f, Vector2.down, 0.75f, floor);
+        hitFloorLeft = Physics2D.Raycast(transform.position + Vector3.left * 0.8f + Vector3.down * 0.75f, Vector2.down, 0.75f, floor);
+        hitFloorRight = Physics2D.Raycast(transform.position + Vector3.right * 0.8f + Vector3.down * 0.75f, Vector2.down, 0.75f, floor);
 
         isGrounded = (hitFloor.collider != null || hitFloorLeft.collider != null || hitFloorRight.collider != null);
 
@@ -77,7 +77,7 @@ public class Movement : MonoBehaviour
             lastGrounded -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && lastGrounded > 0f && !pauseManager.isPaused)
+        if (Input.GetKeyDown(KeyCode.W) && lastGrounded > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
@@ -87,16 +87,16 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Death Bar"))
+        if(other.CompareTag("Death Bar") || other.CompareTag("Laser"))
         {
             die();
         }
     }
 
     private void die() {
-        deathMessage.SetActive(true);
-            pauseButton.SetActive(false);
-            Destroy(this.gameObject);
+        //deathMessage.SetActive(true);
+        //pauseButton.SetActive(false);
+        Destroy(this.gameObject);
     }
 
 
@@ -104,15 +104,15 @@ public class Movement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position + Vector3.down * 0.75f, Vector3.down * 0.75f);
-        Gizmos.DrawRay(transform.position + Vector3.left * 0.5f + Vector3.down * 0.75f, Vector3.down * 0.75f);
-        Gizmos.DrawRay(transform.position + Vector3.right * 0.5f + Vector3.down * 0.75f, Vector3.down * 0.75f);
+        Gizmos.DrawRay(transform.position + Vector3.left * 0.8f + Vector3.down * 0.75f, Vector3.down * 0.75f);
+        Gizmos.DrawRay(transform.position + Vector3.right * 0.8f + Vector3.down * 0.75f, Vector3.down * 0.75f);
 
-        Gizmos.DrawRay(transform.position, Vector3.left);
-        Gizmos.DrawRay(transform.position + Vector3.up * 0.75f, Vector3.left);
-        Gizmos.DrawRay(transform.position + Vector3.down * 0.75f, Vector3.left);
-        Gizmos.DrawRay(transform.position, Vector3.right);
-        Gizmos.DrawRay(transform.position + Vector3.up * 0.75f, Vector3.right);
-        Gizmos.DrawRay(transform.position + Vector3.down * 0.75f, Vector3.right);
+        Gizmos.DrawRay(transform.position, Vector3.left * 1.25f);
+        Gizmos.DrawRay(transform.position + Vector3.up * 0.75f, Vector3.left * 1.25f);
+        Gizmos.DrawRay(transform.position + Vector3.down * 0.55f, Vector3.left * 1.25f);
+        Gizmos.DrawRay(transform.position, Vector3.right * 1.25f);
+        Gizmos.DrawRay(transform.position + Vector3.up * 0.75f, Vector3.right * 1.25f);
+        Gizmos.DrawRay(transform.position + Vector3.down * 0.55f, Vector3.right * 1.25f);
     }
 
 }
