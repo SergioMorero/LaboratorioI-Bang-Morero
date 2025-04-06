@@ -18,7 +18,7 @@ public class AccountQueryManager : MonoBehaviour {
 
     [Header("Modify Account")]
     [SerializeField] private TMP_InputField modifyOldUsername;
-    [SerializeField] private TMP_InputField cmodifyOldPassword;
+    [SerializeField] private TMP_InputField modifyOldPassword;
     [SerializeField] private TMP_InputField modifyNewUsername;
     [SerializeField] private TMP_InputField modifyNewPassword;
 
@@ -31,14 +31,23 @@ public class AccountQueryManager : MonoBehaviour {
         StartCoroutine(checkConnection());
     }
 
-    public void createUser()
+    public void CreateUser()
     {
         string name = createUsername.text;
         string password = createPassword.text;
         StartCoroutine(post(name, password));
     }
 
-    public void deleteUser() {
+    public void UpdateUser()
+    {
+        string name = modifyOldUsername.text;
+        string password = modifyOldPassword.text;
+        string newName = modifyNewUsername.text;
+        string newPassword = modifyNewPassword.text;
+        StartCoroutine(put(name, password, newName, newPassword));
+    }
+
+    public void DeleteUser() {
         string name = deleteUsername.text;
         string password = deletePassword.text;
         StartCoroutine(delete(name, password));
@@ -51,7 +60,7 @@ public class AccountQueryManager : MonoBehaviour {
 
         if (request.result == UnityWebRequest.Result.Success)
         {
-            Debug.Log("¡Conexión con el servidor exitosa!: " + request.downloadHandler.text);
+            Debug.Log("¡Conexión con el servidor exitosa!");
         }
         else
         {
@@ -61,25 +70,44 @@ public class AccountQueryManager : MonoBehaviour {
 
     IEnumerator post(string name, string password)
     {
-
-        string route = "/create-user";
+        string route = "/user";
 
         UserData data = new UserData { name = name, password = password };
         string json = JsonUtility.ToJson(data);
         Debug.Log("JSON: " + json);
 
-
-        // string data = "{\"name\": " + name + ", \"password\": " + password + "}";
-        
-        /* 
-        Dictionary<string, string> data = new Dictionary<string, string>();
-        data["name"] = name;
-        data["password"] = password;
-        */
-
-        //Debug.Log("Got data: " + data);
-
         UnityWebRequest request = new UnityWebRequest(serverUrl + route, "POST");
+        Debug.Log("Created request");
+        request.SetRequestHeader("Content-Type", "application/json");
+        Debug.Log("Set request header");
+
+        byte[] raw = Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(raw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        Debug.Log("JSON: " + json);
+
+        yield return request.SendWebRequest();
+
+        Debug.Log("Request sent");
+
+        if (request.result == UnityWebRequest.Result.Success) {
+            Debug.Log("Usuario Creado: " + request.downloadHandler.text);
+        } else {
+            Debug.Log("Error en la creación: " + request.error);
+        }
+    }
+
+    IEnumerator put(string oldName, string oldPassword, string newName, string newPassword)
+    {
+
+        string route = "/user";
+
+        UserUpdate data = new UserUpdate { name = oldName, password = oldPassword, newName = newName, newPassword = newPassword };
+        string json = JsonUtility.ToJson(data);
+        Debug.Log("JSON: " + json);
+
+        UnityWebRequest request = new UnityWebRequest(serverUrl + route, "PUT");
         Debug.Log("Created request");
         request.SetRequestHeader("Content-Type", "application/json");
         Debug.Log("Set request header");
@@ -104,19 +132,31 @@ public class AccountQueryManager : MonoBehaviour {
     IEnumerator delete(string name, string password)
     {
 
-        string route = "/delete-user";
+        string route = "/user";
 
-        List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
-        formData.Add(new MultipartFormDataSection("field1=name&field2=password"));
-        formData.Add(new MultipartFormFileSection(name, password));
+        UserData data = new UserData { name = name, password = password };
+        string json = JsonUtility.ToJson(data);
+        Debug.Log("JSON: " + json);
 
-        UnityWebRequest request = UnityWebRequest.Post(serverUrl + route, formData);
+        UnityWebRequest request = new UnityWebRequest(serverUrl + route, "DELETE");
+        Debug.Log("Created request");
+        request.SetRequestHeader("Content-Type", "application/json");
+        Debug.Log("Set request header");
+
+        byte[] raw = Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(raw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        Debug.Log("JSON: " + json);
+
         yield return request.SendWebRequest();
 
+        Debug.Log("Request sent");
+
         if (request.result == UnityWebRequest.Result.Success) {
-            Debug.Log("Usuario Creado: " + request.downloadHandler.text);
+            Debug.Log("Usuario eliminado");
         } else {
-            Debug.Log("Error en la creación: " + request.error);
+            Debug.Log("Error en la eliminación: " + request.error);
         }
     }
 
@@ -124,6 +164,14 @@ public class AccountQueryManager : MonoBehaviour {
     public class UserData {
         public string name;
         public string password;
-}
+    }
+
+    [System.Serializable]
+    public class UserUpdate {
+        public string name;
+        public string password;
+        public string newName;
+        public string newPassword;
+    }
 
 }
