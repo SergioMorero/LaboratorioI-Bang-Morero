@@ -10,25 +10,32 @@ public class AccountQueryManager : MonoBehaviour {
 
     private string serverUrl = "http://localhost:5000";
 
+    [SerializeField] private AccountManager accountManager;
+
     [Header("----- Text inputs -----")]
+
+    [Header("Log In")]
+    [SerializeField] private TMP_InputField loginName;
+    [SerializeField] private TMP_InputField loginPassword;
 
     [Header("Create Account")]
     [SerializeField] private TMP_InputField createUsername;
     [SerializeField] private TMP_InputField createPassword;
 
     [Header("Modify Account")]
-    [SerializeField] private TMP_InputField modifyOldUsername;
-    [SerializeField] private TMP_InputField modifyOldPassword;
     [SerializeField] private TMP_InputField modifyNewUsername;
     [SerializeField] private TMP_InputField modifyNewPassword;
-
-    [Header("Delete Account")]
-    [SerializeField] private TMP_InputField deleteUsername;
-    [SerializeField] private TMP_InputField deletePassword;
 
     void Start()
     {
         StartCoroutine(checkConnection());
+    }
+
+    public void Login()
+    {
+        string name = loginName.text;
+        string password = loginPassword.text;
+        StartCoroutine(get(name, password));
     }
 
     public void CreateUser()
@@ -40,22 +47,23 @@ public class AccountQueryManager : MonoBehaviour {
 
     public void UpdateUser()
     {
-        string name = modifyOldUsername.text;
-        string password = modifyOldPassword.text;
+        string name = accountManager.GetName();
+        string password = accountManager.GetPassword();
         string newName = modifyNewUsername.text;
         string newPassword = modifyNewPassword.text;
         StartCoroutine(put(name, password, newName, newPassword));
     }
 
     public void DeleteUser() {
-        string name = deleteUsername.text;
-        string password = deletePassword.text;
+        string name = accountManager.GetName();
+        string password = accountManager.GetPassword();
         StartCoroutine(delete(name, password));
     }
 
     IEnumerator checkConnection()
     {
-        UnityWebRequest request = UnityWebRequest.Get(serverUrl);
+        string route = "/server";
+        UnityWebRequest request = UnityWebRequest.Get(serverUrl + route);
         yield return request.SendWebRequest();
 
         if (request.result == UnityWebRequest.Result.Success)
@@ -65,6 +73,39 @@ public class AccountQueryManager : MonoBehaviour {
         else
         {
             Debug.Log("Error en la conexión: " + request.error);
+        }
+    }
+
+    IEnumerator get(string name, string password)
+    {
+
+        string route = "/login";
+
+        UserData data = new UserData { name = name, password = password };
+        string json = JsonUtility.ToJson(data);
+        Debug.Log("JSON: " + json);
+
+        UnityWebRequest request = new UnityWebRequest(serverUrl + route, "POST");
+        Debug.Log("Created request");
+        request.SetRequestHeader("Content-Type", "application/json");
+        Debug.Log("Set request header");
+
+        byte[] raw = Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(raw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
+
+        Debug.Log("Request sent");
+
+        if (request.result == UnityWebRequest.Result.Success) {
+            Debug.Log("Usuario Válido: " + request.downloadHandler.text);
+            UserResponse response = JsonUtility.FromJson<UserResponse>(request.downloadHandler.text);
+            Debug.Log("ID: " + response.id + ", name: " + response.name + ", password: " + response.password);
+            accountManager.LogUserIn(response.id, response.name, response.password);
+        } else {
+            Debug.Log("Error en la autenticación: " + request.error);
+            accountManager.ShowError("login");
         }
     }
 
@@ -93,8 +134,13 @@ public class AccountQueryManager : MonoBehaviour {
 
         if (request.result == UnityWebRequest.Result.Success) {
             Debug.Log("Usuario Creado: " + request.downloadHandler.text);
+
+            // Realizar una query para obtener la id recién agregada y realizar Log In
+            StartCoroutine(get(name, password));
+
         } else {
             Debug.Log("Error en la creación: " + request.error);
+            accountManager.ShowError("register");
         }
     }
 
@@ -123,9 +169,11 @@ public class AccountQueryManager : MonoBehaviour {
         Debug.Log("Request sent");
 
         if (request.result == UnityWebRequest.Result.Success) {
-            Debug.Log("Usuario Creado: " + request.downloadHandler.text);
+            Debug.Log("Usuario Modificado: " + request.downloadHandler.text);
+            accountManager.UpdateUser(newName, newPassword);
         } else {
-            Debug.Log("Error en la creación: " + request.error);
+            Debug.Log("Error en la Modificación: " + request.error);
+            accountManager.ShowError("edit");
         }
     }
 
@@ -155,8 +203,10 @@ public class AccountQueryManager : MonoBehaviour {
 
         if (request.result == UnityWebRequest.Result.Success) {
             Debug.Log("Usuario eliminado");
+            accountManager.LogUserOut();
         } else {
             Debug.Log("Error en la eliminación: " + request.error);
+            accountManager.ShowError("delete");
         }
     }
 
@@ -172,6 +222,14 @@ public class AccountQueryManager : MonoBehaviour {
         public string password;
         public string newName;
         public string newPassword;
+    }
+
+    [System.Serializable]
+    public class UserResponse
+    {
+        public int id;
+        public string name;
+        public string password;
     }
 
 }
