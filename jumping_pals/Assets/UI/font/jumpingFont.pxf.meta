@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:jumping_pals/Assets/UI/font/jumpingFontThin.pxf.meta
+guid: 98897d5682804664f98b42eff023e82e
+========
 guid: 90be516fbf9a61e458d1bdff4ba1d32c
+>>>>>>>> d279cbffbaf04b637b2d712711bba3b433129132:jumping_pals/Assets/UI/font/jumpingFont.pxf.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
