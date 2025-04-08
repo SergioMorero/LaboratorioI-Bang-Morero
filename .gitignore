@@ -18,6 +18,7 @@
 *.booproj
 *.svd
 *.pdb
+.vs/
 
 # Unity metadata
 /Assets/**/*.meta
