@@ -10,6 +10,7 @@ public class PlatformGenerator : MonoBehaviour
     private GameObject player;
     [SerializeField] private Transform platform1;
     [SerializeField] private Transform platform2;
+    [SerializeField] private Transform movingPlatform1;
 
     [SerializeField] private Transform patrolEnemy;
 
@@ -21,7 +22,7 @@ public class PlatformGenerator : MonoBehaviour
     private Movement playerMovement;
     private float[] horizontalValues = new float[8];
     private float[] verticalValues = new float[3];
-    private Transform[] platforms = new Transform[4];
+    private Transform[] platforms = new Transform[9];
     private float lastXPosition = 5;
 
     // Start is called before the first frame update
@@ -43,7 +44,12 @@ public class PlatformGenerator : MonoBehaviour
         platforms[0] = platform1;
         platforms[1] = platform1;
         platforms[2] = platform1;
-        platforms[3] = platform2;
+        platforms[3] = platform1;
+        platforms[4] = platform1;
+        platforms[5] = platform1;
+        platforms[6] = platform2;
+        platforms[7] = platform2;
+        platforms[8] = movingPlatform1;
     }
 
     // Update is called once per frame
@@ -75,11 +81,12 @@ public class PlatformGenerator : MonoBehaviour
         {
             xPosition = horizontalValues[Random.Range(0, 8)];
         }
-        Instantiate(platforms[Random.Range(0, 4)], new Vector3(xPosition, lastPlatformHeigh + heighIncrease, 0), Quaternion.identity);
+        Transform chosenPlatform = platforms[Random.Range(0, 9)];
+        Instantiate(chosenPlatform, new Vector3(xPosition, lastPlatformHeigh + heighIncrease, 0), Quaternion.identity);
         lastXPosition = xPosition;
         lastPlatformHeigh += heighIncrease;
 
-        if (chanceOfEnemy == 3)
+        if (chanceOfEnemy == 3 && chosenPlatform != movingPlatform1)
         {
             Instantiate(patrolEnemy, new Vector3(xPosition, lastPlatformHeigh + 1, 0), Quaternion.identity);
         }
