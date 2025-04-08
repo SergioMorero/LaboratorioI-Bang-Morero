@@ -29,7 +29,6 @@ public class AccountManager : MonoBehaviour
     [Header("----- Objects -----")]
 
     [SerializeField] private AccountQueryManager queryManager;
-    [SerializeField] private Button accountButton;
 
     [Header("----- Panels -----")]
 
@@ -77,6 +76,7 @@ public class AccountManager : MonoBehaviour
         userPassword = null;
         isLogged = false;
         HideAllErrors();
+        queryManager.cleanAllInput();
     }
 
     // Main Methods
@@ -91,6 +91,7 @@ public class AccountManager : MonoBehaviour
         create.SetActive(false);
         account.SetActive(true);
         isLogged = true;
+        queryManager.cleanAllInput();
     }
 
     public void LogUserOut()
@@ -118,6 +119,7 @@ public class AccountManager : MonoBehaviour
         }   
         HideAllErrors();
         edit.SetActive(false);
+        queryManager.cleanAllInput();
     }
 
     // Error Management
