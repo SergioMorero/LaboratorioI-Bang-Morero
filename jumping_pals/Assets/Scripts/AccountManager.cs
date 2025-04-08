@@ -29,6 +29,7 @@ public class AccountManager : MonoBehaviour
     [Header("----- Objects -----")]
 
     [SerializeField] private AccountQueryManager queryManager;
+    [SerializeField] private Button accountButton;
 
     [Header("----- Panels -----")]
 
@@ -67,21 +68,25 @@ public class AccountManager : MonoBehaviour
     [SerializeField] private GameObject deleteError;
     [SerializeField] private GameObject editError;
 
+    // Initialize
+
     void Start()
     {
         userID = 0;
         userName = null;
         userPassword = null;
         isLogged = false;
-        hideAllErrors();
+        HideAllErrors();
     }
+
+    // Main Methods
 
     public void LogUserIn(int id, string name, string password)
     {
         userID = id;
         userName = name;
         userPassword = password;
-        hideAllErrors();
+        HideAllErrors();
         login.SetActive(false);
         create.SetActive(false);
         account.SetActive(true);
@@ -93,7 +98,7 @@ public class AccountManager : MonoBehaviour
         userID = 0;
         userName = null;
         userPassword = null;
-        hideAllErrors();
+        HideAllErrors();
         logoutConfirm.SetActive(false);
         deleteConfirm.SetActive(false);
         account.SetActive(false);
@@ -111,11 +116,13 @@ public class AccountManager : MonoBehaviour
         {
             userPassword = newPassword;
         }   
-        hideAllErrors();
+        HideAllErrors();
         edit.SetActive(false);
     }
 
-    public void hideAllErrors()
+    // Error Management
+
+    public void HideAllErrors()
     {
         loginError.SetActive(false);
         createError.SetActive(false);
@@ -123,25 +130,45 @@ public class AccountManager : MonoBehaviour
         editError.SetActive(false);
     }
 
-    public void ShowLoginError()
+    public void ShowError(string error)
     {
-        loginError.SetActive(true);
+        HideAllErrors();
+        switch (error)
+        {
+            case "login":
+                loginError.SetActive(true);
+                break;
+            case "reister":
+                createError.SetActive(true);
+                break;
+            case "delete":
+                deleteError.SetActive(true);
+                break;
+            case "edit":
+                editError.SetActive(true);
+                break;
+            default:
+                Debug.Log("Invalid string received when trying to show an error: " + error);
+                break;
+        }
     }
 
-    public void ShowCreateError()
+    // Interface
+
+    public void OpenAccountSettings()
     {
-        createError.SetActive(true);
+        
+        if (isLogged) // Go to account panel
+        {
+            account.SetActive(true);
+        }
+        else // Go to Login/Register panel
+        {
+            init.SetActive(true);
+        }
     }
 
-    public void ShowDeleteError()
-    {
-        deleteError.SetActive(true);
-    }
-
-    public void ShowEditError()
-    {
-        editError.SetActive(true);
-    }
+    // Getters
 
     public string GetName()
     {

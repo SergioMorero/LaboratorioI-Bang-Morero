@@ -105,7 +105,7 @@ public class AccountQueryManager : MonoBehaviour {
             accountManager.LogUserIn(response.id, response.name, response.password);
         } else {
             Debug.Log("Error en la autenticación: " + request.error);
-            accountManager.ShowLoginError();
+            accountManager.ShowError("login");
         }
     }
 
@@ -140,7 +140,7 @@ public class AccountQueryManager : MonoBehaviour {
 
         } else {
             Debug.Log("Error en la creación: " + request.error);
-            accountManager.ShowCreateError();
+            accountManager.ShowError("register");
         }
     }
 
@@ -173,7 +173,7 @@ public class AccountQueryManager : MonoBehaviour {
             accountManager.UpdateUser(newName, newPassword);
         } else {
             Debug.Log("Error en la Modificación: " + request.error);
-            accountManager.ShowEditError();
+            accountManager.ShowError("edit");
         }
     }
 
@@ -206,7 +206,7 @@ public class AccountQueryManager : MonoBehaviour {
             accountManager.LogUserOut();
         } else {
             Debug.Log("Error en la eliminación: " + request.error);
-            accountManager.ShowDeleteError();
+            accountManager.ShowError("delete");
         }
     }
 
