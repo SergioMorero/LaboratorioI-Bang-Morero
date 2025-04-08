@@ -31,6 +31,20 @@ public class AccountQueryManager : MonoBehaviour {
         StartCoroutine(checkConnection());
     }
 
+    // Interface management
+
+    public void cleanAllInput()
+    {
+        loginName.text = null;
+        loginPassword.text = null;
+        createUsername.text = null;
+        createPassword.text = null;
+        modifyNewPassword.text = null;
+        modifyNewPassword.text = null;
+    }
+
+    // Query Methods
+
     public void Login()
     {
         string name = loginName.text;
@@ -59,6 +73,8 @@ public class AccountQueryManager : MonoBehaviour {
         string password = accountManager.GetPassword();
         StartCoroutine(delete(name, password));
     }
+
+    // Query Coroutines
 
     IEnumerator checkConnection()
     {
@@ -209,6 +225,8 @@ public class AccountQueryManager : MonoBehaviour {
             accountManager.ShowError("delete");
         }
     }
+
+    // JSON Classes
 
     [System.Serializable]
     public class UserData {
