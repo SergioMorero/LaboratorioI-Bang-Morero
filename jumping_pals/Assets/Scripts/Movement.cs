@@ -83,7 +83,7 @@ public class Movement : MonoBehaviour
             lastGrounded -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && lastGrounded > 0f)
+        if (Input.GetKeyDown(KeyCode.W) && lastGrounded > 0f && !pauseManager.isPaused)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
