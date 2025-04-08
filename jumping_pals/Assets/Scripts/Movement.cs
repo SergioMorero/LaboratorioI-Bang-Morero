@@ -50,6 +50,8 @@ public class Movement : MonoBehaviour
     void Update()
     {
         //Attacked
+
+        // Patroll
         hitEnemyLeft = Physics2D.Raycast(transform.position, Vector3.left, 1.25f, enemy);
         hitEnemyUpLeft = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector3.left, 1.25f, enemy);
         hitEnemyDownLeft = Physics2D.Raycast(transform.position + Vector3.down * 0.55f, Vector3.left, 1.25f, enemy);
@@ -60,7 +62,7 @@ public class Movement : MonoBehaviour
         if (hitEnemyLeft.collider != null || hitEnemyUpLeft.collider != null || hitEnemyDownLeft.collider != null || hitEnemyRight.collider != null || hitEnemyUpRight.collider != null || hitEnemyDownRight.collider != null)
         {
             die();
-        } 
+        }
 
 
         //Movement
@@ -90,6 +92,15 @@ public class Movement : MonoBehaviour
             lastGrounded = 0f;
             audioManager.playJumping();
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D muncher)
+    {
+        if (muncher.collider.CompareTag("muncher"))
+        {
+            die();
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
