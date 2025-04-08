@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class start : MonoBehaviour
 {
-    public void StartGame() {
-        SceneManager.LoadSceneAsync(1);
+    public void StartGame(int scene) {
+        SceneManager.LoadSceneAsync(scene);
     }
 }
