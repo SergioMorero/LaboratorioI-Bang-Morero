@@ -7,6 +7,8 @@ using UnityEngine.Serialization;
 public class Movement : MonoBehaviour
 {
 
+    public int score;
+
     [Header("---------- Variables ----------")]
 
     private Rigidbody2D rb;
@@ -44,6 +46,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         isGrounded = false;
         animator = GetComponent<Animator>();
+        score = 0;
     }
 
     // Update is called once per frame
