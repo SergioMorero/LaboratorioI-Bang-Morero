@@ -13,6 +13,7 @@ public class PlatformGenerator : MonoBehaviour
     [SerializeField] private Transform movingPlatform1;
 
     [SerializeField] private Transform patrolEnemy;
+    [SerializeField] private Transform muncherEnemy;
 
     [SerializeField] private Transform laser;
     private float lastPlatformHeigh = 15;
@@ -23,6 +24,7 @@ public class PlatformGenerator : MonoBehaviour
     private float[] horizontalValues = new float[8];
     private float[] verticalValues = new float[3];
     private Transform[] platforms = new Transform[9];
+    private Transform[] enemies = new Transform[4];
     private float lastXPosition = 5;
 
     // Start is called before the first frame update
@@ -38,9 +40,11 @@ public class PlatformGenerator : MonoBehaviour
         horizontalValues[5] = 7;
         horizontalValues[6] = 8.5f;
         horizontalValues[7] = 10;
+
         verticalValues[0] = 5;
         verticalValues[1] = 6;
         verticalValues[2] = 6;
+
         platforms[0] = platform1;
         platforms[1] = platform1;
         platforms[2] = platform1;
@@ -50,6 +54,11 @@ public class PlatformGenerator : MonoBehaviour
         platforms[6] = platform2;
         platforms[7] = platform2;
         platforms[8] = movingPlatform1;
+
+        enemies[0] = patrolEnemy;
+        enemies[1] = patrolEnemy;
+        enemies[2] = patrolEnemy;
+        enemies[3] = muncherEnemy;
     }
 
     // Update is called once per frame
@@ -82,13 +91,14 @@ public class PlatformGenerator : MonoBehaviour
             xPosition = horizontalValues[Random.Range(0, 8)];
         }
         Transform chosenPlatform = platforms[Random.Range(0, 9)];
+        Transform chosenEnemy = enemies[Random.Range(0, 4)];
         Instantiate(chosenPlatform, new Vector3(xPosition, lastPlatformHeigh + heighIncrease, 0), Quaternion.identity);
         lastXPosition = xPosition;
         lastPlatformHeigh += heighIncrease;
 
         if (chanceOfEnemy == 3 && chosenPlatform != movingPlatform1)
         {
-            Instantiate(patrolEnemy, new Vector3(xPosition, lastPlatformHeigh + 1, 0), Quaternion.identity);
+            Instantiate(chosenEnemy, new Vector3(xPosition, lastPlatformHeigh + 1, 0), Quaternion.identity);
         }
         if (chanceOfLaser == 5)
         {
