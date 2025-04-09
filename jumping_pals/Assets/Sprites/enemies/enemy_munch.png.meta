@@ -40,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -54,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 12
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -132,9 +132,9 @@ TextureImporter:
       name: enemy_munch_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 14
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -154,10 +154,10 @@ TextureImporter:
       name: enemy_munch_1
       rect:
         serializedVersion: 2
-        x: 15
+        x: 16
         y: 0
-        width: 33
-        height: 14
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,11 +172,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: enemy_munch_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3704ce7297c301441ac4027813890997
+      internalID: 1063363642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: eae4ef1a89a96ef4da6a9f5f1c733e11
     internalID: 0
     vertices: []
     indices: 
@@ -188,6 +210,7 @@ TextureImporter:
     nameFileIdTable:
       enemy_munch_0: 2236316395539788992
       enemy_munch_1: -7349410248840051628
+      enemy_munch_2: 1063363642
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

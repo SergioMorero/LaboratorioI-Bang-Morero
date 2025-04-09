@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Laser
   - Wall
+  - muncher
   layers:
   - Default
   - TransparentFX
