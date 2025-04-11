@@ -21,7 +21,7 @@
 .vs/
 
 # Unity metadata
-/Assets/**/*.meta
+/jumping_pals/Assets/**/*.meta
 
 # Packages
 Packages/*/
@@ -36,3 +36,4 @@ Thumbs.db
 
 #Misc
 credential.py
+/jumping_pals/Assets/UI/font
