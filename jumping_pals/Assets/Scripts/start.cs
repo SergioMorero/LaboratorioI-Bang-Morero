@@ -5,6 +5,6 @@ using UnityEngine.SceneManagement;
 public class start : MonoBehaviour
 {
     public void StartGame(int scene) {
-        SceneManager.LoadSceneAsync(scene);
+        SceneManager.LoadScene(scene);
     }
 }

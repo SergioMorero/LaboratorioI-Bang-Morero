@@ -118,7 +118,7 @@ public class AccountQueryManager : MonoBehaviour {
             Debug.Log("Usuario Válido: " + request.downloadHandler.text);
             UserResponse response = JsonUtility.FromJson<UserResponse>(request.downloadHandler.text);
             Debug.Log("ID: " + response.id + ", name: " + response.name + ", password: " + response.password);
-            accountManager.LogUserIn(response.id, response.name, response.password);
+            accountManager.LogUserIn(response.id, response.name, response.password, response.score, response.coins);
         } else {
             Debug.Log("Error en la autenticación: " + request.error);
             accountManager.ShowError("login");
@@ -229,13 +229,17 @@ public class AccountQueryManager : MonoBehaviour {
     // JSON Classes
 
     [System.Serializable]
-    public class UserData {
+    public class UserData
+    {
+        // To send data
         public string name;
         public string password;
     }
 
     [System.Serializable]
-    public class UserUpdate {
+    public class UserUpdate
+    {
+        // To update data
         public string name;
         public string password;
         public string newName;
@@ -245,9 +249,12 @@ public class AccountQueryManager : MonoBehaviour {
     [System.Serializable]
     public class UserResponse
     {
+        // To get data
         public int id;
         public string name;
         public string password;
+        public int score;
+        public int coins;
     }
 
 }

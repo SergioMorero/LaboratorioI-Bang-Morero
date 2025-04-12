@@ -1,12 +1,4 @@
-crear dos pares de muros
-	Cuando un muro queda por debajo de la cámara,
-	se destruye y crea un nuevo par de muros por
-	encima del siguiente muro
-
-Personaje aleatorio
-
 Personajes especiales:
-
 * Moneda: Posee una animación continua de giro
   (ciclo de 4 sprites)
 * Dado:
@@ -16,3 +8,6 @@ Personajes especiales:
 	+ Al saltar, cambia a un número aleatorio
 	  de 1 a 6 (posee rotaciones de números,
 	  como el seis en = o ||)
+
+Otros:
+* Botón para salir del juego con confirmación ("Do you really want to quit? Y/N")

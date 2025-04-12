@@ -19,6 +19,8 @@ public class AccountManager : MonoBehaviour
     private int userID;
     private string userName;
     private string userPassword;
+    private int userScore;
+    private int userCoins;
 
     // Publics
 
@@ -39,6 +41,10 @@ public class AccountManager : MonoBehaviour
     [SerializeField] private GameObject edit;
     [SerializeField] private GameObject deleteConfirm;
     [SerializeField] private GameObject logoutConfirm;
+
+    [Header("----- Text -----")]
+    [SerializeField] private TMP_Text accountName;
+    [SerializeField] private TMP_Text MaxScore;
 
     [Header("----- Buttons -----")]
 
@@ -71,40 +77,41 @@ public class AccountManager : MonoBehaviour
 
     void Start()
     {
-        userID = 0;
-        userName = null;
-        userPassword = null;
-        isLogged = false;
+        loadPreferences();
         HideAllErrors();
         queryManager.cleanAllInput();
     }
 
     // Main Methods
 
-    public void LogUserIn(int id, string name, string password)
+    public void LogUserIn(int id, string name, string password, int score, int coins)
     {
         userID = id;
         userName = name;
         userPassword = password;
+        userScore = score;
+        userCoins = coins;
+
+        accountName.text = name;
+        MaxScore.text = score.ToString();
+
         HideAllErrors();
         login.SetActive(false);
         create.SetActive(false);
         account.SetActive(true);
         isLogged = true;
         queryManager.cleanAllInput();
+        savePreferences();
     }
 
     public void LogUserOut()
     {
-        userID = 0;
-        userName = null;
-        userPassword = null;
+        erasePreferences();
         HideAllErrors();
         logoutConfirm.SetActive(false);
         deleteConfirm.SetActive(false);
         account.SetActive(false);
         init.SetActive(true);
-        isLogged = false;
     }
 
     public void UpdateUser(string newName, string newPassword)
@@ -120,6 +127,64 @@ public class AccountManager : MonoBehaviour
         HideAllErrors();
         edit.SetActive(false);
         queryManager.cleanAllInput();
+        savePreferences();
+    }
+
+    // PlayerPrefs
+
+    private void loadPreferences() {
+        if (PlayerPrefs.HasKey("Username")) {
+            userName = PlayerPrefs.GetString("Username");
+            userPassword = PlayerPrefs.GetString("Password");
+            userID = PlayerPrefs.GetInt("ID");
+            userScore = PlayerPrefs.GetInt("Score");
+            userCoins = PlayerPrefs.GetInt("Coins");
+
+            if (PlayerPrefs.GetInt("Login") == 1) // PlayerPrefs does not contain GetBool() or SetBool
+            {
+                isLogged = true;
+            }
+            else
+            {
+                isLogged = false;
+            }
+
+        accountName.text = userName;
+        MaxScore.text = userScore.ToString();
+
+        } else {
+            userID = 0;
+            userName = null;
+            userPassword = null;
+            isLogged = false;
+            userScore = 0;
+            userCoins = 0;
+        }
+    }
+
+    private void savePreferences() {
+        PlayerPrefs.SetString("Username", userName);
+        PlayerPrefs.SetString("Password", userPassword);
+        PlayerPrefs.SetInt("ID", userID);
+        PlayerPrefs.SetInt("Score", userScore);
+        PlayerPrefs.SetInt("Coins", userCoins);
+        PlayerPrefs.SetInt("Login", 1);
+    }
+
+    private void erasePreferences() {
+        userID = 0;
+        userName = null;
+        userPassword = null;
+        userScore = 0;
+        userCoins = 0;
+        isLogged = false;
+
+        PlayerPrefs.DeleteKey("Username");
+        PlayerPrefs.DeleteKey("Password");
+        PlayerPrefs.DeleteKey("ID");
+        PlayerPrefs.DeleteKey("Score");
+        PlayerPrefs.DeleteKey("Coins");
+        PlayerPrefs.DeleteKey("Login");
     }
 
     // Error Management

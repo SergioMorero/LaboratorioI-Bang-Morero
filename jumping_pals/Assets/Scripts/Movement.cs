@@ -36,9 +36,9 @@ public class Movement : MonoBehaviour
     [Header("---------- Objects ----------")]
 
     [SerializeField] private PauseManager pauseManager;
-    [SerializeField] private GameObject deathMessage;
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private AudioManager audioManager;
+    [SerializeField] private ScoreManager scoreManager;
 
     // Start is called before the first frame update
     void Start()
@@ -115,8 +115,9 @@ public class Movement : MonoBehaviour
     }
 
     private void die() {
-        deathMessage.SetActive(true);
         pauseButton.SetActive(false);
+
+        scoreManager.ShowDeathMessage(score);
             
         audioManager.stopMusic();
         audioManager.playGameOver();
