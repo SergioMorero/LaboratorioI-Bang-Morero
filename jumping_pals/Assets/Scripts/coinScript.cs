@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class coinScript : MonoBehaviour
 {
-
-    [SerializeField] private ScoreManager scoreManager;
+    private ScoreManager scoreManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
