@@ -11,6 +11,7 @@ TagManager:
   - Laser
   - Wall
   - muncher
+  - ScoreManager
   layers:
   - Default
   - TransparentFX

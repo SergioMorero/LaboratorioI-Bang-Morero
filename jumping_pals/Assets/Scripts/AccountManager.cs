@@ -45,6 +45,7 @@ public class AccountManager : MonoBehaviour
     [Header("----- Text -----")]
     [SerializeField] private TMP_Text accountName;
     [SerializeField] private TMP_Text MaxScore;
+    [SerializeField] private TMP_Text CoinAmount;
 
     [Header("----- Buttons -----")]
 
@@ -132,7 +133,8 @@ public class AccountManager : MonoBehaviour
 
     // PlayerPrefs
 
-    private void loadPreferences() {
+    private void loadPreferences()
+    {
         if (PlayerPrefs.HasKey("Username")) {
             userName = PlayerPrefs.GetString("Username");
             userPassword = PlayerPrefs.GetString("Password");
@@ -162,7 +164,8 @@ public class AccountManager : MonoBehaviour
         }
     }
 
-    private void savePreferences() {
+    private void savePreferences()
+    {
         PlayerPrefs.SetString("Username", userName);
         PlayerPrefs.SetString("Password", userPassword);
         PlayerPrefs.SetInt("ID", userID);
@@ -171,7 +174,8 @@ public class AccountManager : MonoBehaviour
         PlayerPrefs.SetInt("Login", 1);
     }
 
-    private void erasePreferences() {
+    private void erasePreferences()
+    {
         userID = 0;
         userName = null;
         userPassword = null;
@@ -233,6 +237,11 @@ public class AccountManager : MonoBehaviour
         {
             init.SetActive(true);
         }
+    }
+
+    public void UpdateCoinAmount()
+    {
+        CoinAmount.text = userCoins.ToString();
     }
 
     // Getters
