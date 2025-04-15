@@ -22,7 +22,7 @@
 
 # Unity metadata
 /jumping_pals/Assets/**/*.meta
-/jumping_pals/Assets/UI/font
+/jumping_pals/Assets/UI/font/*.asset
 
 # Packages
 Packages/*/
