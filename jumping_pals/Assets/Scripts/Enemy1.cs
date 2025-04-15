@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
+    [SerializeField] private Transform coin;
 
     [Header("---------- Varialbes ----------")]
 
@@ -49,6 +50,7 @@ public class Enemy1 : MonoBehaviour
         gotHit = (hitHead.collider != null || hitHeadLeft.collider != null || hitHeadRight.collider != null);
         if (gotHit)
         {
+            Instantiate(coin, transform.position, Quaternion.identity);
             playerRB.linearVelocity -= new Vector2(0, playerRB.linearVelocity.y);
             playerRB.AddForce(new Vector2(-2 * playerRB.linearVelocity.x, 20), ForceMode2D.Impulse);
             audioManager.playEnemy();

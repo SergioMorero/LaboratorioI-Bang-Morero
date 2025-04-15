@@ -15,12 +15,15 @@ public class PlatformGenerator : MonoBehaviour
     [SerializeField] private Transform patrolEnemy;
     [SerializeField] private Transform muncherEnemy;
 
+    [SerializeField] private Transform coin;
+
     [SerializeField] private Transform laser;
     private float lastPlatformHeigh = 15;
 
     [SerializeField] private AudioManager audioManager;
     private float lastPlayerGroundedHeigh;
     private Movement playerMovement;
+    private int[] coinPositionDeviation = new int[3];
     private float[] horizontalValues = new float[8];
     private float[] verticalValues = new float[3];
     private Transform[] platforms = new Transform[9];
@@ -32,6 +35,11 @@ public class PlatformGenerator : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         playerMovement = player.GetComponent<Movement>();
+
+        coinPositionDeviation[0] = -2;
+        coinPositionDeviation[1] = 0;
+        coinPositionDeviation[2] = 2;
+
         horizontalValues[0] = -13;
         horizontalValues[1] = -9;
         horizontalValues[2] = -6;
@@ -82,10 +90,13 @@ public class PlatformGenerator : MonoBehaviour
 
     void GeneratePlatform()
     {
-        int chanceOfLaser = Random.Range(0, 15);
+        int chanceOfLaser = Random.Range(0, 9);
         int chanceOfEnemy = Random.Range(0, 5);
+        int chanceOfCoin = Random.Range(0, 9);
+        GameObject lastLaser = GameObject.FindWithTag("Laser");
         float heighIncrease = verticalValues[Random.Range(0, 3)];
         float xPosition = horizontalValues[Random.Range(0, 8)];
+        int coinDeviation = coinPositionDeviation[Random.Range(0, 3)];
         while (Mathf.Abs(xPosition - lastXPosition) > 19)
         {
             xPosition = horizontalValues[Random.Range(0, 8)];
@@ -96,11 +107,15 @@ public class PlatformGenerator : MonoBehaviour
         lastXPosition = xPosition;
         lastPlatformHeigh += heighIncrease;
 
+        if (chanceOfCoin == 5)
+        {
+            Instantiate(coin, new Vector3(xPosition + coinDeviation, lastPlatformHeigh + 3, 0), Quaternion.identity);
+        }
         if (chanceOfEnemy == 3 && chosenPlatform != movingPlatform1)
         {
             Instantiate(chosenEnemy, new Vector3(xPosition, lastPlatformHeigh + 1, 0), Quaternion.identity);
         }
-        if (chanceOfLaser == 5)
+        if (chanceOfLaser == 5 && lastLaser == null)
         {
             Instantiate(laser, new Vector3(0, lastPlatformHeigh + 2, 0), Quaternion.identity);
         }
