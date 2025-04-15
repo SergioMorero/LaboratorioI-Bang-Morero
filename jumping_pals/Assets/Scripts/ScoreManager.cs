@@ -20,6 +20,7 @@ public class ScoreManager : MonoBehaviour
     [Header("----- Objects -----")]
     [SerializeField] private GameObject DeathMessage;
     [SerializeField] private TMP_Text ScoreText;
+    [SerializeField] private GameObject bestScore;
     [SerializeField] private TMP_Text ScoreBestText;
     [SerializeField] private TMP_Text NewBestText;
     [SerializeField] private TMP_Text ScoreDisplay;
@@ -34,7 +35,7 @@ public class ScoreManager : MonoBehaviour
 
     public void loadPrefs()
     {
-        if (PlayerPrefs.HasKey("Username"))
+        if (PlayerPrefs.HasKey("Login"))
         {
             userName = PlayerPrefs.GetString("Username");
             userPassword = PlayerPrefs.GetString("Password");
@@ -61,14 +62,17 @@ public class ScoreManager : MonoBehaviour
             NewBestText.text = "New Best!";
             userMaxScore = score;
             SendScore(score);
-        }
-
         /*
          Displaying text after the query will automatically update the best score to the
          new best score if needed without having to add more conditions
          If not, best score will record the previous best score
          */
         ScoreBestText.text = userMaxScore.ToString();
+        }
+        else
+        {
+            bestScore.SetActive(false);
+        }
         ScoreText.text = score.ToString();
 
     }
@@ -77,12 +81,18 @@ public class ScoreManager : MonoBehaviour
 
     private void SendScore(int score)
     {
+        if (isLogged)
+        {
         StartCoroutine(sendScoreCoroutine(userID, score));
+        }
     }
 
     public void GiveCoin()
     {
+        if (isLogged)
+        {
         StartCoroutine(sendCoin(userID));
+        }
     }
 
     IEnumerator sendScoreCoroutine(int id, int score)
