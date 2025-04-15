@@ -3,32 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|c:\\users\\sergi\\faculty\\jumping pals\\laboratorioi-bang-morero\\jumping_pals\\assets\\scripts\\pointscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pointscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|c:\\users\\sergi\\faculty\\jumping pals\\laboratorioi-bang-morero\\jumping_pals\\assets\\scripts\\accountquerymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\accountquerymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\assets\\scripts\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\assets\\scripts\\movingplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\movingplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|c:\\users\\sergi\\faculty\\jumping pals\\laboratorioi-bang-morero\\jumping_pals\\assets\\scripts\\scoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\assets\\scripts\\platformgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\platformgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\assets\\scripts\\laser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\laser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\assets\\scripts\\enemy1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\assets\\scripts\\serverconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\serverconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\assets\\scripts\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{726355F3-4B93-39B9-B85E-5C4E09E0B21C}|Assembly-CSharp.csproj|C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\assets\\scripts\\maincamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,31 +35,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "pointScript.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\pointScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\pointScript.cs",
-              "ToolTip": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\pointScript.cs",
-              "RelativeToolTip": "Assets\\Scripts\\pointScript.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAABcAAAAqAAAAAAAAAA==",
+              "Title": "AccountQueryManager.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\AccountQueryManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AccountQueryManager.cs",
+              "ToolTip": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\AccountQueryManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AccountQueryManager.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAwwGEAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T19:48:08.276Z",
+              "WhenOpened": "2025-04-14T01:40:15.626Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "movingPlatform.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\movingPlatform.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\movingPlatform.cs",
-              "ToolTip": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\movingPlatform.cs",
-              "RelativeToolTip": "Assets\\Scripts\\movingPlatform.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA3AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ScoreManager.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\ScoreManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ScoreManager.cs",
+              "ToolTip": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\ScoreManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ScoreManager.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAGEAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T14:32:02.388Z"
+              "WhenOpened": "2025-04-14T00:32:13.629Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "MainCamera.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\MainCamera.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MainCamera.cs",
@@ -83,7 +72,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "PlatformGenerator.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\PlatformGenerator.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlatformGenerator.cs",
@@ -91,55 +80,21 @@
               "RelativeToolTip": "Assets\\Scripts\\PlatformGenerator.cs",
               "ViewState": "AgIAAEsAAAAAAAAAAAAYwGQAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T15:35:27.439Z"
+              "WhenOpened": "2025-04-04T15:35:27.439Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Laser.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\Laser.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Laser.cs",
-              "ToolTip": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\Laser.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Laser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T13:26:24.227Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Enemy1.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\Enemy1.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy1.cs",
-              "ToolTip": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\Enemy1.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemy1.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAA1wBYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T12:27:52.266Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Movement.cs",
               "DocumentMoniker": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\Movement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Movement.cs",
               "ToolTip": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\Movement.cs",
               "RelativeToolTip": "Assets\\Scripts\\Movement.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAAwDAAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAYwHgAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T11:56:24.484Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ServerConnection.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\ServerConnection.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ServerConnection.cs",
-              "ToolTip": "C:\\Users\\sergi\\faculty\\Jumping Pals\\LaboratorioI-Bang-Morero\\jumping_pals\\Assets\\Scripts\\ServerConnection.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ServerConnection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T11:54:13.79Z"
+              "WhenOpened": "2025-04-04T11:56:24.484Z",
+              "EditorCaption": ""
             }
           ]
         }
