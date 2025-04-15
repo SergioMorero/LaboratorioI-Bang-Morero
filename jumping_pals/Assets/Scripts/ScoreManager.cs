@@ -77,7 +77,12 @@ public class ScoreManager : MonoBehaviour
 
     private void SendScore(int score)
     {
-            StartCoroutine(sendScoreCoroutine(userID, score));
+        StartCoroutine(sendScoreCoroutine(userID, score));
+    }
+
+    public void GiveCoin()
+    {
+        StartCoroutine(sendCoin(userID));
     }
 
     IEnumerator sendScoreCoroutine(int id, int score)
@@ -111,10 +116,46 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    IEnumerator sendCoin(int id) // Give 1 coin
+    {
+        string route = "/give-coin";
+
+        UserID data = new UserID { id = userID };
+        string json = JsonUtility.ToJson(data);
+
+        UnityWebRequest request = new UnityWebRequest(serverUrl + route, "PUT");
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        byte[] raw = Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(raw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success) {
+            PlayerPrefs.SetInt("Coins", userCoins + 1);
+        } else {
+            Debug.Log("Error: " + request.error);
+        }
+    }
+
     [System.Serializable]
     public class UserScore
     {
         public int id;
         public int score;
+    }
+
+    [System.Serializable]
+    public class UserID
+    {
+        public int id;
+    }
+
+    [System.Serializable]
+    public class UserCoins
+    {
+        public int id;
+        public int coins;
     }
 }
