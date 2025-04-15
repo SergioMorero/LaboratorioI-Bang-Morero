@@ -2850,6 +2850,7 @@ MonoBehaviour:
   logoutConfirm: {fileID: 1368639658}
   accountName: {fileID: 328091560}
   MaxScore: {fileID: 802755750}
+  CoinAmount: {fileID: 1827079858}
   toLogin: {fileID: 1949451889}
   toCreate: {fileID: 1060757855}
   loginButton: {fileID: 716071116}
@@ -8686,6 +8687,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1789914570}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: playButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 293133690}
+        m_TargetAssemblyTypeName: AccountManager, Assembly-CSharp
+        m_MethodName: UpdateCoinAmount
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
