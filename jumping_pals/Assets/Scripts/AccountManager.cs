@@ -239,11 +239,6 @@ public class AccountManager : MonoBehaviour
         }
     }
 
-    public void UpdateCoinAmount()
-    {
-        CoinAmount.text = userCoins.ToString();
-    }
-
     // Getters
 
     public string GetName()
