@@ -7508,7 +7508,7 @@ MonoBehaviour:
   movingPlatform1: {fileID: 4636787979600310182, guid: df4cb97e0abc69a4da2ec7b10bbc4001, type: 3}
   patrolEnemy: {fileID: 5937776508764713700, guid: 65fded88ea29a3245aa7f3f2685cfa84, type: 3}
   muncherEnemy: {fileID: 8623500612881545060, guid: c06ca209bf46b5543a51d324de7b0ebd, type: 3}
-  coin: {fileID: 1865898959278294824, guid: a45b807df43c9f84a8c7a5df97dd0813, type: 3}
+  coin: {fileID: 1865898959278294824, guid: 7c8ee9b931a034a4cb147623ba138adc, type: 3}
   laser: {fileID: 1451109414069131920, guid: cfe04784e08404449a6e5f5b01950d1b, type: 3}
   audioManager: {fileID: 41494597}
 --- !u!4 &1543122872
@@ -8694,7 +8694,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2098503102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 764bea0bb93779547a431d547a05d429, type: 3}
+  m_Script: {fileID: 11500000, guid: 65919b78180014c4596ec3563c266671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   userID: 0
@@ -8703,10 +8703,9 @@ MonoBehaviour:
   userMaxScore: 0
   userCoins: 0
   DeathMessage: {fileID: 1921352774}
-  ScoreText: {fileID: 1242396125}
-  bestScore: {fileID: 241490657}
-  ScoreBestText: {fileID: 241490659}
-  NewBestText: {fileID: 162558252}
+  Score: {fileID: 1242396125}
+  BestScore: {fileID: 241490659}
+  NewBestAnnouncer: {fileID: 162558252}
   ScoreDisplay: {fileID: 693844694}
 --- !u!4 &2098503104
 Transform:

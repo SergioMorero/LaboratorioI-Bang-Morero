@@ -18,10 +18,9 @@ public class ScoreManager : MonoBehaviour
 
     [Header("----- Objects -----")]
     [SerializeField] private GameObject DeathMessage;
-    [SerializeField] private TMP_Text ScoreText;
-    [SerializeField] private GameObject bestScore;
-    [SerializeField] private TMP_Text ScoreBestText;
-    [SerializeField] private TMP_Text NewBestText;
+    [SerializeField] private TMP_Text Score;
+    [SerializeField] private TMP_Text BestScore;
+    [SerializeField] private TMP_Text NewBestAnnouncer;
     [SerializeField] private TMP_Text ScoreDisplay;
 
     private string serverUrl = "http://localhost:5000";
@@ -29,7 +28,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         loadPrefs();
-        NewBestText.text = "";
+        NewBestAnnouncer.text = "";
     }
 
     public void loadPrefs()
@@ -50,7 +49,7 @@ public class ScoreManager : MonoBehaviour
         Debug.Log(userMaxScore);
         if (score > userMaxScore)
         {
-            NewBestText.text = "New Best!";
+            NewBestAnnouncer.text = "New Best!";
             userMaxScore = score;
             SendScore(score);
         /*
@@ -59,8 +58,8 @@ public class ScoreManager : MonoBehaviour
          If not, best score will record the previous best score
          */
         }
-        ScoreBestText.text = userMaxScore.ToString();
-        ScoreText.text = score.ToString();
+        BestScore.text = userMaxScore.ToString();
+        Score.text = score.ToString();
 
     }
     
