@@ -34,14 +34,11 @@ public class ScoreManager : MonoBehaviour
 
     public void loadPrefs()
     {
-        if (PlayerPrefs.HasKey("Login"))
-        {
-            userName = PlayerPrefs.GetString("Username");
-            userPassword = PlayerPrefs.GetString("Password");
-            userID = PlayerPrefs.GetInt("ID");
-            userMaxScore = PlayerPrefs.GetInt("Score");
-            userCoins = PlayerPrefs.GetInt("Coins");
-        }
+        userName = PlayerPrefs.GetString("Username");
+        userPassword = PlayerPrefs.GetString("Password");
+        userID = PlayerPrefs.GetInt("ID");
+        userMaxScore = PlayerPrefs.GetInt("Score");
+        userCoins = PlayerPrefs.GetInt("Coins");
     }
 
     // UI
