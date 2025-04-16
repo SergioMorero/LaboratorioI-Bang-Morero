@@ -15,7 +15,6 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private string userPassword;
     [SerializeField] private int userMaxScore;
     [SerializeField] private int userCoins;
-    [SerializeField] private bool isLogged;
 
     [Header("----- Objects -----")]
     [SerializeField] private GameObject DeathMessage;
@@ -42,11 +41,6 @@ public class ScoreManager : MonoBehaviour
             userID = PlayerPrefs.GetInt("ID");
             userMaxScore = PlayerPrefs.GetInt("Score");
             userCoins = PlayerPrefs.GetInt("Coins");
-            isLogged = true;
-        }
-        else
-        {
-            isLogged = false;
         }
     }
 
@@ -56,8 +50,8 @@ public class ScoreManager : MonoBehaviour
     {
         Destroy(ScoreDisplay);
         DeathMessage.SetActive(true);
-
-        if (isLogged && score > userMaxScore)
+        Debug.Log(userMaxScore);
+        if (score > userMaxScore)
         {
             NewBestText.text = "New Best!";
             userMaxScore = score;
@@ -67,12 +61,8 @@ public class ScoreManager : MonoBehaviour
          new best score if needed without having to add more conditions
          If not, best score will record the previous best score
          */
+        }
         ScoreBestText.text = userMaxScore.ToString();
-        }
-        else
-        {
-            bestScore.SetActive(false);
-        }
         ScoreText.text = score.ToString();
 
     }
@@ -81,18 +71,12 @@ public class ScoreManager : MonoBehaviour
 
     private void SendScore(int score)
     {
-        if (isLogged)
-        {
-        StartCoroutine(sendScoreCoroutine(userID, score));
-        }
+       StartCoroutine(sendScoreCoroutine(userID, score));
     }
 
     public void GiveCoin()
     {
-        if (isLogged)
-        {
-        StartCoroutine(sendCoin(userID));
-        }
+       StartCoroutine(sendCoin(userID));
     }
 
     IEnumerator sendScoreCoroutine(int id, int score)
