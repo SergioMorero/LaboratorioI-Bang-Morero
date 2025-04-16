@@ -44,7 +44,7 @@ public class Leaderboard : MonoBehaviour
                 int rank = 1;
                 foreach (var entry in leaderboard.scores)
                 {
-                    leaderboardText.text += $"Rank {rank}. {entry.name} - {entry.score}\n";
+                    leaderboardText.text += $"{rank}. {entry.name} - {entry.score}\n";
                     rank++;
                 }
             }
