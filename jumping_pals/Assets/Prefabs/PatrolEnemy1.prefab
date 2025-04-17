@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d968b9d68033a4f81f6e1c16890070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: {fileID: 1865898959278294824, guid: 7c8ee9b931a034a4cb147623ba138adc, type: 3}
+  coin: {fileID: 1865898959278294824, guid: 59c38e4cbafb9894fa4126f8cf78534f, type: 3}
   speed: 2.75
   playerLayer:
     serializedVersion: 2

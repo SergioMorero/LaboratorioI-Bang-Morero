@@ -7512,7 +7512,7 @@ MonoBehaviour:
   movingPlatform1: {fileID: 4636787979600310182, guid: df4cb97e0abc69a4da2ec7b10bbc4001, type: 3}
   patrolEnemy: {fileID: 5937776508764713700, guid: 65fded88ea29a3245aa7f3f2685cfa84, type: 3}
   muncherEnemy: {fileID: 8623500612881545060, guid: c06ca209bf46b5543a51d324de7b0ebd, type: 3}
-  coin: {fileID: 1865898959278294824, guid: 7c8ee9b931a034a4cb147623ba138adc, type: 3}
+  coin: {fileID: 1865898959278294824, guid: 59c38e4cbafb9894fa4126f8cf78534f, type: 3}
   laser: {fileID: 1451109414069131920, guid: cfe04784e08404449a6e5f5b01950d1b, type: 3}
   audioManager: {fileID: 41494597}
 --- !u!4 &1543122872

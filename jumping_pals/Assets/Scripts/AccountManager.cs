@@ -10,6 +10,9 @@ public class AccountManager : MonoBehaviour
      AccountQueryManager. This class will not send queries nor interact with the server
 
      This class will also manage most (but not all) interaction between account panels
+
+     Now this class manages Shop and character selection, as it is the one that manages
+     Coins amount and PlayerPrefs
      */
 
     // Variables
@@ -25,12 +28,16 @@ public class AccountManager : MonoBehaviour
     // Publics
 
     public bool isLogged;
+    public int CharSelected;
+    public CharacterDB CharDB;
 
     // Serializeds
 
-    [Header("----- Objects -----")]
+    [Header("+-+-+-+ Objects +-+-+-+")]
 
     [SerializeField] private AccountQueryManager queryManager;
+
+    [Header("+-+-+-+ Account +-+-+-+")]
 
     [Header("----- Panels -----")]
 
@@ -45,7 +52,6 @@ public class AccountManager : MonoBehaviour
     [Header("----- Text -----")]
     [SerializeField] private TMP_Text accountName;
     [SerializeField] private TMP_Text MaxScore;
-    [SerializeField] private TMP_Text CoinAmount;
 
     [Header("----- Buttons -----")]
 
@@ -74,7 +80,17 @@ public class AccountManager : MonoBehaviour
     [SerializeField] private GameObject deleteError;
     [SerializeField] private GameObject editError;
 
-    [Header("----- Start Button -----")]
+    [Header("+-+-+-+ Shop +-+-+-+")]
+    
+    [SerializeField] private TMP_Text CoinAmount;
+    [SerializeField] private GameObject ShopPanel;
+    [SerializeField] private GameObject UnLoggedPannel;
+    public TMP_Text CharName;
+    public Image CharSprite;
+
+
+    [Header("+-+-+-+ Start Button +-+-+-+")]
+
     [SerializeField] private GameObject ButtonsMenu;
     [SerializeField] private GameObject NotLoggedInPanel;
     [SerializeField] private GameObject PlayMenu;
@@ -86,6 +102,8 @@ public class AccountManager : MonoBehaviour
         loadPreferences();
         HideAllErrors();
         queryManager.cleanAllInput();
+        CharSelected = 0;
+        UpdateCharacter();
     }
 
     // Main Methods
@@ -184,7 +202,6 @@ public class AccountManager : MonoBehaviour
         PlayerPrefs.DeleteKey("ID");
         PlayerPrefs.DeleteKey("Score");
         PlayerPrefs.DeleteKey("Coins");
-        PlayerPrefs.DeleteKey("Login");
     }
 
     // Error Management
@@ -246,6 +263,52 @@ public class AccountManager : MonoBehaviour
         {
             NotLoggedInPanel.SetActive(true);
         }
+    }
+
+    // Shop
+
+    public void OpenShop()
+    {
+        if (isLogged)
+        {
+            UpdateCoinAmount();
+            ShopPanel.SetActive(true);
+        }
+        else
+        {
+            UnLoggedPannel.SetActive(true);
+        }
+    }
+
+    private void UpdateCoinAmount()
+    {
+        userCoins = PlayerPrefs.GetInt("Coins");
+        CoinAmount.text = userCoins.ToString();
+    }
+
+    public void NextChar() {
+        CharSelected++;
+        if (CharSelected == CharDB.CharCount)
+        {
+            CharSelected = 0;
+        }
+        UpdateCharacter();
+    }
+
+    public void PrevChar()
+    {
+        CharSelected--;
+        if (CharSelected < 0)
+        {
+            CharSelected = CharDB.CharCount - 1;
+        }
+        UpdateCharacter();
+    }
+
+    private void UpdateCharacter() {
+        Character selected = CharDB.getChar(CharSelected);
+        CharName.text = selected.name;
+        CharSprite.sprite = selected.sprite;
     }
 
     // Getters
