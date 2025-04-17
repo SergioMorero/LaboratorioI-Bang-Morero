@@ -74,6 +74,11 @@ public class AccountManager : MonoBehaviour
     [SerializeField] private GameObject deleteError;
     [SerializeField] private GameObject editError;
 
+    [Header("----- Start Button -----")]
+    [SerializeField] private GameObject ButtonsMenu;
+    [SerializeField] private GameObject NotLoggedInPanel;
+    [SerializeField] private GameObject PlayMenu;
+
     // Initialize
 
     void Start()
@@ -136,29 +141,21 @@ public class AccountManager : MonoBehaviour
     private void loadPreferences()
     {
         if (PlayerPrefs.HasKey("Username")) {
+            isLogged = true;
             userName = PlayerPrefs.GetString("Username");
             userPassword = PlayerPrefs.GetString("Password");
             userID = PlayerPrefs.GetInt("ID");
             userScore = PlayerPrefs.GetInt("Score");
             userCoins = PlayerPrefs.GetInt("Coins");
 
-            if (PlayerPrefs.GetInt("Login") == 1) // PlayerPrefs does not contain GetBool() or SetBool
-            {
-                isLogged = true;
-            }
-            else
-            {
-                isLogged = false;
-            }
-
-        accountName.text = userName;
-        MaxScore.text = userScore.ToString();
+            accountName.text = userName;
+            MaxScore.text = userScore.ToString();
 
         } else {
+            isLogged = false;
             userID = 0;
             userName = null;
             userPassword = null;
-            isLogged = false;
             userScore = 0;
             userCoins = 0;
         }
@@ -171,7 +168,6 @@ public class AccountManager : MonoBehaviour
         PlayerPrefs.SetInt("ID", userID);
         PlayerPrefs.SetInt("Score", userScore);
         PlayerPrefs.SetInt("Coins", userCoins);
-        PlayerPrefs.SetInt("Login", 1);
     }
 
     private void erasePreferences()
@@ -236,6 +232,19 @@ public class AccountManager : MonoBehaviour
         else // Go to Login/Register panel
         {
             init.SetActive(true);
+        }
+    }
+
+    public void GoPlay()
+    {
+        if (isLogged)
+        {
+            ButtonsMenu.SetActive(false);
+            PlayMenu.SetActive(true);
+        }
+        else
+        {
+            NotLoggedInPanel.SetActive(true);
         }
     }
 

@@ -3013,6 +3013,9 @@ MonoBehaviour:
   createError: {fileID: 231484982}
   deleteError: {fileID: 588829988}
   editError: {fileID: 782210709}
+  ButtonsMenu: {fileID: 56987848}
+  NotLoggedInPanel: {fileID: 948198228}
+  PlayMenu: {fileID: 1854909008}
 --- !u!1 &295480378
 GameObject:
   m_ObjectHideFlags: 0
@@ -20080,7 +20083,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1871322802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f382e46df5bb874eb31dbe2e9780b0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e3d339816f74b54bb6dae5c8f425fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1871322805

@@ -15,13 +15,12 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private string userPassword;
     [SerializeField] private int userMaxScore;
     [SerializeField] private int userCoins;
-    [SerializeField] private bool isLogged;
 
     [Header("----- Objects -----")]
     [SerializeField] private GameObject DeathMessage;
-    [SerializeField] private TMP_Text ScoreText;
-    [SerializeField] private TMP_Text ScoreBestText;
-    [SerializeField] private TMP_Text NewBestText;
+    [SerializeField] private TMP_Text Score;
+    [SerializeField] private TMP_Text BestScore;
+    [SerializeField] private TMP_Text NewBestAnnouncer;
     [SerializeField] private TMP_Text ScoreDisplay;
 
     private string serverUrl = "http://localhost:5000";
@@ -29,24 +28,16 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         loadPrefs();
-        NewBestText.text = "";
+        NewBestAnnouncer.text = "";
     }
 
     public void loadPrefs()
     {
-        if (PlayerPrefs.HasKey("Username"))
-        {
-            userName = PlayerPrefs.GetString("Username");
-            userPassword = PlayerPrefs.GetString("Password");
-            userID = PlayerPrefs.GetInt("ID");
-            userMaxScore = PlayerPrefs.GetInt("Score");
-            userCoins = PlayerPrefs.GetInt("Coins");
-            isLogged = true;
-        }
-        else
-        {
-            isLogged = false;
-        }
+        userName = PlayerPrefs.GetString("Username");
+        userPassword = PlayerPrefs.GetString("Password");
+        userID = PlayerPrefs.GetInt("ID");
+        userMaxScore = PlayerPrefs.GetInt("Score");
+        userCoins = PlayerPrefs.GetInt("Coins");
     }
 
     // UI
@@ -55,21 +46,20 @@ public class ScoreManager : MonoBehaviour
     {
         Destroy(ScoreDisplay);
         DeathMessage.SetActive(true);
-
-        if (isLogged && score > userMaxScore)
+        Debug.Log(userMaxScore);
+        if (score > userMaxScore)
         {
-            NewBestText.text = "New Best!";
+            NewBestAnnouncer.text = "New Best!";
             userMaxScore = score;
             SendScore(score);
-        }
-
         /*
          Displaying text after the query will automatically update the best score to the
          new best score if needed without having to add more conditions
          If not, best score will record the previous best score
          */
-        ScoreBestText.text = userMaxScore.ToString();
-        ScoreText.text = score.ToString();
+        }
+        BestScore.text = userMaxScore.ToString();
+        Score.text = score.ToString();
 
     }
     
@@ -77,12 +67,12 @@ public class ScoreManager : MonoBehaviour
 
     private void SendScore(int score)
     {
-        StartCoroutine(sendScoreCoroutine(userID, score));
+       StartCoroutine(sendScoreCoroutine(userID, score));
     }
 
     public void GiveCoin()
     {
-        StartCoroutine(sendCoin(userID));
+       StartCoroutine(sendCoin(userID));
     }
 
     IEnumerator sendScoreCoroutine(int id, int score)
