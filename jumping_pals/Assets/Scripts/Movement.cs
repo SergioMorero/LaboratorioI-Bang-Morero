@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private SpriteRenderer Self;
 
     // Start is called before the first frame update
     void Start()
@@ -76,8 +78,8 @@ public class Movement : MonoBehaviour
         isGrounded = (hitFloor.collider != null || hitFloorLeft.collider != null || hitFloorRight.collider != null);
 
         MovX = Input.GetAxisRaw("Horizontal");
+        FlipSprite(MovX);
         transform.Translate(MovX * speed * Time.deltaTime, 0, 0);
-
 
         if (isGrounded)
         {
@@ -94,6 +96,18 @@ public class Movement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             lastGrounded = 0f;
             audioManager.playJumping();
+        }
+    }
+
+    void FlipSprite(float moveX)
+    {
+        if (moveX > 0)
+        {
+            Self.flipX = true; // mirando a la derecha
+        }
+        else if (moveX < 0)
+        {
+            Self.flipX = false;  // mirando a la izquierda
         }
     }
 

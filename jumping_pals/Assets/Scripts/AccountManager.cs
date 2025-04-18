@@ -103,7 +103,6 @@ public class AccountManager : MonoBehaviour
         loadPreferences();
         HideAllErrors();
         queryManager.cleanAllInput();
-        CharSelected = 0;
         UpdateCharacter();
     }
 
@@ -166,6 +165,7 @@ public class AccountManager : MonoBehaviour
             userID = PlayerPrefs.GetInt("ID");
             userScore = PlayerPrefs.GetInt("Score");
             userCoins = PlayerPrefs.GetInt("Coins");
+            CharSelected = PlayerPrefs.GetInt("CharId");
 
             accountName.text = userName;
             MaxScore.text = userScore.ToString();
@@ -177,6 +177,8 @@ public class AccountManager : MonoBehaviour
             userPassword = null;
             userScore = 0;
             userCoins = 0;
+            CharSelected = 0;
+            PlayerPrefs.SetInt("CharId", 0);
         }
     }
 
@@ -203,6 +205,7 @@ public class AccountManager : MonoBehaviour
         PlayerPrefs.DeleteKey("ID");
         PlayerPrefs.DeleteKey("Score");
         PlayerPrefs.DeleteKey("Coins");
+        PlayerPrefs.SetInt("CharId", 0);
     }
 
     // Error Management
@@ -328,6 +331,11 @@ public class AccountManager : MonoBehaviour
         {
             ShowError("NotEnoughMoney");
         }
+    }
+
+    public void SelectCharacter()
+    {
+        PlayerPrefs.SetInt("CharId", CharSelected);
     }
 
     public void UpdateShop(int CoinAmount)
