@@ -79,6 +79,7 @@ public class AccountManager : MonoBehaviour
     [SerializeField] private GameObject createError;
     [SerializeField] private GameObject deleteError;
     [SerializeField] private GameObject editError;
+    [SerializeField] private GameObject NotEnoughMoney;
 
     [Header("+-+-+-+ Shop +-+-+-+")]
     
@@ -212,6 +213,7 @@ public class AccountManager : MonoBehaviour
         createError.SetActive(false);
         deleteError.SetActive(false);
         editError.SetActive(false);
+        NotEnoughMoney.SetActive(false);
     }
 
     public void ShowError(string error)
@@ -230,6 +232,9 @@ public class AccountManager : MonoBehaviour
                 break;
             case "edit":
                 editError.SetActive(true);
+                break;
+            case "NotEnoughMoney":
+                NotEnoughMoney.SetActive(true);
                 break;
             default:
                 Debug.Log("Invalid string received when trying to show an error: " + error);
@@ -273,6 +278,7 @@ public class AccountManager : MonoBehaviour
         {
             UpdateCoinAmount();
             ShopPanel.SetActive(true);
+            UpdateCharacter();
         }
         else
         {
@@ -311,6 +317,26 @@ public class AccountManager : MonoBehaviour
         CharSprite.sprite = selected.sprite;
     }
 
+    public void BuyCharacter() {
+        Character character = CharDB.getChar(CharSelected);
+        if (userCoins >= character.price)
+        {
+            Debug.Log("Buying " + character.name);
+            queryManager.buyCharacter(character.price);
+        }
+        else
+        {
+            ShowError("NotEnoughMoney");
+        }
+    }
+
+    public void UpdateShop(int CoinAmount)
+    {
+        userCoins -= CoinAmount;
+        PlayerPrefs.SetInt("Coins", userCoins);
+        UpdateCoinAmount();
+    }
+
     // Getters
 
     public string GetName()
@@ -321,6 +347,11 @@ public class AccountManager : MonoBehaviour
     public string GetPassword()
     {
         return userPassword;
+    }
+
+    public int GetId()
+    {
+        return userID;
     }
 
 }

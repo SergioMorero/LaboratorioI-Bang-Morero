@@ -74,6 +74,12 @@ public class AccountQueryManager : MonoBehaviour {
         StartCoroutine(delete(name, password));
     }
 
+    public void buyCharacter(int CoinAmount)
+    {
+        int id = accountManager.GetId();
+        StartCoroutine(BuyCharacterCoroutine(id, CoinAmount));
+    }
+
     // Query Coroutines
 
     IEnumerator checkConnection()
@@ -226,6 +232,38 @@ public class AccountQueryManager : MonoBehaviour {
         }
     }
 
+    IEnumerator BuyCharacterCoroutine(int id, int CoinAmount)
+    {
+        string route = "/buy-character";
+
+        CharCart data = new CharCart { id = id, CoinAmount = CoinAmount };
+        string json = JsonUtility.ToJson(data);
+        Debug.Log("JSON: " + json);
+
+        UnityWebRequest request = new UnityWebRequest(serverUrl + route, "PUT");
+        Debug.Log("Created request");
+        request.SetRequestHeader("Content-Type", "application/json");
+        Debug.Log("Set request header");
+
+        byte[] raw = Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(raw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        Debug.Log("JSON: " + json);
+
+        yield return request.SendWebRequest();
+
+        Debug.Log("Request sent");
+
+        if (request.result == UnityWebRequest.Result.Success) {
+            Debug.Log("Personaje comprado");
+            accountManager.UpdateShop(CoinAmount);
+        } else {
+            Debug.Log("Error en la compra: " + request.error);
+            accountManager.ShowError("NotPurchased");
+        }
+    }
+
     // JSON Classes
 
     [System.Serializable]
@@ -255,6 +293,14 @@ public class AccountQueryManager : MonoBehaviour {
         public string password;
         public int score;
         public int coins;
+    }
+
+    [System.Serializable]
+    public class CharCart
+    {
+        // To send data
+        public int id;
+        public int CoinAmount;
     }
 
 }
