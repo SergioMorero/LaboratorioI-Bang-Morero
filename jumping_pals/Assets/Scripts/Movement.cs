@@ -41,8 +41,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private ScoreManager scoreManager;
-    // [SerializeField] private PlayerSpriteManager Self;
     private SpriteRenderer sprite;
+
+    // States -> Animation management
 
     // Start is called before the first frame update
     void Start()
@@ -84,7 +85,8 @@ public class Movement : MonoBehaviour
         MovX = Input.GetAxisRaw("Horizontal");
         FlipSprite(MovX);
         transform.Translate(MovX * speed * Time.deltaTime, 0, 0);
-        animator.SetFloat("Xvelocity", Math.Abs(MovX));
+        animator.SetFloat("Xvelocity", (float) Math.Abs(Math.Round(MovX)));
+        animator.SetFloat("Yvelocity", (float) rb.linearVelocity.y);
 
         if (isGrounded)
         {
@@ -100,11 +102,11 @@ public class Movement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             lastGrounded = 0f;
-            animator.SetFloat("Yvelocity", rb.linearVelocity.y);
             audioManager.playJumping();
         }
     }
 
+    // Interface, Sprite
     public void FlipSprite(float moveX)
     {
         if (moveX > 0)
@@ -117,6 +119,7 @@ public class Movement : MonoBehaviour
         }
     }
 
+    // Death by muncher, spike
     private void OnCollisionEnter2D(Collision2D muncher)
     {
         if (muncher.collider.CompareTag("muncher"))
@@ -126,6 +129,7 @@ public class Movement : MonoBehaviour
 
     }
 
+    // Death by Death Bar
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Death Bar") || other.CompareTag("Laser"))
@@ -134,6 +138,7 @@ public class Movement : MonoBehaviour
         }
     }
 
+    // Death protocol
     private void die() {
         pauseButton.SetActive(false);
 
@@ -144,7 +149,7 @@ public class Movement : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-
+    // ???
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -160,6 +165,7 @@ public class Movement : MonoBehaviour
         Gizmos.DrawRay(transform.position + Vector3.down * 0.55f, Vector3.right * 1.25f);
     }
 
+    // Audio management
     public void playEnemy() {
         audioManager.playEnemy();
     }
