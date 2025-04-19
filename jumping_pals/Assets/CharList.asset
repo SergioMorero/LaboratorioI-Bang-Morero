@@ -16,51 +16,125 @@ MonoBehaviour:
   - name: Ducky
     sprite: {fileID: 8868729072188591806, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
     price: 0
+    idle:
+    - {fileID: 8868729072188591806, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
+    - {fileID: -8294748474342274760, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
+    walking:
+    - {fileID: 8781019514964437993, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
+    - {fileID: 7708609292541582763, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
+    jumping:
+    - {fileID: 9075362701424418546, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
+    - {fileID: 3317177067112860294, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
+    death: {fileID: 1033602697210819807, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
   - name: Slime
     sprite: {fileID: 368543389579951487, guid: 092839e734fe39e4389b6892695a1217, type: 3}
     price: 10
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Fancy
     sprite: {fileID: 5158404753353345565, guid: 8ea86d409bd1172469c35bd9d1fd0c2e, type: 3}
     price: 10
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: The eye
     sprite: {fileID: -112968808170193824, guid: 268f19d3dcd9f07499631200e1bdffe1, type: 3}
     price: 15
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Crab
     sprite: {fileID: -8781757214100938709, guid: 6936b49f0e713874b8564e5871f85711, type: 3}
     price: 15
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Secured
     sprite: {fileID: -7670485267309540912, guid: bad6ad8f2dcc5da4ca7475a24b42d88a, type: 3}
     price: 15
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Letters
     sprite: {fileID: 3843231544584785974, guid: 7279a7cf4e091de448d135b485cfce64, type: 3}
     price: 20
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Bouncy Donut
     sprite: {fileID: 1352961961597019730, guid: ffc3ee312ec26d7489a2c6d8986e7736, type: 3}
     price: 20
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Spooks
     sprite: {fileID: 4448715427215634006, guid: 36457e41ae7b05641a3cf611659082fd, type: 3}
     price: 20
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Artwork
     sprite: {fileID: 5458960730051190083, guid: eb49c282994ecbe4790e7f44e1f0fd16, type: 3}
     price: 20
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Yeah
     sprite: {fileID: 5172468735992665996, guid: 3d42f05095d42e0449468c593b1cdda8, type: 3}
     price: 25
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Fire
     sprite: {fileID: 8334651344603559088, guid: c5db5180477eb5b4b844886683d09953, type: 3}
     price: 25
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Mr. Buttons
     sprite: {fileID: 2530564911472380330, guid: 057bdf91a6a011241b9f92d6fc8310e9, type: 3}
     price: 25
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: The G.O.A.T.
     sprite: {fileID: 3741748815463332517, guid: 9df58cfb695640d4895df02a98959cfb, type: 3}
     price: 30
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Placeholder
     sprite: {fileID: -6893308443034365055, guid: 6054e729bbd91de458e46571db335a8c, type: 3}
     price: 30
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Shuba
     sprite: {fileID: 2634340039999775184, guid: d4c086a517e77e04a8bf8f2e286d15db, type: 3}
     price: 40
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}
   - name: Elipse
     sprite: {fileID: 21300000, guid: 4367864c86030a34987e6493e89d4117, type: 3}
     price: 50
+    idle: []
+    walking: []
+    jumping: []
+    death: {fileID: 0}

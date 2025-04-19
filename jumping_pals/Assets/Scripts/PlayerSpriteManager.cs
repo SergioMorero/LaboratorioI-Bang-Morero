@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerSpriteManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerSpriteManager : MonoBehaviour
     public CharacterDB CharDB;
     public Sprite CharSprite;
     public SpriteRenderer Player;
+    public Character character;
 
     void Start()
     {
@@ -17,9 +19,9 @@ public class PlayerSpriteManager : MonoBehaviour
 
     void LoadSprite()
     {
-
-        Character character = CharDB.getChar(CharSelected);
+        character = CharDB.getChar(CharSelected);
         CharSprite = character.sprite;
         Player.sprite = CharSprite;
     }
+
 }

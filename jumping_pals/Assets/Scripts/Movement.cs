@@ -40,7 +40,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private ScoreManager scoreManager;
-    [SerializeField] private SpriteRenderer Self;
+    // [SerializeField] private PlayerSpriteManager Self;
+    private SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         isGrounded = false;
         animator = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
         score = 0;
     }
 
@@ -99,15 +101,15 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void FlipSprite(float moveX)
+    public void FlipSprite(float moveX)
     {
         if (moveX > 0)
         {
-            Self.flipX = true; // mirando a la derecha
+            sprite.flipX = true; // mirando a la derecha
         }
         else if (moveX < 0)
         {
-            Self.flipX = false;  // mirando a la izquierda
+            sprite.flipX = false;  // mirando a la izquierda
         }
     }
 
