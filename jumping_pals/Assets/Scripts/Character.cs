@@ -1,13 +1,11 @@
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 [System.Serializable]
 public class Character
 {
     public string name;
-    public Sprite sprite;
+    public Sprite icon;
     public int price;
-    public Sprite[] idle;
-    public Sprite[] walking;
-    public Sprite[] jumping;
-    public Sprite death;
+    public SpriteLibraryAsset sprites;
 }

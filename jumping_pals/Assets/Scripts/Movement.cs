@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using System;
 
 public class Movement : MonoBehaviour
 {
@@ -78,10 +79,12 @@ public class Movement : MonoBehaviour
         hitFloorRight = Physics2D.Raycast(transform.position + Vector3.right * 0.8f + Vector3.down * 0.75f, Vector2.down, 0.75f, floor);
 
         isGrounded = (hitFloor.collider != null || hitFloorLeft.collider != null || hitFloorRight.collider != null);
+        animator.SetBool("IsJumping", !isGrounded);
 
         MovX = Input.GetAxisRaw("Horizontal");
         FlipSprite(MovX);
         transform.Translate(MovX * speed * Time.deltaTime, 0, 0);
+        animator.SetFloat("Xvelocity", Math.Abs(MovX));
 
         if (isGrounded)
         {
@@ -97,6 +100,7 @@ public class Movement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             lastGrounded = 0f;
+            animator.SetFloat("Yvelocity", rb.linearVelocity.y);
             audioManager.playJumping();
         }
     }

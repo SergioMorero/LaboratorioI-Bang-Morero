@@ -1,15 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.U2D.Animation;
 
 public class PlayerSpriteManager : MonoBehaviour
 {
 
     public int CharSelected;
     public CharacterDB CharDB;
-    public Sprite CharSprite;
-    public SpriteRenderer Player;
     public Character character;
+    public SpriteLibrary SpriteSource;
+    public SpriteResolver resolver;
 
     void Start()
     {
@@ -20,8 +21,12 @@ public class PlayerSpriteManager : MonoBehaviour
     void LoadSprite()
     {
         character = CharDB.getChar(CharSelected);
-        CharSprite = character.sprite;
-        Player.sprite = CharSprite;
+        SpriteSource.spriteLibraryAsset = character.sprites;
+    }
+
+    public void walk()
+    {
+
     }
 
 }

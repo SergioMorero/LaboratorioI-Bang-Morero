@@ -317,7 +317,7 @@ public class AccountManager : MonoBehaviour
     private void UpdateCharacter() {
         Character selected = CharDB.getChar(CharSelected);
         CharName.text = selected.name;
-        CharSprite.sprite = selected.sprite;
+        CharSprite.sprite = selected.icon;
     }
 
     public void BuyCharacter() {

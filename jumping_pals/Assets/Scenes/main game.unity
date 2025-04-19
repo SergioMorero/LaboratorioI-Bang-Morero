@@ -4934,18 +4934,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharSelected: 0
   CharDB: {fileID: 11400000, guid: 3660c3381ea867f48bfd9f5456de82d0, type: 2}
-  CharSprite: {fileID: 0}
-  Player: {fileID: 758720087}
   character:
     name: 
-    sprite: {fileID: 0}
+    icon: {fileID: 0}
     price: 0
-    idle:
-    - {fileID: 0}
-    - {fileID: 0}
-    walking: []
-    jumping: []
-    death: {fileID: 0}
+    sprites: {fileID: 0}
+  SpriteSource: {fileID: 758720095}
+  resolver: {fileID: 758720094}
 --- !u!1 &693844692
 GameObject:
   m_ObjectHideFlags: 0
@@ -5316,6 +5311,8 @@ GameObject:
   - component: {fileID: 758720091}
   - component: {fileID: 758720092}
   - component: {fileID: 758720093}
+  - component: {fileID: 758720095}
+  - component: {fileID: 758720094}
   m_Layer: 3
   m_Name: player
   m_TagString: Player
@@ -5367,7 +5364,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -789612912, guid: 635a7878fe35d644db95990155ed238c, type: 3}
+  m_Sprite: {fileID: 2353359508387441526, guid: 6054e729bbd91de458e46571db335a8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5517,6 +5514,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &758720094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758720086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 5.449709e-22
+  m_labelHash: 1.0058427e-10
+  m_SpriteKey: 0
+  m_SpriteHash: 68821764
+--- !u!114 &758720095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758720086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 04b857fc31f278647820ec3d64b7787f, type: 3}
 --- !u!1 &782143779
 GameObject:
   m_ObjectHideFlags: 0
