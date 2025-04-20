@@ -22,6 +22,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TMP_Text BestScore;
     [SerializeField] private TMP_Text NewBestAnnouncer;
     [SerializeField] private TMP_Text ScoreDisplay;
+    public AudioManager audioManager;
 
     private string serverUrl = "http://localhost:5000";
 
@@ -72,6 +73,7 @@ public class ScoreManager : MonoBehaviour
 
     public void GiveCoin()
     {
+        audioManager.playGetCoin();
        StartCoroutine(sendCoin(userID));
     }
 

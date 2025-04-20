@@ -103,7 +103,11 @@ public class Movement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             lastGrounded = 0f;
             audioManager.playJumping();
+            animator.SetTrigger("Jump");
         }
+
+        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).IsName("Jump") || animator.GetCurrentAnimatorStateInfo(0).IsName("Fall"));
+
     }
 
     // Interface, Sprite

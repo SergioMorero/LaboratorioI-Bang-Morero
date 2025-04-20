@@ -5364,7 +5364,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2353359508387441526, guid: 6054e729bbd91de458e46571db335a8c, type: 3}
+  m_Sprite: {fileID: 4262428847473830299, guid: 6054e729bbd91de458e46571db335a8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5526,10 +5526,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 5.449709e-22
-  m_labelHash: 1.0058427e-10
+  m_CategoryHash: 4.968908e-15
+  m_labelHash: 4.968908e-15
   m_SpriteKey: 0
-  m_SpriteHash: 68821764
+  m_SpriteHash: 369303956
 --- !u!114 &758720095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8797,6 +8797,7 @@ MonoBehaviour:
   BestScore: {fileID: 241490659}
   NewBestAnnouncer: {fileID: 162558252}
   ScoreDisplay: {fileID: 693844694}
+  audioManager: {fileID: 41494597}
 --- !u!4 &2098503104
 Transform:
   m_ObjectHideFlags: 0

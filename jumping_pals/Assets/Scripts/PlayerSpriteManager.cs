@@ -24,9 +24,4 @@ public class PlayerSpriteManager : MonoBehaviour
         SpriteSource.spriteLibraryAsset = character.sprites;
     }
 
-    public void walk()
-    {
-
-    }
-
 }
