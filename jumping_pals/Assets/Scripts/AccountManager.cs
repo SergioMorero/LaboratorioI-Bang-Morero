@@ -30,6 +30,7 @@ public class AccountManager : MonoBehaviour
     public bool isLogged;
     public int CharSelected;
     public CharacterDB CharDB;
+    public bool[] charList;
 
     // Serializeds
 
@@ -86,6 +87,9 @@ public class AccountManager : MonoBehaviour
     [SerializeField] private TMP_Text CoinAmount;
     [SerializeField] private GameObject ShopPanel;
     [SerializeField] private GameObject UnLoggedPannel;
+    public GameObject buyButton;
+    public GameObject selectButton;
+    public TMP_Text buyText;
     public TMP_Text CharName;
     public Image CharSprite;
 
@@ -103,7 +107,7 @@ public class AccountManager : MonoBehaviour
         loadPreferences();
         HideAllErrors();
         queryManager.cleanAllInput();
-        UpdateCharacter();
+        queryManager.getCharList();
     }
 
     // Main Methods
@@ -318,28 +322,34 @@ public class AccountManager : MonoBehaviour
         Character selected = CharDB.getChar(CharSelected);
         CharName.text = selected.name;
         CharSprite.sprite = selected.icon;
+        buyText.text = $"buy ({selected.price})";
+        if (charList[CharSelected]) {
+            selectButton.SetActive(true);
+            buyButton.SetActive(false);
+        } else {
+            selectButton.SetActive(false);
+            buyButton.SetActive(true);
+        }
     }
 
     public void BuyCharacter() {
         Character character = CharDB.getChar(CharSelected);
-        if (userCoins >= character.price)
-        {
+        if (userCoins >= character.price) {
             Debug.Log("Buying " + character.name);
-            queryManager.buyCharacter(character.price);
-        }
-        else
-        {
+            queryManager.buyCharacter(CharSelected, character.price);
+            queryManager.getCharList();
+            UpdateCharacter();
+        } else {
             ShowError("NotEnoughMoney");
         }
     }
 
-    public void SelectCharacter()
-    {
+    public void SelectCharacter() {
         PlayerPrefs.SetInt("CharId", CharSelected);
+        ShopPanel.SetActive(false);
     }
 
-    public void UpdateShop(int CoinAmount)
-    {
+    public void UpdateShop(int CoinAmount) {
         userCoins -= CoinAmount;
         PlayerPrefs.SetInt("Coins", userCoins);
         UpdateCoinAmount();
@@ -347,19 +357,20 @@ public class AccountManager : MonoBehaviour
 
     // Getters
 
-    public string GetName()
-    {
+    public string GetName() {
         return userName;
     }
 
-    public string GetPassword()
-    {
+    public string GetPassword() {
         return userPassword;
     }
 
-    public int GetId()
-    {
+    public int GetId() {
         return userID;
+    }
+
+    public void getList(bool[] list) {
+        charList = list;
     }
 
 }

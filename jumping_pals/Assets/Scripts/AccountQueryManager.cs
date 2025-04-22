@@ -26,15 +26,13 @@ public class AccountQueryManager : MonoBehaviour {
     [SerializeField] private TMP_InputField modifyNewUsername;
     [SerializeField] private TMP_InputField modifyNewPassword;
 
-    void Start()
-    {
+    void Start() {
         StartCoroutine(checkConnection());
     }
 
     // Interface management
 
-    public void cleanAllInput()
-    {
+    public void cleanAllInput() {
         loginName.text = null;
         loginPassword.text = null;
         createUsername.text = null;
@@ -45,22 +43,19 @@ public class AccountQueryManager : MonoBehaviour {
 
     // Query Methods
 
-    public void Login()
-    {
+    public void Login() {
         string name = loginName.text;
         string password = loginPassword.text;
         StartCoroutine(get(name, password));
     }
 
-    public void CreateUser()
-    {
+    public void CreateUser() {
         string name = createUsername.text;
         string password = createPassword.text;
         StartCoroutine(post(name, password));
     }
 
-    public void UpdateUser()
-    {
+    public void UpdateUser() {
         string name = accountManager.GetName();
         string password = accountManager.GetPassword();
         string newName = modifyNewUsername.text;
@@ -74,16 +69,19 @@ public class AccountQueryManager : MonoBehaviour {
         StartCoroutine(delete(name, password));
     }
 
-    public void buyCharacter(int CoinAmount)
-    {
+    public void buyCharacter(int CharId, int CoinAmount) {
         int id = accountManager.GetId();
-        StartCoroutine(BuyCharacterCoroutine(id, CoinAmount));
+        StartCoroutine(BuyCharacterCoroutine(id, CharId, CoinAmount));
+    }
+
+    public void getCharList() {
+        int id = accountManager.GetId();
+        StartCoroutine(GetCharListCoroutine(id));
     }
 
     // Query Coroutines
 
-    IEnumerator checkConnection()
-    {
+    IEnumerator checkConnection() {
         string route = "/server";
         UnityWebRequest request = UnityWebRequest.Get(serverUrl + route);
         yield return request.SendWebRequest();
@@ -98,8 +96,7 @@ public class AccountQueryManager : MonoBehaviour {
         }
     }
 
-    IEnumerator get(string name, string password)
-    {
+    IEnumerator get(string name, string password) {
 
         string route = "/login";
 
@@ -131,8 +128,7 @@ public class AccountQueryManager : MonoBehaviour {
         }
     }
 
-    IEnumerator post(string name, string password)
-    {
+    IEnumerator post(string name, string password) {
         string route = "/user";
 
         UserData data = new UserData { name = name, password = password };
@@ -166,8 +162,7 @@ public class AccountQueryManager : MonoBehaviour {
         }
     }
 
-    IEnumerator put(string oldName, string oldPassword, string newName, string newPassword)
-    {
+    IEnumerator put(string oldName, string oldPassword, string newName, string newPassword) {
 
         string route = "/user";
 
@@ -199,8 +194,7 @@ public class AccountQueryManager : MonoBehaviour {
         }
     }
 
-    IEnumerator delete(string name, string password)
-    {
+    IEnumerator delete(string name, string password) {
 
         string route = "/user";
 
@@ -232,11 +226,10 @@ public class AccountQueryManager : MonoBehaviour {
         }
     }
 
-    IEnumerator BuyCharacterCoroutine(int id, int CoinAmount)
-    {
+    IEnumerator BuyCharacterCoroutine(int UserId, int CharId, int CoinAmount) {
         string route = "/buy-character";
 
-        CharCart data = new CharCart { id = id, CoinAmount = CoinAmount };
+        CharCart data = new CharCart { UserId = UserId, CharId = CharId, CoinAmount = CoinAmount };
         string json = JsonUtility.ToJson(data);
         Debug.Log("JSON: " + json);
 
@@ -258,25 +251,65 @@ public class AccountQueryManager : MonoBehaviour {
         if (request.result == UnityWebRequest.Result.Success) {
             Debug.Log("Personaje comprado");
             accountManager.UpdateShop(CoinAmount);
+            
         } else {
             Debug.Log("Error en la compra: " + request.error);
             accountManager.ShowError("NotPurchased");
         }
     }
 
+    IEnumerator GetCharListCoroutine(int id) {
+        string route = "/has-character";
+
+        CharData data = new CharData { id = id, has = 1 };
+        string json = JsonUtility.ToJson(data);
+        Debug.Log("JSON: " + json);
+
+        UnityWebRequest request = new UnityWebRequest(serverUrl + route, "PUT");
+        Debug.Log("Created request");
+        request.SetRequestHeader("Content-Type", "application/json");
+        Debug.Log("Set request header");
+
+        byte[] raw = Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(raw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        Debug.Log("JSON: " + json);
+
+        yield return request.SendWebRequest();
+
+        Debug.Log("Request sent");
+
+        if (request.result == UnityWebRequest.Result.Success) {
+            Debug.Log("JSON recibido: " + request.downloadHandler.text);
+            CharList charList = JsonUtility.FromJson<CharList>("{\"characters\":" + request.downloadHandler.text + "}");
+            bool[] list = getBoolList(charList);
+            accountManager.getList(list);
+        } else {
+            Debug.Log("Error en la lista: " + request.error);
+        }
+    }
+
+    public bool[] getBoolList(CharList charList) {
+        bool[] output = new bool[charList.characters.Length];
+        for (int i = 0; i < charList.characters.Length; i++) {
+            output[i] = charList.characters[i].has == 1;
+            Debug.Log($"Output[{i}] = {output[i]}, has = {charList.characters[i].has}");
+        }
+        return output;
+    }
+
     // JSON Classes
 
     [System.Serializable]
-    public class UserData
-    {
+    public class UserData {
         // To send data
         public string name;
         public string password;
     }
 
     [System.Serializable]
-    public class UserUpdate
-    {
+    public class UserUpdate {
         // To update data
         public string name;
         public string password;
@@ -285,8 +318,7 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     [System.Serializable]
-    public class UserResponse
-    {
+    public class UserResponse {
         // To get data
         public int id;
         public string name;
@@ -296,11 +328,22 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     [System.Serializable]
-    public class CharCart
-    {
-        // To send data
-        public int id;
+    public class CharCart {
+        // Buy a character
+        public int UserId;
+        public int CharId;
         public int CoinAmount;
+    }
+
+    [System.Serializable]
+    public class CharData {
+        public int id;
+        public int has;
+    }
+
+    [System.Serializable]
+    public class CharList {
+        public CharData[] characters;
     }
 
 }
