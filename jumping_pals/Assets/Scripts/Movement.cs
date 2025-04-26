@@ -6,7 +6,8 @@ using UnityEngine.Serialization;
 
 public class Movement : MonoBehaviour
 {
-
+    public int jumps;
+    public int enemiesKilled;
     public int score;
 
     [Header("---------- Variables ----------")]
@@ -46,6 +47,8 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         isGrounded = false;
         animator = GetComponent<Animator>();
+        jumps = 0;
+        enemiesKilled = 0;
         score = 0;
     }
 
@@ -92,6 +95,7 @@ public class Movement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            jumps += 1;
             lastGrounded = 0f;
             audioManager.playJumping();
         }
@@ -117,7 +121,7 @@ public class Movement : MonoBehaviour
     private void die() {
         pauseButton.SetActive(false);
 
-        scoreManager.ShowDeathMessage(score);
+        scoreManager.ShowDeathMessage(score, jumps, enemiesKilled);
             
         audioManager.stopMusic();
         audioManager.playGameOver();

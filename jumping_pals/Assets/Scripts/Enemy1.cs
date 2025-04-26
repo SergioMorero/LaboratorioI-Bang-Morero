@@ -53,6 +53,7 @@ public class Enemy1 : MonoBehaviour
             Instantiate(coin, transform.position, Quaternion.identity);
             playerRB.linearVelocity -= new Vector2(0, playerRB.linearVelocity.y);
             playerRB.AddForce(new Vector2(-2 * playerRB.linearVelocity.x, 20), ForceMode2D.Impulse);
+            audioManager.enemiesKilled += 1;
             audioManager.playEnemy();
             Destroy(this.gameObject);
         }

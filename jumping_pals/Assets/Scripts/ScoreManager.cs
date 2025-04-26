@@ -43,7 +43,7 @@ public class ScoreManager : MonoBehaviour
 
     // UI
 
-    public void ShowDeathMessage(int score)
+    public void ShowDeathMessage(int score, int jumps, int enemiesKilled)
     {
         Destroy(ScoreDisplay);
         DeathMessage.SetActive(true);
@@ -59,6 +59,9 @@ public class ScoreManager : MonoBehaviour
          If not, best score will record the previous best score
          */
         }
+        SendStats(jumps, enemiesKilled);
+        CheckAchievements();
+
         ScoreBestText.text = userMaxScore.ToString();
         ScoreText.text = score.ToString();
 
@@ -74,6 +77,16 @@ public class ScoreManager : MonoBehaviour
     public void GiveCoin()
     {
        StartCoroutine(sendCoin(userID));
+    }
+
+    private void SendStats(int jumps, int enemiesKilled)
+    {
+        StartCoroutine(sendStats(userID, jumps, enemiesKilled));
+    }
+
+    private void CheckAchievements()
+    {
+        StartCoroutine(checkAchievements(userID));
     }
 
     IEnumerator sendScoreCoroutine(int id, int score)
@@ -130,6 +143,57 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    IEnumerator sendStats(int id, int jumps, int enemiesKilled)
+    {
+        string route = "/set-stats";
+        UserStats data = new UserStats { id = userID, jumps = jumps, enemiesKilled = enemiesKilled };
+        string json = JsonUtility.ToJson(data);
+
+        UnityWebRequest request = new UnityWebRequest(serverUrl + route, "PUT");
+        request.SetRequestHeader("Content-Type", "application/json");
+        
+        byte[] raw = Encoding.UTF8.GetBytes(json);
+        request.uploadHandler= new UploadHandlerRaw(raw);
+        request.downloadHandler= new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Stats loaded succesfully - Jumps: " + jumps + ", EnemiesKilled: " + enemiesKilled);
+        }
+        else
+        {
+            Debug.Log("Error: " + request.error);
+        }
+
+    }
+
+    IEnumerator checkAchievements(int id)
+    {
+        string route = "/achievements";
+        UserID data = new UserID { id = userID };
+        string json = JsonUtility.ToJson(data);
+
+        UnityWebRequest request = new UnityWebRequest(serverUrl + route, "PUT");
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        byte[] raw = Encoding.UTF8.GetBytes(json);
+        request.uploadHandler = new UploadHandlerRaw(raw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Achievements checked succesfully");
+        }
+        else
+        {
+            Debug.Log("Error: " + request.error);
+        }
+    }
+
     [System.Serializable]
     public class UserScore
     {
@@ -148,5 +212,13 @@ public class ScoreManager : MonoBehaviour
     {
         public int id;
         public int coins;
+    }
+
+    [System.Serializable]
+    public class UserStats
+    {
+        public int id;
+        public int jumps;
+        public int enemiesKilled;
     }
 }
