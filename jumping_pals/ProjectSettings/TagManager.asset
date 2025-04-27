@@ -12,6 +12,7 @@ TagManager:
   - Wall
   - muncher
   - ScoreManager
+  - Bottom
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - UI
   - Enemy
   - Floor
-  - 
+  - Bottom
   - 
   - 
   - 

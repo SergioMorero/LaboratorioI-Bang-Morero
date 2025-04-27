@@ -105,18 +105,15 @@ public class AccountManager : MonoBehaviour
     void Start()
     {
         loadPreferences();
+        loginAttempt();
         HideAllErrors();
         queryManager.cleanAllInput();
         queryManager.getCharList();
     }
 
-    void Awake() {
-        DontDestroyOnLoad(this);
-    }
-
     // Main Methods
 
-    public void LogUserIn(int id, string name, string password, int score, int coins)
+    public void LogUserIn(int id, string name, string password, int score, int coins, bool showLogin)
     {
         userID = id;
         userName = name;
@@ -130,12 +127,26 @@ public class AccountManager : MonoBehaviour
         HideAllErrors();
         login.SetActive(false);
         create.SetActive(false);
-        account.SetActive(true);
         isLogged = true;
         queryManager.cleanAllInput();
         savePreferences();
 
+        if (showLogin) {
+            account.SetActive(true);
+        }
+
         queryManager.getCharList();
+    }
+
+    public void loginAttempt() {
+        /*
+        Check if playerPrefs correspond to an existing account
+            login()
+         */
+        if (isLogged) {
+            queryManager.loginAttempt(userName, userPassword);
+            account.SetActive(false);
+        }
     }
 
     public void LogUserOut()
@@ -289,6 +300,7 @@ public class AccountManager : MonoBehaviour
     {
         if (isLogged)
         {
+            // UpdateShop(0);
             UpdateCoinAmount();
             ShopPanel.SetActive(true);
             ButtonsMenu.SetActive(false);
@@ -297,6 +309,7 @@ public class AccountManager : MonoBehaviour
         else
         {
             UnLoggedPannel.SetActive(true);
+            ButtonsMenu.SetActive(false);
         }
     }
 

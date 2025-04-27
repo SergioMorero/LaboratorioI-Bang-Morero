@@ -47,7 +47,11 @@ public class AccountQueryManager : MonoBehaviour {
     public void Login() {
         string name = loginName.text;
         string password = loginPassword.text;
-        StartCoroutine(get(name, password));
+        StartCoroutine(get(name, password, true));
+    }
+
+    public void loginAttempt(string name, string password) {
+        StartCoroutine(get(name, password, false));
     }
 
     public void CreateUser() {
@@ -98,7 +102,7 @@ public class AccountQueryManager : MonoBehaviour {
         }
     }
 
-    IEnumerator get(string name, string password) {
+    IEnumerator get(string name, string password, bool showLogin) {
 
         string route = "/login";
 
@@ -123,7 +127,7 @@ public class AccountQueryManager : MonoBehaviour {
             // Debug.Log("Usuario Válido: " + request.downloadHandler.text);
             UserResponse response = JsonUtility.FromJson<UserResponse>(request.downloadHandler.text);
             // Debug.Log("ID: " + response.id + ", name: " + response.name + ", password: " + response.password);
-            accountManager.LogUserIn(response.id, response.name, response.password, response.score, response.coins);
+            accountManager.LogUserIn(response.id, response.name, response.password, response.score, response.coins, showLogin);
         } else {
             Debug.Log("Error en la autenticación: " + request.error);
             accountManager.ShowError("login");
@@ -156,7 +160,7 @@ public class AccountQueryManager : MonoBehaviour {
             // Debug.Log("Usuario Creado: " + request.downloadHandler.text);
 
             // Realizar una query para obtener la id recién agregada y realizar Log In
-            StartCoroutine(get(name, password));
+            StartCoroutine(get(name, password, true));
 
         } else {
             Debug.Log("Error en la creación: " + request.error);
@@ -252,7 +256,7 @@ public class AccountQueryManager : MonoBehaviour {
 
         if (request.result == UnityWebRequest.Result.Success) {
             // Debug.Log("Personaje comprado");
-            accountManager.UpdateShop(CoinAmount);
+            //accountManager.UpdateShop(CoinAmount);
             
         } else {
             Debug.Log("Error en la compra: " + request.error);

@@ -10,11 +10,12 @@ public class Enemy1 : MonoBehaviour
 
     [Header("---------- Varialbes ----------")]
 
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 2.75f;
     private RaycastHit2D hitFloor;
     private RaycastHit2D hitFloorLeft;
     private RaycastHit2D hitFloorRight;
     private Rigidbody2D rb;
+    private Animator animator;
     [SerializeField] private LayerMask playerLayer;
     private GameObject player;
     private Rigidbody2D playerRB;
@@ -33,6 +34,7 @@ public class Enemy1 : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
         playerRB = player.GetComponent<Rigidbody2D>();
         audioManager = player.GetComponent<Movement>();
@@ -42,42 +44,58 @@ public class Enemy1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Attacked
-        hitHead = Physics2D.Raycast(transform.position, Vector2.up, 1.05f, playerLayer);
-        hitHeadLeft = Physics2D.Raycast(transform.position + Vector3.left * 0.6f, Vector2.up, 1.05f, playerLayer);
-        hitHeadRight = Physics2D.Raycast(transform.position + Vector3.right * 0.6f, Vector2.up, 1.05f, playerLayer);
+        if (!gotHit) {
+            //Attacked
+            hitHead = Physics2D.Raycast(transform.position, Vector2.up, 1.05f, playerLayer);
+            hitHeadLeft = Physics2D.Raycast(transform.position + Vector3.left * 0.6f, Vector2.up, 1.05f, playerLayer);
+            hitHeadRight = Physics2D.Raycast(transform.position + Vector3.right * 0.6f, Vector2.up, 1.05f, playerLayer);
 
-        gotHit = (hitHead.collider != null || hitHeadLeft.collider != null || hitHeadRight.collider != null);
-        if (gotHit)
-        {
-            Instantiate(coin, transform.position, Quaternion.identity);
-            playerRB.linearVelocity -= new Vector2(0, playerRB.linearVelocity.y);
-            playerRB.AddForce(new Vector2(-2 * playerRB.linearVelocity.x, 20), ForceMode2D.Impulse);
-            audioManager.playEnemy();
+            gotHit = (hitHead.collider != null || hitHeadLeft.collider != null || hitHeadRight.collider != null);
+            
+            if (gotHit) {
+                die();
+            }
+
+            // Movement
+            hitFloor = Physics2D.Raycast(transform.position, Vector2.down, 1.5f, floor);
+            hitFloorLeft = Physics2D.Raycast(transform.position + Vector3.left * 0.5f, Vector2.down, 1.5f, floor);
+            hitFloorRight = Physics2D.Raycast(transform.position + Vector3.right * 0.5f, Vector2.down, 1.5f, floor);
+
+            if (transform.localScale.x > 0)
+            {
+                if (hitFloorRight.collider == null)
+                {
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                }
+            }
+            else
+            {
+                if (hitFloorLeft.collider == null)
+                {
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                }
+            }
+            transform.Translate(new Vector3(speed * transform.localScale.x * Time.deltaTime, 0, 0));
+        }
+
+        if (transform.position.y < -14) {
             Destroy(this.gameObject);
         }
 
+    }
 
-        // Movement
-        hitFloor = Physics2D.Raycast(transform.position, Vector2.down, 1.5f, floor);
-        hitFloorLeft = Physics2D.Raycast(transform.position + Vector3.left * 0.5f, Vector2.down, 1.5f, floor);
-        hitFloorRight = Physics2D.Raycast(transform.position + Vector3.right * 0.5f, Vector2.down, 1.5f, floor);
-
-        if (transform.localScale.x > 0)
-        {
-            if (hitFloorRight.collider == null)
-            {
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-            }
-        }
-        else
-        {
-            if (hitFloorLeft.collider == null)
-            {
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-            }
-        }
-        transform.Translate(new Vector3(speed * transform.localScale.x * Time.deltaTime, 0, 0));
+    private void die() {
+        GetComponent<BoxCollider2D>().enabled = false;
+        Instantiate(coin, transform.position, Quaternion.identity);
+        audioManager.playEnemy();
+        playerRB.linearVelocity -= new Vector2(0, playerRB.linearVelocity.y);
+        playerRB.AddForce(new Vector2(-2 * playerRB.linearVelocity.x, 20), ForceMode2D.Impulse);
+        Destroy(gameObject); // Enemy turns into a coin
+        /*
+        animator.SetTrigger("GotHit");
+        speed = 0;
+        rb.AddForce(Vector3.up * 15, ForceMode2D.Impulse);
+         */
     }
 
     private void OnDrawGizmos()

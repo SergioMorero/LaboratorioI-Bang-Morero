@@ -30,10 +30,13 @@ public class Movement : MonoBehaviour
     private RaycastHit2D hitEnemyUpRight;
     private RaycastHit2D hitEnemyDownRight;
 
-    public float speed;
+    public bool alive = true;
+
+    public float speed = 15;
     public float jumpForce;
     [SerializeField] private LayerMask floor;
     [SerializeField] private LayerMask enemy;
+    public LayerMask bottom;
 
     [Header("---------- Objects ----------")]
 
@@ -41,6 +44,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private ScoreManager scoreManager;
+    public MainCamera camera;
     private SpriteRenderer sprite;
 
     // States -> Animation management
@@ -59,6 +63,9 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (alive) {
+
         //Attacked
 
         // Patroll
@@ -109,6 +116,11 @@ public class Movement : MonoBehaviour
 
         //Debug.Log(animator.GetCurrentAnimatorStateInfo(0).IsName("Jump") || animator.GetCurrentAnimatorStateInfo(0).IsName("Fall"));
 
+        } else { // Player is death
+            if (transform.position.y < -14) {
+                GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
     }
 
     // Interface, Sprite
@@ -145,13 +157,18 @@ public class Movement : MonoBehaviour
 
     // Death protocol
     private void die() {
+        alive = false;
+        camera.isAlive = false;
         pauseButton.SetActive(false);
-
         scoreManager.ShowDeathMessage(score);
-            
         audioManager.stopMusic();
         audioManager.playGameOver();
-        Destroy(this.gameObject);
+
+        animator.SetTrigger("Death");
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
+        camera.stop();
+        rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 
     // ???
