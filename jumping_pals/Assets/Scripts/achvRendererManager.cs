@@ -28,7 +28,7 @@ public class Achievements : MonoBehaviour
     private string serverUrl = "http://localhost:5000";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()
     {
         userID = PlayerPrefs.GetInt("ID");
         achievementsText = GetComponent<TextMeshProUGUI>();
