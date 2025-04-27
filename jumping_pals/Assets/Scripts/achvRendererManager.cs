@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
@@ -13,6 +14,7 @@ public class Achievements : MonoBehaviour
     {
         public int id;
         public string name;
+        public string desc;
     }
 
     [System.Serializable]
@@ -50,7 +52,7 @@ public class Achievements : MonoBehaviour
 
                 foreach (Achievement achv in achievements)
                 {
-                    achievementsText.text += $"{achv.name}\n";
+                    achievementsText.text += $"{achv.name}<size=8>-{achv.desc}</size>\n";
                 }
 
             }
