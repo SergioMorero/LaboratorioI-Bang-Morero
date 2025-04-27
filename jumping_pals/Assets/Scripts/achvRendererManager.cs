@@ -50,10 +50,18 @@ public class Achievements : MonoBehaviour
                 Wrapper wrapper = JsonUtility.FromJson<Wrapper>(newJson);
                 Achievement[] achievements = wrapper.array;
 
-                foreach (Achievement achv in achievements)
+                if (achievements.Length > 0)
                 {
-                    achievementsText.text += $"{achv.name}<size=8>-{achv.desc}</size>\n";
+                    foreach (Achievement achv in achievements)
+                    {
+                        achievementsText.text += $"{achv.name}<size=8>-{achv.desc}</size>\n";
+                    }
                 }
+                else
+                {
+                    achievementsText.text = "";
+                }
+                
 
             }
             else
