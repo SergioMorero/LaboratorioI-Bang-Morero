@@ -11,6 +11,7 @@ public class AccountQueryManager : MonoBehaviour {
     private string serverUrl = "http://localhost:5000";
 
     [SerializeField] private AccountManager accountManager;
+    public ScreenLoader screenLoader;
 
     [Header("----- Text inputs -----")]
 
@@ -76,6 +77,7 @@ public class AccountQueryManager : MonoBehaviour {
 
     public void getCharList() {
         int id = accountManager.GetId();
+        Debug.Log("getting list");
         StartCoroutine(GetCharListCoroutine(id));
     }
 
@@ -102,12 +104,12 @@ public class AccountQueryManager : MonoBehaviour {
 
         UserData data = new UserData { name = name, password = password };
         string json = JsonUtility.ToJson(data);
-        Debug.Log("JSON: " + json);
+        // Debug.Log("JSON: " + json);
 
         UnityWebRequest request = new UnityWebRequest(serverUrl + route, "POST");
-        Debug.Log("Created request");
+        // Debug.Log("Created request");
         request.SetRequestHeader("Content-Type", "application/json");
-        Debug.Log("Set request header");
+        // Debug.Log("Set request header");
 
         byte[] raw = Encoding.UTF8.GetBytes(json);
         request.uploadHandler = new UploadHandlerRaw(raw);
@@ -115,12 +117,12 @@ public class AccountQueryManager : MonoBehaviour {
 
         yield return request.SendWebRequest();
 
-        Debug.Log("Request sent");
+        // Debug.Log("Request sent");
 
         if (request.result == UnityWebRequest.Result.Success) {
-            Debug.Log("Usuario Válido: " + request.downloadHandler.text);
+            // Debug.Log("Usuario Válido: " + request.downloadHandler.text);
             UserResponse response = JsonUtility.FromJson<UserResponse>(request.downloadHandler.text);
-            Debug.Log("ID: " + response.id + ", name: " + response.name + ", password: " + response.password);
+            // Debug.Log("ID: " + response.id + ", name: " + response.name + ", password: " + response.password);
             accountManager.LogUserIn(response.id, response.name, response.password, response.score, response.coins);
         } else {
             Debug.Log("Error en la autenticación: " + request.error);
@@ -133,25 +135,25 @@ public class AccountQueryManager : MonoBehaviour {
 
         UserData data = new UserData { name = name, password = password };
         string json = JsonUtility.ToJson(data);
-        Debug.Log("JSON: " + json);
+        // Debug.Log("JSON: " + json);
 
         UnityWebRequest request = new UnityWebRequest(serverUrl + route, "POST");
-        Debug.Log("Created request");
+        // Debug.Log("Created request");
         request.SetRequestHeader("Content-Type", "application/json");
-        Debug.Log("Set request header");
+        // Debug.Log("Set request header");
 
         byte[] raw = Encoding.UTF8.GetBytes(json);
         request.uploadHandler = new UploadHandlerRaw(raw);
         request.downloadHandler = new DownloadHandlerBuffer();
 
-        Debug.Log("JSON: " + json);
+        // Debug.Log("JSON: " + json);
 
         yield return request.SendWebRequest();
 
-        Debug.Log("Request sent");
+        // Debug.Log("Request sent");
 
         if (request.result == UnityWebRequest.Result.Success) {
-            Debug.Log("Usuario Creado: " + request.downloadHandler.text);
+            // Debug.Log("Usuario Creado: " + request.downloadHandler.text);
 
             // Realizar una query para obtener la id recién agregada y realizar Log In
             StartCoroutine(get(name, password));
@@ -168,25 +170,25 @@ public class AccountQueryManager : MonoBehaviour {
 
         UserUpdate data = new UserUpdate { name = oldName, password = oldPassword, newName = newName, newPassword = newPassword };
         string json = JsonUtility.ToJson(data);
-        Debug.Log("JSON: " + json);
+        // Debug.Log("JSON: " + json);
 
         UnityWebRequest request = new UnityWebRequest(serverUrl + route, "PUT");
-        Debug.Log("Created request");
+        // Debug.Log("Created request");
         request.SetRequestHeader("Content-Type", "application/json");
-        Debug.Log("Set request header");
+        // Debug.Log("Set request header");
 
         byte[] raw = Encoding.UTF8.GetBytes(json);
         request.uploadHandler = new UploadHandlerRaw(raw);
         request.downloadHandler = new DownloadHandlerBuffer();
 
-        Debug.Log("JSON: " + json);
+        // Debug.Log("JSON: " + json);
 
         yield return request.SendWebRequest();
 
-        Debug.Log("Request sent");
+        // Debug.Log("Request sent");
 
         if (request.result == UnityWebRequest.Result.Success) {
-            Debug.Log("Usuario Modificado: " + request.downloadHandler.text);
+            // Debug.Log("Usuario Modificado: " + request.downloadHandler.text);
             accountManager.UpdateUser(newName, newPassword);
         } else {
             Debug.Log("Error en la Modificación: " + request.error);
@@ -200,25 +202,25 @@ public class AccountQueryManager : MonoBehaviour {
 
         UserData data = new UserData { name = name, password = password };
         string json = JsonUtility.ToJson(data);
-        Debug.Log("JSON: " + json);
+        // Debug.Log("JSON: " + json);
 
         UnityWebRequest request = new UnityWebRequest(serverUrl + route, "DELETE");
-        Debug.Log("Created request");
+        // Debug.Log("Created request");
         request.SetRequestHeader("Content-Type", "application/json");
-        Debug.Log("Set request header");
+        // Debug.Log("Set request header");
 
         byte[] raw = Encoding.UTF8.GetBytes(json);
         request.uploadHandler = new UploadHandlerRaw(raw);
         request.downloadHandler = new DownloadHandlerBuffer();
 
-        Debug.Log("JSON: " + json);
+        // Debug.Log("JSON: " + json);
 
         yield return request.SendWebRequest();
 
-        Debug.Log("Request sent");
+        // Debug.Log("Request sent");
 
         if (request.result == UnityWebRequest.Result.Success) {
-            Debug.Log("Usuario eliminado");
+            // Debug.Log("Usuario eliminado");
             accountManager.LogUserOut();
         } else {
             Debug.Log("Error en la eliminación: " + request.error);
@@ -231,25 +233,25 @@ public class AccountQueryManager : MonoBehaviour {
 
         CharCart data = new CharCart { UserId = UserId, CharId = CharId, CoinAmount = CoinAmount };
         string json = JsonUtility.ToJson(data);
-        Debug.Log("JSON: " + json);
+        // Debug.Log("JSON: " + json);
 
         UnityWebRequest request = new UnityWebRequest(serverUrl + route, "PUT");
-        Debug.Log("Created request");
+        // Debug.Log("Created request");
         request.SetRequestHeader("Content-Type", "application/json");
-        Debug.Log("Set request header");
+        // Debug.Log("Set request header");
 
         byte[] raw = Encoding.UTF8.GetBytes(json);
         request.uploadHandler = new UploadHandlerRaw(raw);
         request.downloadHandler = new DownloadHandlerBuffer();
 
-        Debug.Log("JSON: " + json);
+        // Debug.Log("JSON: " + json);
 
         yield return request.SendWebRequest();
 
-        Debug.Log("Request sent");
+        // Debug.Log("Request sent");
 
         if (request.result == UnityWebRequest.Result.Success) {
-            Debug.Log("Personaje comprado");
+            // Debug.Log("Personaje comprado");
             accountManager.UpdateShop(CoinAmount);
             
         } else {
@@ -259,32 +261,34 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     IEnumerator GetCharListCoroutine(int id) {
+        Debug.Log("Strting coroutine");
         string route = "/has-character";
 
         CharData data = new CharData { id = id, has = 1 };
         string json = JsonUtility.ToJson(data);
-        Debug.Log("JSON: " + json);
+        // Debug.Log("JSON: " + json);
 
         UnityWebRequest request = new UnityWebRequest(serverUrl + route, "PUT");
-        Debug.Log("Created request");
+        // Debug.Log("Created request");
         request.SetRequestHeader("Content-Type", "application/json");
-        Debug.Log("Set request header");
+        // Debug.Log("Set request header");
 
         byte[] raw = Encoding.UTF8.GetBytes(json);
         request.uploadHandler = new UploadHandlerRaw(raw);
         request.downloadHandler = new DownloadHandlerBuffer();
 
-        Debug.Log("JSON: " + json);
+        // Debug.Log("JSON: " + json);
 
         yield return request.SendWebRequest();
 
-        Debug.Log("Request sent");
+        // Debug.Log("Request sent");
 
         if (request.result == UnityWebRequest.Result.Success) {
-            Debug.Log("JSON recibido: " + request.downloadHandler.text);
-            CharList charList = JsonUtility.FromJson<CharList>("{\"characters\":" + request.downloadHandler.text + "}");
+            // Debug.Log("JSON recibido: " + request.downloadHandler.text);
+            CharList charList = JsonUtility.FromJson<CharList>(request.downloadHandler.text);
             bool[] list = getBoolList(charList);
             accountManager.getList(list);
+            screenLoader.begin();
         } else {
             Debug.Log("Error en la lista: " + request.error);
         }
@@ -294,7 +298,6 @@ public class AccountQueryManager : MonoBehaviour {
         bool[] output = new bool[charList.characters.Length];
         for (int i = 0; i < charList.characters.Length; i++) {
             output[i] = charList.characters[i].has == 1;
-            Debug.Log($"Output[{i}] = {output[i]}, has = {charList.characters[i].has}");
         }
         return output;
     }

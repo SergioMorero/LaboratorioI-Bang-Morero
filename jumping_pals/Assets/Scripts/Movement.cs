@@ -48,6 +48,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager.playMusic();
         rb = GetComponent<Rigidbody2D>();
         isGrounded = false;
         animator = GetComponent<Animator>();
@@ -106,7 +107,7 @@ public class Movement : MonoBehaviour
             animator.SetTrigger("Jump");
         }
 
-        Debug.Log(animator.GetCurrentAnimatorStateInfo(0).IsName("Jump") || animator.GetCurrentAnimatorStateInfo(0).IsName("Fall"));
+        //Debug.Log(animator.GetCurrentAnimatorStateInfo(0).IsName("Jump") || animator.GetCurrentAnimatorStateInfo(0).IsName("Fall"));
 
     }
 

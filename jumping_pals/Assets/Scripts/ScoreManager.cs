@@ -74,7 +74,7 @@ public class ScoreManager : MonoBehaviour
     public void GiveCoin()
     {
         audioManager.playGetCoin();
-       StartCoroutine(sendCoin(userID));
+        StartCoroutine(sendCoin(userID));
     }
 
     IEnumerator sendScoreCoroutine(int id, int score)

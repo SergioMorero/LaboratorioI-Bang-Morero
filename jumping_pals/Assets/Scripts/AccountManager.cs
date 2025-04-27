@@ -110,6 +110,10 @@ public class AccountManager : MonoBehaviour
         queryManager.getCharList();
     }
 
+    void Awake() {
+        DontDestroyOnLoad(this);
+    }
+
     // Main Methods
 
     public void LogUserIn(int id, string name, string password, int score, int coins)
@@ -130,6 +134,8 @@ public class AccountManager : MonoBehaviour
         isLogged = true;
         queryManager.cleanAllInput();
         savePreferences();
+
+        queryManager.getCharList();
     }
 
     public void LogUserOut()
@@ -285,6 +291,7 @@ public class AccountManager : MonoBehaviour
         {
             UpdateCoinAmount();
             ShopPanel.SetActive(true);
+            ButtonsMenu.SetActive(false);
             UpdateCharacter();
         }
         else
@@ -322,7 +329,7 @@ public class AccountManager : MonoBehaviour
         Character selected = CharDB.getChar(CharSelected);
         CharName.text = selected.name;
         CharSprite.sprite = selected.icon;
-        buyText.text = $"buy ({selected.price})";
+        buyText.text = $"buy - {selected.price}";
         if (charList[CharSelected]) {
             selectButton.SetActive(true);
             buyButton.SetActive(false);
@@ -335,10 +342,13 @@ public class AccountManager : MonoBehaviour
     public void BuyCharacter() {
         Character character = CharDB.getChar(CharSelected);
         if (userCoins >= character.price) {
-            Debug.Log("Buying " + character.name);
+            // Debug.Log("Buying " + character.name);
             queryManager.buyCharacter(CharSelected, character.price);
-            queryManager.getCharList();
+            UpdateShop(character.price);
+            charList[CharSelected] = true;
             UpdateCharacter();
+            selectButton.SetActive(true);
+            buyButton.SetActive(false);
         } else {
             ShowError("NotEnoughMoney");
         }
@@ -347,6 +357,7 @@ public class AccountManager : MonoBehaviour
     public void SelectCharacter() {
         PlayerPrefs.SetInt("CharId", CharSelected);
         ShopPanel.SetActive(false);
+        ButtonsMenu.SetActive(true);
     }
 
     public void UpdateShop(int CoinAmount) {
