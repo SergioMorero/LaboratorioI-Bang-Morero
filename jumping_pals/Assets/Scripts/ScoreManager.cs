@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private GameObject bestScore;
     [SerializeField] private TMP_Text ScoreBestText;
-    [SerializeField] private TMP_Text NewBestText;
+    [SerializeField] private TMP_Text NewBestAnnouncer;
     [SerializeField] private TMP_Text ScoreDisplay;
     public AudioManager audioManager;
 

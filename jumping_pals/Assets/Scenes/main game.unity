@@ -9055,8 +9055,9 @@ MonoBehaviour:
   userMaxScore: 0
   userCoins: 0
   DeathMessage: {fileID: 1921352774}
-  Score: {fileID: 1242396125}
-  BestScore: {fileID: 241490659}
+  ScoreText: {fileID: 1242396125}
+  bestScore: {fileID: 241490657}
+  ScoreBestText: {fileID: 241490659}
   NewBestAnnouncer: {fileID: 162558252}
   ScoreDisplay: {fileID: 693844694}
   audioManager: {fileID: 41494597}
