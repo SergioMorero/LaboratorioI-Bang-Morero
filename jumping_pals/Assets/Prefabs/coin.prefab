@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3193214794473973194}
   - component: {fileID: 6973403245365881667}
   - component: {fileID: 4319459147057866100}
+  - component: {fileID: 2839888324938679536}
   m_Layer: 0
   m_Name: coin
   m_TagString: Untagged
@@ -128,7 +129,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.125, y: 2}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 0.17, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,7 +147,7 @@ Animator:
   m_GameObject: {fileID: 3382759326688554177}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5d8643735e4058a4a969fc44c2a840e6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 30a3d120e2873d74a908d75265ed644a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -167,7 +168,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 3382759326688554177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f337cd73ce2a7541809622dca8bf0a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7df3a67851e14e547ac7381ad1711141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreManager: {fileID: 0}
+--- !u!50 &2839888324938679536
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3382759326688554177}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

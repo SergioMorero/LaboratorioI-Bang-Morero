@@ -8,7 +8,7 @@ public class MainCamera : MonoBehaviour
     private GameObject mc;
     private GameObject deathBar;
     private float prevHeigh;
-
+    public bool isAlive = true; // Player is alive
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class MainCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mc != null)
+        if (mc != null && isAlive)
         {
             prevHeigh = transform.position.y;
             if (transform.position.y < mc.transform.position.y + 1 && mc.transform.position.y > prevHeigh)
@@ -29,6 +29,10 @@ public class MainCamera : MonoBehaviour
                 deathBar.transform.position = new Vector3(transform.position.x, mc.transform.position.y - 17, transform.position.z);
             }
         }
+    }
+
+    public void stop() {
+        isAlive = false; // Player has perished
     }
 
 }

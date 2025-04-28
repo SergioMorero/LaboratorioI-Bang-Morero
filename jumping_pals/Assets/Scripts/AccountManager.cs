@@ -10,6 +10,9 @@ public class AccountManager : MonoBehaviour
      AccountQueryManager. This class will not send queries nor interact with the server
 
      This class will also manage most (but not all) interaction between account panels
+
+     Now this class manages Shop and character selection, as it is the one that manages
+     Coins amount and PlayerPrefs
      */
 
     // Variables
@@ -25,12 +28,17 @@ public class AccountManager : MonoBehaviour
     // Publics
 
     public bool isLogged;
+    public int CharSelected;
+    public CharacterDB CharDB;
+    public bool[] charList;
 
     // Serializeds
 
-    [Header("----- Objects -----")]
+    [Header("+-+-+-+ Objects +-+-+-+")]
 
     [SerializeField] private AccountQueryManager queryManager;
+
+    [Header("+-+-+-+ Account +-+-+-+")]
 
     [Header("----- Panels -----")]
 
@@ -72,8 +80,22 @@ public class AccountManager : MonoBehaviour
     [SerializeField] private GameObject createError;
     [SerializeField] private GameObject deleteError;
     [SerializeField] private GameObject editError;
+    [SerializeField] private GameObject NotEnoughMoney;
 
-    [Header("----- Start Button -----")]
+    [Header("+-+-+-+ Shop +-+-+-+")]
+    
+    [SerializeField] private TMP_Text CoinAmount;
+    [SerializeField] private GameObject ShopPanel;
+    [SerializeField] private GameObject UnLoggedPannel;
+    public GameObject buyButton;
+    public GameObject selectButton;
+    public TMP_Text buyText;
+    public TMP_Text CharName;
+    public Image CharSprite;
+
+
+    [Header("+-+-+-+ Start Button +-+-+-+")]
+
     [SerializeField] private GameObject ButtonsMenu;
     [SerializeField] private GameObject NotLoggedInPanel;
     [SerializeField] private GameObject PlayMenu;
@@ -83,13 +105,15 @@ public class AccountManager : MonoBehaviour
     void Start()
     {
         loadPreferences();
+        loginAttempt();
         HideAllErrors();
         queryManager.cleanAllInput();
+        queryManager.getCharList();
     }
 
     // Main Methods
 
-    public void LogUserIn(int id, string name, string password, int score, int coins)
+    public void LogUserIn(int id, string name, string password, int score, int coins, bool showLogin)
     {
         userID = id;
         userName = name;
@@ -103,10 +127,26 @@ public class AccountManager : MonoBehaviour
         HideAllErrors();
         login.SetActive(false);
         create.SetActive(false);
-        account.SetActive(true);
         isLogged = true;
         queryManager.cleanAllInput();
         savePreferences();
+
+        if (showLogin) {
+            account.SetActive(true);
+        }
+
+        queryManager.getCharList();
+    }
+
+    public void loginAttempt() {
+        /*
+        Check if playerPrefs correspond to an existing account
+            login()
+         */
+        if (isLogged) {
+            queryManager.loginAttempt(userName, userPassword);
+            account.SetActive(false);
+        }
     }
 
     public void LogUserOut()
@@ -137,7 +177,8 @@ public class AccountManager : MonoBehaviour
 
     // PlayerPrefs
 
-    private void loadPreferences() {
+    private void loadPreferences()
+    {
         if (PlayerPrefs.HasKey("Username")) {
             isLogged = true;
             userName = PlayerPrefs.GetString("Username");
@@ -145,6 +186,7 @@ public class AccountManager : MonoBehaviour
             userID = PlayerPrefs.GetInt("ID");
             userScore = PlayerPrefs.GetInt("Score");
             userCoins = PlayerPrefs.GetInt("Coins");
+            CharSelected = PlayerPrefs.GetInt("CharId");
 
             accountName.text = userName;
             MaxScore.text = userScore.ToString();
@@ -156,10 +198,13 @@ public class AccountManager : MonoBehaviour
             userPassword = null;
             userScore = 0;
             userCoins = 0;
+            CharSelected = 0;
+            PlayerPrefs.SetInt("CharId", 0);
         }
     }
 
-    private void savePreferences() {
+    private void savePreferences()
+    {
         PlayerPrefs.SetString("Username", userName);
         PlayerPrefs.SetString("Password", userPassword);
         PlayerPrefs.SetInt("ID", userID);
@@ -167,7 +212,8 @@ public class AccountManager : MonoBehaviour
         PlayerPrefs.SetInt("Coins", userCoins);
     }
 
-    private void erasePreferences() {
+    private void erasePreferences()
+    {
         userID = 0;
         userName = null;
         userPassword = null;
@@ -180,7 +226,7 @@ public class AccountManager : MonoBehaviour
         PlayerPrefs.DeleteKey("ID");
         PlayerPrefs.DeleteKey("Score");
         PlayerPrefs.DeleteKey("Coins");
-        PlayerPrefs.DeleteKey("Login");
+        PlayerPrefs.SetInt("CharId", 0);
     }
 
     // Error Management
@@ -191,6 +237,7 @@ public class AccountManager : MonoBehaviour
         createError.SetActive(false);
         deleteError.SetActive(false);
         editError.SetActive(false);
+        NotEnoughMoney.SetActive(false);
     }
 
     public void ShowError(string error)
@@ -209,6 +256,9 @@ public class AccountManager : MonoBehaviour
                 break;
             case "edit":
                 editError.SetActive(true);
+                break;
+            case "NotEnoughMoney":
+                NotEnoughMoney.SetActive(true);
                 break;
             default:
                 Debug.Log("Invalid string received when trying to show an error: " + error);
@@ -244,16 +294,107 @@ public class AccountManager : MonoBehaviour
         }
     }
 
+    // Shop
+
+    public void OpenShop()
+    {
+        if (isLogged)
+        {
+            // UpdateShop(0);
+            UpdateCoinAmount();
+            ShopPanel.SetActive(true);
+            ButtonsMenu.SetActive(false);
+            UpdateCharacter();
+        }
+        else
+        {
+            UnLoggedPannel.SetActive(true);
+            ButtonsMenu.SetActive(false);
+        }
+    }
+
+    private void UpdateCoinAmount()
+    {
+        userCoins = PlayerPrefs.GetInt("Coins");
+        CoinAmount.text = userCoins.ToString();
+    }
+
+    public void NextChar() {
+        CharSelected++;
+        if (CharSelected == CharDB.CharCount)
+        {
+            CharSelected = 0;
+        }
+        UpdateCharacter();
+    }
+
+    public void PrevChar()
+    {
+        CharSelected--;
+        if (CharSelected < 0)
+        {
+            CharSelected = CharDB.CharCount - 1;
+        }
+        UpdateCharacter();
+    }
+
+    private void UpdateCharacter() {
+        Character selected = CharDB.getChar(CharSelected);
+        CharName.text = selected.name;
+        CharSprite.sprite = selected.icon;
+        buyText.text = $"buy - {selected.price}";
+        if (charList[CharSelected]) {
+            selectButton.SetActive(true);
+            buyButton.SetActive(false);
+        } else {
+            selectButton.SetActive(false);
+            buyButton.SetActive(true);
+        }
+    }
+
+    public void BuyCharacter() {
+        Character character = CharDB.getChar(CharSelected);
+        if (userCoins >= character.price) {
+            // Debug.Log("Buying " + character.name);
+            queryManager.buyCharacter(CharSelected, character.price);
+            UpdateShop(character.price);
+            charList[CharSelected] = true;
+            UpdateCharacter();
+            selectButton.SetActive(true);
+            buyButton.SetActive(false);
+        } else {
+            ShowError("NotEnoughMoney");
+        }
+    }
+
+    public void SelectCharacter() {
+        PlayerPrefs.SetInt("CharId", CharSelected);
+        ShopPanel.SetActive(false);
+        ButtonsMenu.SetActive(true);
+    }
+
+    public void UpdateShop(int CoinAmount) {
+        userCoins -= CoinAmount;
+        PlayerPrefs.SetInt("Coins", userCoins);
+        UpdateCoinAmount();
+    }
+
     // Getters
 
-    public string GetName()
-    {
+    public string GetName() {
         return userName;
     }
 
-    public string GetPassword()
-    {
+    public string GetPassword() {
         return userPassword;
+    }
+
+    public int GetId() {
+        return userID;
+    }
+
+    public void getList(bool[] list) {
+        charList = list;
     }
 
 }

@@ -21,15 +21,16 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private GameObject bestScore;
     [SerializeField] private TMP_Text ScoreBestText;
-    [SerializeField] private TMP_Text NewBestText;
+    [SerializeField] private TMP_Text NewBestAnnouncer;
     [SerializeField] private TMP_Text ScoreDisplay;
+    public AudioManager audioManager;
 
     private string serverUrl = "http://localhost:5000";
 
     void Start()
     {
         loadPrefs();
-        NewBestText.text = "";
+        NewBestAnnouncer.text = "";
     }
 
     public void loadPrefs()
@@ -50,7 +51,7 @@ public class ScoreManager : MonoBehaviour
         Debug.Log(userMaxScore);
         if (score > userMaxScore)
         {
-            NewBestText.text = "New Best!";
+            NewBestAnnouncer.text = "New Best!";
             userMaxScore = score;
             SendScore(score);
         /*
@@ -76,7 +77,8 @@ public class ScoreManager : MonoBehaviour
 
     public void GiveCoin()
     {
-       StartCoroutine(sendCoin(userID));
+        audioManager.playGetCoin();
+        StartCoroutine(sendCoin(userID));
     }
 
     private void SendStats(int jumps, int enemiesKilled)

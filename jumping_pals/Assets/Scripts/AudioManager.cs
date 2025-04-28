@@ -29,9 +29,8 @@ public class AudioManager : MonoBehaviour {
 
     void Start() {
         loadPrefs();
-        playMusic();
     }
-
+    
     // Music
 
     public void playMusic() {
@@ -55,7 +54,6 @@ public class AudioManager : MonoBehaviour {
         while (MusicSource.isPlaying) {
             yield return null; // Wait until next frame
         }
-
         // Play the loop immediately
         MusicSource.clip = loop;
         MusicSource.loop = true;
