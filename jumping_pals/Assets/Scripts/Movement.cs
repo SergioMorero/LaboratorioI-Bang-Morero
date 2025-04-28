@@ -8,7 +8,8 @@ using System;
 
 public class Movement : MonoBehaviour
 {
-
+    public int jumps;
+    public int enemiesKilled;
     public int score;
 
     [Header("---------- Variables ----------")]
@@ -57,6 +58,8 @@ public class Movement : MonoBehaviour
         isGrounded = false;
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        jumps = 0;
+        enemiesKilled = 0;
         score = 0;
     }
 
@@ -109,6 +112,7 @@ public class Movement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            jumps += 1;
             lastGrounded = 0f;
             audioManager.playJumping();
             animator.SetTrigger("Jump");
@@ -160,7 +164,9 @@ public class Movement : MonoBehaviour
         alive = false;
         camera.isAlive = false;
         pauseButton.SetActive(false);
-        scoreManager.ShowDeathMessage(score);
+
+        scoreManager.ShowDeathMessage(score, jumps, enemiesKilled);
+            
         audioManager.stopMusic();
         audioManager.playGameOver();
 

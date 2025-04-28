@@ -27,7 +27,7 @@ public class Enemy1 : MonoBehaviour
 
     public LayerMask floor;
 
-    private Movement audioManager;
+    private Movement playerMovement;
     private ScoreManager scoreManager;
 
     // Start is called before the first frame update
@@ -37,7 +37,7 @@ public class Enemy1 : MonoBehaviour
         animator = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
         playerRB = player.GetComponent<Rigidbody2D>();
-        audioManager = player.GetComponent<Movement>();
+        playerMovement = player.GetComponent<Movement>();
         scoreManager = player.GetComponent<ScoreManager>();
     }
 
@@ -87,7 +87,8 @@ public class Enemy1 : MonoBehaviour
     private void die() {
         GetComponent<BoxCollider2D>().enabled = false;
         Instantiate(coin, transform.position, Quaternion.identity);
-        audioManager.playEnemy();
+        playerMovement.enemiesKilled += 1;
+        playerMovement.playEnemy();
         playerRB.linearVelocity -= new Vector2(0, playerRB.linearVelocity.y);
         playerRB.AddForce(new Vector2(-2 * playerRB.linearVelocity.x, 20), ForceMode2D.Impulse);
         Destroy(gameObject); // Enemy turns into a coin
