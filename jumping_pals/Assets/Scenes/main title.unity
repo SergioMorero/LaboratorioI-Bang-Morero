@@ -6319,7 +6319,8 @@ MonoBehaviour:
 
     Max Score: 1000
 
-    Enemies Killed: 42
+    Enemies
+    Killed: 42
 
     etc.
 
@@ -6851,7 +6852,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 581645695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f3bb1a311e80034097efd42a301b8d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b345805ef4549541b14ca9644fdddd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 1022128098}
@@ -15669,7 +15670,7 @@ Animator:
   m_GameObject: {fileID: 1365357411}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 60976d7f21b5d484bb2fb6875b2e2548, type: 2}
+  m_Controller: {fileID: 9100000, guid: 806fd140174bc8f419f9f8471a75b038, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -17660,7 +17661,7 @@ Animator:
   m_GameObject: {fileID: 1577903516}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6ed47e848ed0397488f882ffdf27d5d7, type: 2}
+  m_Controller: {fileID: 9100000, guid: e319e24cab694524eb4010ff94f34b4a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -18745,7 +18746,7 @@ Animator:
   m_GameObject: {fileID: 1685308361}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5eca94939088535459ddbc5aa08dfbed, type: 2}
+  m_Controller: {fileID: 9100000, guid: d093847a567d89342b36881477421d40, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -20168,7 +20169,7 @@ Animator:
   m_GameObject: {fileID: 1802081598}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 63f2f7033e26f184a813e088910d2991, type: 2}
+  m_Controller: {fileID: 9100000, guid: 87bb04ff5e2304b4c8d9339e55fa4583, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -21037,7 +21038,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1871322802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd103393f03a8ee44b1df33476958b3e, type: 3}
+  m_Script: {fileID: 11500000, guid: d2f439195b2692943ae5c5be8c6684cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1871322805
