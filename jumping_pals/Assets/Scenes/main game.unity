@@ -4988,18 +4988,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 689006061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60af86748e6ecf047abc6b81353dc2fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 23006f93ce89f80468ac79c93a4a9a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CharSelected: 0
-  CharDB: {fileID: 11400000, guid: 3660c3381ea867f48bfd9f5456de82d0, type: 2}
+  CharDB: {fileID: 11400000, guid: d90e45b730df54a42a72ddf881c6c42a, type: 2}
   character:
     name: 
     icon: {fileID: 0}
     price: 0
     sprites: {fileID: 0}
   SpriteSource: {fileID: 758720095}
-  resolver: {fileID: 0}
+  resolver: {fileID: 758720094}
 --- !u!1 &693844692
 GameObject:
   m_ObjectHideFlags: 0
@@ -5061,7 +5061,7 @@ MonoBehaviour:
   m_text: SCORE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a3c3f15148f5a02468c3bb67c616241f, type: 2}
-  m_sharedMaterial: {fileID: -8287766191331984014, guid: a3c3f15148f5a02468c3bb67c616241f, type: 2}
+  m_sharedMaterial: {fileID: 280348850553577323, guid: a3c3f15148f5a02468c3bb67c616241f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5568,7 +5568,7 @@ Animator:
   m_GameObject: {fileID: 758720086}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d26fd3a33d0a6804888a1b9708d02e3b, type: 2}
+  m_Controller: {fileID: 9100000, guid: aa608df8ce5f55f4da315679c99049f7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7806,17 +7806,17 @@ MonoBehaviour:
   plat3: {fileID: 1704013775}
   plat4: {fileID: 367951893}
   normalTile1: {fileID: -1025979398, guid: 812b5a48ff31c3541be432a6df1de288, type: 3}
-  normalTile2: {fileID: 8393511193826698236, guid: 3e12aec17e31af648b1138bc16bee05d, type: 3}
-  normalTile3: {fileID: 4433702840519633117, guid: 3e12aec17e31af648b1138bc16bee05d, type: 3}
+  normalTile2: {fileID: 8393511193826698236, guid: abb4c0bafb864f8458aa602efe7dfac4, type: 3}
+  normalTile3: {fileID: 4433702840519633117, guid: abb4c0bafb864f8458aa602efe7dfac4, type: 3}
   bigTile1: {fileID: 1763994001, guid: 812b5a48ff31c3541be432a6df1de288, type: 3}
-  bigTile2: {fileID: -553675941622416158, guid: 3e12aec17e31af648b1138bc16bee05d, type: 3}
-  bigTile3: {fileID: -5834001642416693815, guid: 3e12aec17e31af648b1138bc16bee05d, type: 3}
+  bigTile2: {fileID: -553675941622416158, guid: abb4c0bafb864f8458aa602efe7dfac4, type: 3}
+  bigTile3: {fileID: -5834001642416693815, guid: abb4c0bafb864f8458aa602efe7dfac4, type: 3}
   platform1: {fileID: 6804921335301702714, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
   platform2: {fileID: 4763790187890172042, guid: 185673d91f7f8524fa1ac2affdc67570, type: 3}
   movingPlatform1: {fileID: 4636787979600310182, guid: df4cb97e0abc69a4da2ec7b10bbc4001, type: 3}
   patrolEnemy: {fileID: 5937776508764713700, guid: 65fded88ea29a3245aa7f3f2685cfa84, type: 3}
   muncherEnemy: {fileID: 8623500612881545060, guid: c06ca209bf46b5543a51d324de7b0ebd, type: 3}
-  coin: {fileID: 1865898959278294824, guid: 59c38e4cbafb9894fa4126f8cf78534f, type: 3}
+  coin: {fileID: 1865898959278294824, guid: a45b807df43c9f84a8c7a5df97dd0813, type: 3}
   laser: {fileID: 1451109414069131920, guid: cfe04784e08404449a6e5f5b01950d1b, type: 3}
   audioManager: {fileID: 41494597}
 --- !u!4 &1543122872
@@ -14526,7 +14526,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2098503102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65919b78180014c4596ec3563c266671, type: 3}
+  m_Script: {fileID: 11500000, guid: 764bea0bb93779547a431d547a05d429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   userID: 0

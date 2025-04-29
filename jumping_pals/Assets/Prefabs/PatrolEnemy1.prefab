@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d968b9d68033a4f81f6e1c16890070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: {fileID: 1865898959278294824, guid: 59c38e4cbafb9894fa4126f8cf78534f, type: 3}
+  coin: {fileID: 1865898959278294824, guid: a45b807df43c9f84a8c7a5df97dd0813, type: 3}
   speed: 2.75
   playerLayer:
     serializedVersion: 2
@@ -195,7 +195,7 @@ Animator:
   m_GameObject: {fileID: 7804208341669400117}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1fc4eab724f1d764b8cacd4591221a70, type: 2}
+  m_Controller: {fileID: 9100000, guid: 43d041d8ca32fd34e9b42914acecc23c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -113,7 +113,7 @@ public class PlatformGenerator : MonoBehaviour
             if (playerMovement.isGrounded && player.transform.position.y > lastPlayerGroundedHeigh + 3 && Mathf.Abs(lastPlatformHeigh - player.transform.position.y) < 20)
             {
                 GeneratePlatform();
-                //GeneratePlatform();
+                GeneratePlatform();
             }
 
 
