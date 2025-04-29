@@ -248,7 +248,7 @@ public class AccountManager : MonoBehaviour
             case "login":
                 loginError.SetActive(true);
                 break;
-            case "reister":
+            case "register":
                 createError.SetActive(true);
                 break;
             case "delete":
