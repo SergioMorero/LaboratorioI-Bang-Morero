@@ -59,7 +59,7 @@ public class PlatformGenerator : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerMovement = player.GetComponent<Movement>();
 
-        // Elección de color muy ineficaz, se optimizará más adelante
+        // Elecciï¿½n de color muy ineficaz, se optimizarï¿½ mï¿½s adelante
         colorChosen = SelectMap();
 
         plat1.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
@@ -113,7 +113,7 @@ public class PlatformGenerator : MonoBehaviour
             if (playerMovement.isGrounded && player.transform.position.y > lastPlayerGroundedHeigh + 3 && Mathf.Abs(lastPlatformHeigh - player.transform.position.y) < 20)
             {
                 GeneratePlatform();
-                GeneratePlatform();
+                //GeneratePlatform();
             }
 
 
