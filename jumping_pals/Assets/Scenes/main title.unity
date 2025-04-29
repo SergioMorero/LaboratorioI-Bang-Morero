@@ -3083,7 +3083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLogged: 0
   CharSelected: 0
-  CharDB: {fileID: 11400000, guid: 3660c3381ea867f48bfd9f5456de82d0, type: 2}
+  CharDB: {fileID: 11400000, guid: d90e45b730df54a42a72ddf881c6c42a, type: 2}
   charList: 
   queryManager: {fileID: 308570088}
   init: {fileID: 794657435}
@@ -6417,7 +6417,6 @@ GameObject:
   - component: {fileID: 551230192}
   - component: {fileID: 551230191}
   - component: {fileID: 551230190}
-  - component: {fileID: 551230193}
   m_Layer: 5
   m_Name: AchievementsText
   m_TagString: Untagged
@@ -6559,18 +6558,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551230188}
   m_CullTransparentMesh: 1
---- !u!114 &551230193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 551230188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f42788dc470ccc9489701095b722bcf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &563217496
 GameObject:
   m_ObjectHideFlags: 0
@@ -7704,7 +7691,7 @@ MonoBehaviour:
   m_text: Character Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a3c3f15148f5a02468c3bb67c616241f, type: 2}
-  m_sharedMaterial: {fileID: -8287766191331984014, guid: a3c3f15148f5a02468c3bb67c616241f, type: 2}
+  m_sharedMaterial: {fileID: 280348850553577323, guid: a3c3f15148f5a02468c3bb67c616241f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11953,7 +11940,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8455653834510869561, guid: 73f12370f65378549974e519abd099fa, type: 3}
+  m_Sprite: {fileID: 8455653834510869561, guid: ec67e3b1fd73faa4eb6d661a31cc517e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20294,7 +20281,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a3c3f15148f5a02468c3bb67c616241f, type: 2}
-  m_sharedMaterial: {fileID: -8287766191331984014, guid: a3c3f15148f5a02468c3bb67c616241f, type: 2}
+  m_sharedMaterial: {fileID: 280348850553577323, guid: a3c3f15148f5a02468c3bb67c616241f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -21358,7 +21345,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7687405879052484842, guid: 4063ac681db017c499aa017af61e0d10, type: 3}
+  m_Sprite: {fileID: 7687405879052484842, guid: f7be8b15c107d5640a432e7165a82228, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21435,7 +21422,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1901393791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f42788dc470ccc9489701095b722bcf6, type: 3}
+  m_Script: {fileID: 11500000, guid: b69f2365d5ccb1a48a9bbe9b6f79ddbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1901393793
@@ -23356,7 +23343,7 @@ MonoBehaviour:
   m_text: Buy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edff49abf79a9fa4f9e466a1311a73c5, type: 2}
-  m_sharedMaterial: {fileID: -5192678359872663952, guid: edff49abf79a9fa4f9e466a1311a73c5, type: 2}
+  m_sharedMaterial: {fileID: -2052603022323773369, guid: edff49abf79a9fa4f9e466a1311a73c5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

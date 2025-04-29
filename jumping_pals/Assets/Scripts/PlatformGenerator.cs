@@ -3,11 +3,30 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlatformGenerator : MonoBehaviour
 {
 
     private GameObject player;
+
+    [SerializeField] private GameObject tMap1;
+    [SerializeField] private GameObject tMap2;
+    [SerializeField] private GameObject tMap3;
+
+    [SerializeField] private GameObject plat1;
+    [SerializeField] private GameObject plat2;
+    [SerializeField] private GameObject plat3;
+    [SerializeField] private GameObject plat4;
+
+    [SerializeField] private Sprite normalTile1;
+    [SerializeField] private Sprite normalTile2;
+    [SerializeField] private Sprite normalTile3;
+
+    [SerializeField] private Sprite bigTile1;
+    [SerializeField] private Sprite bigTile2;
+    [SerializeField] private Sprite bigTile3;
+
     [SerializeField] private Transform platform1;
     [SerializeField] private Transform platform2;
     [SerializeField] private Transform movingPlatform1;
@@ -21,8 +40,12 @@ public class PlatformGenerator : MonoBehaviour
     private float lastPlatformHeigh = 15;
 
     [SerializeField] private AudioManager audioManager;
+    private int colorChosen;
     private float lastPlayerGroundedHeigh;
     private Movement playerMovement;
+    private GameObject[] tileMaps = new GameObject[3];
+    private Sprite[] normalPlatformTiles = new Sprite[3];
+    private Sprite[] bigPlatformTiles = new Sprite[3];
     private int[] coinPositionDeviation = new int[3];
     private float[] horizontalValues = new float[8];
     private float[] verticalValues = new float[3];
@@ -35,6 +58,19 @@ public class PlatformGenerator : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         playerMovement = player.GetComponent<Movement>();
+
+        // Elección de color muy ineficaz, se optimizará más adelante
+        colorChosen = SelectMap();
+
+        plat1.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
+        plat2.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
+        plat3.GetComponent<SpriteRenderer>().sprite = bigPlatformTiles[colorChosen];
+        plat4.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
+
+
+        platform1.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
+        platform2.GetComponent<SpriteRenderer>().sprite = bigPlatformTiles[colorChosen];
+        movingPlatform1.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
 
         coinPositionDeviation[0] = -2;
         coinPositionDeviation[1] = 0;
@@ -121,4 +157,40 @@ public class PlatformGenerator : MonoBehaviour
         }
     }
 
+    int SelectMap()
+    {
+        tileMaps[0] = tMap1;
+        tileMaps[1] = tMap2;
+        tileMaps[2] = tMap3;
+
+        normalPlatformTiles[0] = normalTile1;
+        normalPlatformTiles[1] = normalTile2;
+        normalPlatformTiles[2] = normalTile3;
+
+        bigPlatformTiles[0] = bigTile1;
+        bigPlatformTiles[1] = bigTile2;
+        bigPlatformTiles[2] = bigTile3;
+
+        int chosen = Random.Range(0, 3);
+        switch (chosen)
+        {
+            case 0:
+                tMap1.SetActive(true);
+                tMap2.SetActive(false);
+                tMap3.SetActive(false);
+                break;
+            case 1:
+                tMap2.SetActive(true);
+                tMap1.SetActive(false);
+                tMap3.SetActive(false);
+                break;
+            case 2:
+                tMap3.SetActive(true);
+                tMap1.SetActive(false);
+                tMap2.SetActive(false);
+                break;
+        }
+
+        return chosen;
+    }
 }
