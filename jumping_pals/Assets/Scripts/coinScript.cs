@@ -3,15 +3,25 @@ using UnityEngine;
 public class coinScript : MonoBehaviour
 {
     private ScoreManager scoreManager;
+    private LocalScoreManager localScoreManager;
     private bool collected;
     private Rigidbody2D rb;
     private BoxCollider2D bc;
     private float initialPosition;
+    private bool isSP;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        isSP = GameObject.Find("PlatformGenerator").GetComponent<PlatformGenerator>().isSinglePlayer;
+        if (isSP)
+        {
+            scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        }
+        else
+        {
+            localScoreManager = GameObject.Find("ScoreManager").GetComponent<LocalScoreManager>();
+        }
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
     }
@@ -36,7 +46,14 @@ public class coinScript : MonoBehaviour
     {
         if (other.CompareTag("Player") && !collected)
         {
-            scoreManager.GiveCoin();
+            if (scoreManager != null) 
+            {
+                scoreManager.GiveCoin();
+            }
+            else
+            {
+                localScoreManager.GiveCoin();
+            }
             // GetComponent<BoxCollider2D>().enabled = false;
             collected = true;
             jump();

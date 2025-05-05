@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour {
 
     [Header("---------- Audio Sources ----------")]
     [SerializeField] private AudioSource MusicSource;
+    [SerializeField] private AudioSource DeadSoundSource;
     [SerializeField] private AudioSource SFXSource;
 
     [Header("---------- Controllers ----------")]
@@ -71,10 +72,11 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void playGameOver() {
-        MusicSource.Stop();
-        MusicSource.clip = death;
-        MusicSource.loop = false;
-        MusicSource.Play();
+        // MusicSource.Stop();
+        DeadSoundSource.PlayOneShot(death);
+        //MusicSource.clip = death;
+        //MusicSource.loop = false;
+        //MusicSource.Play();
     }
 
     public void playJumping() {
