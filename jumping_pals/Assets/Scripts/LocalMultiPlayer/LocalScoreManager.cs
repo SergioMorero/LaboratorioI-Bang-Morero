@@ -10,7 +10,6 @@ public class LocalScoreManager : MonoBehaviour
     public int score;
     public int jumps;
     public int enemiesKilled;
-    public bool arePlayersAlive;
 
     [Header("----- Control -----")]
     [SerializeField] private int userID;
@@ -38,18 +37,6 @@ public class LocalScoreManager : MonoBehaviour
         enemiesKilled = 0;
         loadPrefs();
         NewBestAnnouncer.text = "";
-        arePlayersAlive = true;
-    }
-
-    private void Update()
-    {
-        int count = 0;
-        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
-        {
-            if (player.GetComponent<LocalPlayer>().alive) count++;
-        }
-        if (count == 0) arePlayersAlive = false;
-        else count = 0;
     }
 
     public void loadPrefs()

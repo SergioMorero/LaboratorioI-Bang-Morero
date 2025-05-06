@@ -4672,6 +4672,8 @@ MonoBehaviour:
   pauseButton: {fileID: 1725008306}
   resumeButton: {fileID: 1171810933}
   pausePannel: {fileID: 2024495424}
+  player1Name: {fileID: 0}
+  player2Name: {fileID: 0}
 --- !u!114 &594839028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5360,6 +5362,68 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &719547077
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2220815124112921823, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+      propertyPath: m_Name
+      value: platform1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804921335301702714, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804921335301702714, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804921335301702714, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804921335301702714, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804921335301702714, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804921335301702714, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804921335301702714, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804921335301702714, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804921335301702714, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804921335301702714, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+--- !u!1 &719547078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2220815124112921823, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+  m_PrefabInstance: {fileID: 719547077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &758720086
 GameObject:
   m_ObjectHideFlags: 0
@@ -7939,6 +8003,7 @@ MonoBehaviour:
   plat2: {fileID: 1740010217}
   plat3: {fileID: 1704013775}
   plat4: {fileID: 367951893}
+  plat5: {fileID: 719547078}
   normalTile1: {fileID: -1025979398, guid: 812b5a48ff31c3541be432a6df1de288, type: 3}
   normalTile2: {fileID: 8393511193826698236, guid: abb4c0bafb864f8458aa602efe7dfac4, type: 3}
   normalTile3: {fileID: 4433702840519633117, guid: abb4c0bafb864f8458aa602efe7dfac4, type: 3}
@@ -7952,6 +8017,9 @@ MonoBehaviour:
   muncherEnemy: {fileID: 8623500612881545060, guid: c06ca209bf46b5543a51d324de7b0ebd, type: 3}
   coin: {fileID: 1865898959278294824, guid: a45b807df43c9f84a8c7a5df97dd0813, type: 3}
   laser: {fileID: 1451109414069131920, guid: cfe04784e08404449a6e5f5b01950d1b, type: 3}
+  lastPlatformHeigh: 21
+  lastXPosition: -7
+  distanceOfGeneration: 30
   audioManager: {fileID: 41494597}
 --- !u!4 &1543122872
 Transform:
@@ -14760,9 +14828,10 @@ SceneRoots:
   - {fileID: 217314223}
   - {fileID: 1543122872}
   - {fileID: 194483102}
+  - {fileID: 1933724823}
   - {fileID: 1367609519}
   - {fileID: 2357295621168425073}
-  - {fileID: 1933724823}
+  - {fileID: 719547077}
   - {fileID: 603470253}
   - {fileID: 394271726}
   - {fileID: 985946555}

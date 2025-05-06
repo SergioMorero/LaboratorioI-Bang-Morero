@@ -20,6 +20,7 @@ public class PlatformGenerator : MonoBehaviour
     [SerializeField] private GameObject plat2;
     [SerializeField] private GameObject plat3;
     [SerializeField] private GameObject plat4;
+    [SerializeField] private GameObject plat5;
 
     [SerializeField] private Sprite normalTile1;
     [SerializeField] private Sprite normalTile2;
@@ -40,7 +41,9 @@ public class PlatformGenerator : MonoBehaviour
 
     [SerializeField] private Transform laser;
     
-    private float lastPlatformHeigh = 15;
+    public float lastPlatformHeigh;
+    public float lastXPosition;
+    public float distanceOfGeneration;
 
     [SerializeField] private AudioManager audioManager;
     private int colorChosen;
@@ -55,7 +58,6 @@ public class PlatformGenerator : MonoBehaviour
     private float[] verticalValues = new float[3];
     private Transform[] platforms = new Transform[9];
     private Transform[] enemies = new Transform[4];
-    private float lastXPosition = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +82,7 @@ public class PlatformGenerator : MonoBehaviour
         plat2.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
         plat3.GetComponent<SpriteRenderer>().sprite = bigPlatformTiles[colorChosen];
         plat4.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
+        plat5.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
 
 
         platform1.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
@@ -140,7 +143,7 @@ public class PlatformGenerator : MonoBehaviour
                 playerGrounded = localGamePlayerScript.isGrounded;
             }
 
-            if (playerGrounded && player.transform.position.y > lastPlayerGroundedHeigh + 3 && Mathf.Abs(lastPlatformHeigh - player.transform.position.y) < 20)
+            if (playerGrounded && player.transform.position.y > lastPlayerGroundedHeigh + 3 && Mathf.Abs(lastPlatformHeigh - player.transform.position.y) < distanceOfGeneration)
             {
                 GeneratePlatform();
                 GeneratePlatform();
