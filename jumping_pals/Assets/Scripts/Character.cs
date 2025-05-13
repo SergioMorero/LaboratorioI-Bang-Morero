@@ -8,4 +8,5 @@ public class Character
     public Sprite icon;
     public int price;
     public SpriteLibraryAsset sprites;
+    public SpriteLibraryAsset altSprites;
 }
