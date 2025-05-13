@@ -13,12 +13,14 @@ public class MainCamera : MonoBehaviour
     private float prevHeigh;
     public bool isAlive = true; // Player is alive
     private bool isSinglePlayer;
+    private int distance;
 
     // Start is called before the first frame update
     void Start()
     {
         deathBar = GameObject.FindWithTag("Death Bar");
         isSinglePlayer = GameObject.Find("PlatformGenerator").GetComponent<PlatformGenerator>().isSinglePlayer;
+        distance = isSinglePlayer ? 17 : 25;
     }
 
     // Update is called once per frame
@@ -51,7 +53,7 @@ public class MainCamera : MonoBehaviour
             if (transform.position.y < highestPlayer.transform.position.y + 1 && highestPlayer.transform.position.y > prevHeigh)
             {
                 transform.position = new Vector3(transform.position.x, highestPlayer.transform.position.y, transform.position.z);
-                deathBar.transform.position = new Vector3(transform.position.x, highestPlayer.transform.position.y - 17, transform.position.z);
+                deathBar.transform.position = new Vector3(transform.position.x, highestPlayer.transform.position.y - distance, transform.position.z);
             }    
         }
     }

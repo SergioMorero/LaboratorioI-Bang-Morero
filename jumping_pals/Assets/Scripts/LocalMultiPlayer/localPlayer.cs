@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -43,6 +44,7 @@ public class LocalPlayer : MonoBehaviour
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private LocalScoreManager scoreManager;
+    [SerializeField] private GameObject nameDisplayer;
     public MainCamera camera;
     private SpriteRenderer sprite;
 
@@ -77,6 +79,8 @@ public class LocalPlayer : MonoBehaviour
 
         if (alive)
         {
+            StartCoroutine(displayName());
+
             hitEnemyLeft = Physics2D.Raycast(transform.position, Vector3.left, 1.25f, enemy);
             hitEnemyUpLeft = Physics2D.Raycast(transform.position + Vector3.up * 0.75f, Vector3.left, 1.25f, enemy);
             hitEnemyDownLeft = Physics2D.Raycast(transform.position + Vector3.down * 0.55f, Vector3.left, 1.25f, enemy);
@@ -167,6 +171,7 @@ public class LocalPlayer : MonoBehaviour
     private void die()
     {
         alive = false;
+        GameObject.Destroy(nameDisplayer);
 
         int count = 0;
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
@@ -194,6 +199,12 @@ public class LocalPlayer : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
         rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
         GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    IEnumerator displayName()
+    {
+        nameDisplayer.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, 0);
+        yield return null;
     }
 
     public void playEnemy()
