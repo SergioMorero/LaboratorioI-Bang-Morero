@@ -38,3 +38,5 @@ Thumbs.db
 #Misc
 credential.py
 /jumping_pals/Assets/UI/font
+.idea/
+__pycache__
