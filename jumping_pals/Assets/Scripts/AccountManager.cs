@@ -32,6 +32,8 @@ public class AccountManager : MonoBehaviour
     public CharacterDB CharDB;
     public bool[] charList;
 
+    public bool alter = false;
+
     // Serializeds
 
     [Header("+-+-+-+ Objects +-+-+-+")]
@@ -136,6 +138,8 @@ public class AccountManager : MonoBehaviour
         }
 
         queryManager.getCharList();
+
+        PlayerPrefs.SetInt("alt", 0);
     }
 
     public void loginAttempt() {
@@ -338,7 +342,7 @@ public class AccountManager : MonoBehaviour
         UpdateCharacter();
     }
 
-    private void UpdateCharacter() {
+    public void UpdateCharacter() {
         Character selected = CharDB.getChar(CharSelected);
         CharName.text = selected.name;
         CharSprite.sprite = selected.icon;
@@ -377,6 +381,18 @@ public class AccountManager : MonoBehaviour
         userCoins -= CoinAmount;
         PlayerPrefs.SetInt("Coins", userCoins);
         UpdateCoinAmount();
+    }
+
+    public void swapChar() {
+        Character selected = CharDB.getChar(CharSelected);
+        if (alter) {
+            CharSprite.sprite = selected.icon;
+            PlayerPrefs.SetInt("alt", 0);
+        } else {
+            CharSprite.sprite = selected.alterIcon;
+            PlayerPrefs.SetInt("alt", 1);
+        }
+        alter = !alter;
     }
 
     // Getters
