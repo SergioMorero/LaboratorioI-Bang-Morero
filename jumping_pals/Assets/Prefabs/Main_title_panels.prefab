@@ -2906,7 +2906,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1342411301826054704, guid: f069976a85b761a40a9fd57a46011873, type: 3}
         m_TargetAssemblyTypeName: start, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 3
@@ -8428,7 +8428,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1342411301826054704, guid: f069976a85b761a40a9fd57a46011873, type: 3}
         m_TargetAssemblyTypeName: start, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 3
