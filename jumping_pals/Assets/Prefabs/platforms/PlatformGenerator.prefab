@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8600532412512830641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8304414297725372441}
+  - component: {fileID: 3870975484346058683}
+  m_Layer: 0
+  m_Name: PlatformGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8304414297725372441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8600532412512830641}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3870975484346058683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8600532412512830641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60ca0c1295319d43ac115c7b93c311f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSinglePlayer: 0
+  tMap1: {fileID: 0}
+  tMap2: {fileID: 0}
+  tMap3: {fileID: 0}
+  plat1: {fileID: 0}
+  plat2: {fileID: 0}
+  plat3: {fileID: 0}
+  plat4: {fileID: 0}
+  plat5: {fileID: 0}
+  normalTile1: {fileID: -1025979398, guid: 812b5a48ff31c3541be432a6df1de288, type: 3}
+  normalTile2: {fileID: 8393511193826698236, guid: abb4c0bafb864f8458aa602efe7dfac4, type: 3}
+  normalTile3: {fileID: 4433702840519633117, guid: abb4c0bafb864f8458aa602efe7dfac4, type: 3}
+  bigTile1: {fileID: 1763994001, guid: 812b5a48ff31c3541be432a6df1de288, type: 3}
+  bigTile2: {fileID: -553675941622416158, guid: abb4c0bafb864f8458aa602efe7dfac4, type: 3}
+  bigTile3: {fileID: -5834001642416693815, guid: abb4c0bafb864f8458aa602efe7dfac4, type: 3}
+  platform1: {fileID: 6804921335301702714, guid: 625411f21165de54b81eff24b87b3a07, type: 3}
+  platform2: {fileID: 4763790187890172042, guid: 185673d91f7f8524fa1ac2affdc67570, type: 3}
+  movingPlatform1: {fileID: 4636787979600310182, guid: df4cb97e0abc69a4da2ec7b10bbc4001, type: 3}
+  patrolEnemy: {fileID: 5937776508764713700, guid: 65fded88ea29a3245aa7f3f2685cfa84, type: 3}
+  muncherEnemy: {fileID: 8623500612881545060, guid: c06ca209bf46b5543a51d324de7b0ebd, type: 3}
+  coin: {fileID: 1865898959278294824, guid: a45b807df43c9f84a8c7a5df97dd0813, type: 3}
+  laser: {fileID: 1451109414069131920, guid: cfe04784e08404449a6e5f5b01950d1b, type: 3}
+  lastPlatformHeigh: 21
+  lastXPosition: -7
+  distanceOfGeneration: 40
+  audioManager: {fileID: 0}

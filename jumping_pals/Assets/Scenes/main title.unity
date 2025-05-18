@@ -532,22 +532,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 4298737700409628689, guid: 1773c7ca80e5ca1409038c19efc6d711, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4855499110868054343, guid: 1773c7ca80e5ca1409038c19efc6d711, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6265451299599890158, guid: 1773c7ca80e5ca1409038c19efc6d711, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 519420033}
-    - target: {fileID: 8963803684311275927, guid: 1773c7ca80e5ca1409038c19efc6d711, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
