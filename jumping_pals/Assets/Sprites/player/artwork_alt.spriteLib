@@ -21,12 +21,12 @@ MonoBehaviour:
       m_Hash: 786247657
       m_Sprite: {fileID: 8868729072188591806, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 3628842622272534216, guid: 64573673c1f76ed4ba578eaa3cd09855, type: 3}
+      m_SpriteOverride: {fileID: 3628842622272534216, guid: 212195581f59ad542a4e36bd1e164938, type: 3}
     - m_Name: idle2
       m_Hash: 936672851
       m_Sprite: {fileID: -8294748474342274760, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 828523048, guid: 64573673c1f76ed4ba578eaa3cd09855, type: 3}
+      m_SpriteOverride: {fileID: -341563881, guid: 212195581f59ad542a4e36bd1e164938, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 2
   - m_Name: walk
@@ -37,12 +37,12 @@ MonoBehaviour:
       m_Hash: 407952310
       m_Sprite: {fileID: 8781019514964437993, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -463979544, guid: 64573673c1f76ed4ba578eaa3cd09855, type: 3}
+      m_SpriteOverride: {fileID: -109309899, guid: 212195581f59ad542a4e36bd1e164938, type: 3}
     - m_Name: walk2
       m_Hash: 22645260
       m_Sprite: {fileID: 7708609292541582763, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -2127051193, guid: 64573673c1f76ed4ba578eaa3cd09855, type: 3}
+      m_SpriteOverride: {fileID: 818558293, guid: 212195581f59ad542a4e36bd1e164938, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 2
   - m_Name: jump
@@ -53,7 +53,7 @@ MonoBehaviour:
       m_Hash: 666043926
       m_Sprite: {fileID: 9075362701424418546, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 1413160998, guid: 64573673c1f76ed4ba578eaa3cd09855, type: 3}
+      m_SpriteOverride: {fileID: 925927912, guid: 212195581f59ad542a4e36bd1e164938, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 1
   - m_Name: fall
@@ -64,7 +64,7 @@ MonoBehaviour:
       m_Hash: 995155724
       m_Sprite: {fileID: 3317177067112860294, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 1866562034, guid: 64573673c1f76ed4ba578eaa3cd09855, type: 3}
+      m_SpriteOverride: {fileID: 244183197, guid: 212195581f59ad542a4e36bd1e164938, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 1
   - m_Name: death
@@ -75,9 +75,9 @@ MonoBehaviour:
       m_Hash: 659019054
       m_Sprite: {fileID: 1033602697210819807, guid: 1b5e88331cac0ea489eaf4466d572867, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 1228825002, guid: 64573673c1f76ed4ba578eaa3cd09855, type: 3}
+      m_SpriteOverride: {fileID: 1154001415, guid: 212195581f59ad542a4e36bd1e164938, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 1
   m_PrimaryLibraryGUID: fc57df6fa1594f24f85bb26592dc5c0b
-  m_ModificationHash: 638821296293584734
+  m_ModificationHash: 638832058615470784
   m_Version: 1

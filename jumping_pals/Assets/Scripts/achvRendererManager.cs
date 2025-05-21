@@ -25,7 +25,7 @@ public class Achievements : MonoBehaviour
 
     private int userID;
     private TextMeshProUGUI achievementsText;
-    private string serverUrl = "http://localhost:5000";
+    private string serverUrl = "https://jumping-pals.onrender.com";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()

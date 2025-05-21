@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 
 public class ServerConnection : MonoBehaviour
 {
-    private string serverUrl = "http://localhost:5000/user";
+    private string serverUrl = "https://jumping-pals.onrender.com";
 
     void Start()
     {

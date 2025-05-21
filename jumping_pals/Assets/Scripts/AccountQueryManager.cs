@@ -8,7 +8,7 @@ using System.Text;
 
 public class AccountQueryManager : MonoBehaviour {
 
-    private string serverUrl = "http://localhost:5000";
+    private string serverUrl = "https://jumping-pals.onrender.com";
 
     [SerializeField] private AccountManager accountManager;
     public ScreenLoader screenLoader;
