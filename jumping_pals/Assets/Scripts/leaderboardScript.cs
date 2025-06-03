@@ -21,6 +21,7 @@ public class Leaderboard : MonoBehaviour
 
     private TextMeshProUGUI leaderboardText;
     private string serverUrl = "https://jumping-pals.onrender.com";
+    [SerializeField] ScreenLoader screenLoader;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class Leaderboard : MonoBehaviour
 
     IEnumerator FetchLeaderboard()
     {
+        screenLoader.start();
         using (UnityWebRequest request = UnityWebRequest.Get(serverUrl + "/leaderboard"))
         {
             yield return request.SendWebRequest();
@@ -54,5 +56,6 @@ public class Leaderboard : MonoBehaviour
                 Debug.LogError("Leaderboard request failed: " + request.error);
             }
         }
+        screenLoader.stop();
     }
 }

@@ -18,7 +18,7 @@ public class ScreenLoader : MonoBehaviour
         }
     }
 
-    public void load() {
+    public void start() {
         loadingPanle.setActive(true);
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -26,6 +27,7 @@ public class Achievements : MonoBehaviour
     private int userID;
     private TextMeshProUGUI achievementsText;
     private string serverUrl = "https://jumping-pals.onrender.com";
+    [SerializeField] ScreenLoader screenLoader;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
@@ -38,6 +40,7 @@ public class Achievements : MonoBehaviour
 
     IEnumerator ShowAchievements()
     {
+        screenLoader.start();
         using (UnityWebRequest request = UnityWebRequest.Get(serverUrl + "/achievements/" + userID))
         {
             yield return request.SendWebRequest();
@@ -70,6 +73,7 @@ public class Achievements : MonoBehaviour
             }
 
         }
+        screenLoader.stop();
     }
     
 }

@@ -103,7 +103,7 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     IEnumerator get(string name, string password, bool showLogin) {
-        screenLoader.begin();
+        screenLoader.start();
         string route = "/login";
 
         UserData data = new UserData { name = name, password = password };
@@ -136,7 +136,7 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     IEnumerator post(string name, string password) {
-        screenLoader.begin();
+        screenLoader.start();
         string route = "/user";
 
         UserData data = new UserData { name = name, password = password };
@@ -171,7 +171,7 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     IEnumerator put(string oldName, string oldPassword, string newName, string newPassword) {
-        screenLoader.begin();
+        screenLoader.start();
         string route = "/user";
 
         UserUpdate data = new UserUpdate { name = oldName, password = oldPassword, newName = newName, newPassword = newPassword };
@@ -204,7 +204,7 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     IEnumerator delete(string name, string password) {
-        screenLoader.begin();
+        screenLoader.start();
         string route = "/user";
 
         UserData data = new UserData { name = name, password = password };
@@ -237,7 +237,7 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     IEnumerator BuyCharacterCoroutine(int UserId, int CharId, int CoinAmount) {
-        screenLoader.begin();
+        screenLoader.start();
         string route = "/buy-character";
 
         CharCart data = new CharCart { UserId = UserId, CharId = CharId, CoinAmount = CoinAmount };
