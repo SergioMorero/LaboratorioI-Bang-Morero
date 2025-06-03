@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Specialized;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -38,6 +40,8 @@ public class LocalPlayer : MonoBehaviour
     private KeyCode right;
     private KeyCode up;
 
+    private Transform transform;
+
     [Header("---------- Objects ----------")]
 
     [SerializeField] private PauseManager pauseManager;
@@ -57,6 +61,7 @@ public class LocalPlayer : MonoBehaviour
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         player = gameObject.name;
+        transform = GetComponent<Transform>();
         switch (player)
         {
             case "player1":
@@ -171,7 +176,7 @@ public class LocalPlayer : MonoBehaviour
     private void die()
     {
         alive = false;
-        GameObject.Destroy(nameDisplayer);
+        nameDisplayer.setActive(false);
 
         int count = 0;
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
@@ -210,5 +215,16 @@ public class LocalPlayer : MonoBehaviour
     public void playEnemy()
     {
         audioManager.playEnemy();
+    }
+
+    public void revive(Vector3 position) {
+        alive = true;
+        nameDisplayer.setActive(true);
+        GetComponent<BoxCollider2D>().enabled = true;
+        /*
+        audioManager.playRevive();     -> Not implemented yet.
+        animator.setTrigger("Revive"); -> Restart animation.
+         */
+        transform.position = position;
     }
 }
