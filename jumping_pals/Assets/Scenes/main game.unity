@@ -3309,6 +3309,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7446504523731260785, guid: 5c663289125a80849a55c6102b9a6bc6, type: 3}
+      propertyPath: sceneId
+      value: 4054884211
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5283,6 +5287,10 @@ PrefabInstance:
     - target: {fileID: 6804921335301702714, guid: 5c663289125a80849a55c6102b9a6bc6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7446504523731260785, guid: 5c663289125a80849a55c6102b9a6bc6, type: 3}
+      propertyPath: sceneId
+      value: 3534509096
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7485,6 +7493,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5764023962358036072, guid: 07f15ebdf920cad4ab5c02d753961e3f, type: 3}
+      propertyPath: sceneId
+      value: 4102641182
+      objectReference: {fileID: 0}
     - target: {fileID: 1622148697994263665, guid: 07f15ebdf920cad4ab5c02d753961e3f, type: 3}
       propertyPath: m_Name
       value: bigPlatform1
@@ -7808,6 +7820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60ca0c1295319d43ac115c7b93c311f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   isSinglePlayer: 1
   tMap1: {fileID: 58121781}
   tMap2: {fileID: 1729623111}
@@ -11541,6 +11554,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5149550861667439928, guid: 9869d35df78e96d4f8ee4526509f472a, type: 3}
+      propertyPath: sceneId
+      value: 1500569416
+      objectReference: {fileID: 0}
     - target: {fileID: 7879415678169252000, guid: 9869d35df78e96d4f8ee4526509f472a, type: 3}
       propertyPath: m_Name
       value: movingPlatform1
@@ -14567,6 +14584,10 @@ PrefabInstance:
     - target: {fileID: 6804921335301702714, guid: 5c663289125a80849a55c6102b9a6bc6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7446504523731260785, guid: 5c663289125a80849a55c6102b9a6bc6, type: 3}
+      propertyPath: sceneId
+      value: 3085704031
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -26,6 +26,7 @@ public class Enemy1 : MonoBehaviour
 
     public bool gotHit;
     private bool isSinglePlayer;
+    public bool isMultiplayer;
 
     public LayerMask floor;
 
@@ -40,10 +41,12 @@ public class Enemy1 : MonoBehaviour
         animator = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
         playerRB = player.GetComponent<Rigidbody2D>();
-        isSinglePlayer = GameObject.Find("PlatformGenerator").GetComponent<PlatformGenerator>().isSinglePlayer;
+        GameObject pG = GameObject.Find("PlatformGenerator");
+        isMultiplayer = pG == null;
+        isSinglePlayer = (pG != null) ? pG.GetComponent<PlatformGenerator>().isSinglePlayer : false;
         playerMovement = (isSinglePlayer) ? player.GetComponent<Movement>() : null;
         scoreManager = (isSinglePlayer) ? player.GetComponent<ScoreManager>() : null;
-        localScoreManager = (!isSinglePlayer) ? GameObject.FindWithTag("ScoreManager").GetComponent<LocalScoreManager>() : null;
+        localScoreManager = (!isSinglePlayer && pG != null) ? GameObject.FindWithTag("ScoreManager").GetComponent<LocalScoreManager>() : null;
         
     }
 
@@ -92,7 +95,8 @@ public class Enemy1 : MonoBehaviour
 
     private void die() {
         GetComponent<BoxCollider2D>().enabled = false;
-        Instantiate(coin, transform.position, Quaternion.identity);
+        if (!isMultiplayer) Instantiate(coin, transform.position, Quaternion.identity);
+
         if (isSinglePlayer)
         {
             playerMovement.enemiesKilled += 1;
@@ -100,7 +104,7 @@ public class Enemy1 : MonoBehaviour
             playerRB.linearVelocity -= new Vector2(0, playerRB.linearVelocity.y);
             playerRB.AddForce(new Vector2(-2 * playerRB.linearVelocity.x, 20), ForceMode2D.Impulse);
         }
-        else
+        else if (localScoreManager != null)
         {
             localScoreManager.enemiesKilled += 1;
             localScoreManager.playEnemy();
@@ -116,11 +120,31 @@ public class Enemy1 : MonoBehaviour
             {
                 localPlayerRB = hitHeadRight.collider.gameObject.GetComponent<Rigidbody2D>();
             }
-            Debug.Log(localPlayerRB.name);
             localPlayerRB.linearVelocity -= new Vector2(0, localPlayerRB.linearVelocity.y);
             localPlayerRB.AddForce(new Vector2(-2 * localPlayerRB.linearVelocity.x, 20), ForceMode2D.Impulse);
         }
-        Destroy(gameObject); // Enemy turns into a coin
+        else
+        {
+            Rigidbody2D multiplayerRB;
+            if (hitHeadLeft.collider != null)
+            {
+                multiplayerRB = hitHeadLeft.collider.gameObject.GetComponent<Rigidbody2D>();
+            }
+            else if (hitHead.collider != null)
+            {
+                multiplayerRB = hitHead.collider.gameObject.GetComponent<Rigidbody2D>();
+            }
+            else
+            {
+                multiplayerRB = hitHeadRight.collider.gameObject.GetComponent<Rigidbody2D>();
+            }
+            multiplayerRB.linearVelocity -= new Vector2(0, multiplayerRB.linearVelocity.y);
+            multiplayerRB.AddForce(new Vector2(-2 * multiplayerRB.linearVelocity.x, 20), ForceMode2D.Impulse);
+
+        }
+        Destroy(gameObject);
+
+
         /*
         animator.SetTrigger("GotHit");
         speed = 0;

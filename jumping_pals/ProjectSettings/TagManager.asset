@@ -13,6 +13,8 @@ TagManager:
   - muncher
   - ScoreManager
   - Bottom
+  - Camera
+  - PlatformGenerator
   layers:
   - Default
   - TransparentFX
