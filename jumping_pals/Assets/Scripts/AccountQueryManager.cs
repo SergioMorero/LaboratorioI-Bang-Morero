@@ -103,7 +103,7 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     IEnumerator get(string name, string password, bool showLogin) {
-
+        screenLoader.start();
         string route = "/login";
 
         UserData data = new UserData { name = name, password = password };
@@ -128,6 +128,7 @@ public class AccountQueryManager : MonoBehaviour {
             UserResponse response = JsonUtility.FromJson<UserResponse>(request.downloadHandler.text);
             // Debug.Log("ID: " + response.id + ", name: " + response.name + ", password: " + response.password);
             accountManager.LogUserIn(response.id, response.name, response.password, response.score, response.coins, showLogin);
+            screenLoader.stop();
         } else {
             Debug.Log("Error en la autenticación: " + request.error);
             accountManager.ShowError("login");
@@ -135,6 +136,7 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     IEnumerator post(string name, string password) {
+        screenLoader.start();
         string route = "/user";
 
         UserData data = new UserData { name = name, password = password };
@@ -161,7 +163,7 @@ public class AccountQueryManager : MonoBehaviour {
 
             // Realizar una query para obtener la id recién agregada y realizar Log In
             StartCoroutine(get(name, password, true));
-
+            screenLoader.stop();
         } else {
             Debug.Log("Error en la creación: " + request.error);
             accountManager.ShowError("register");
@@ -169,7 +171,7 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     IEnumerator put(string oldName, string oldPassword, string newName, string newPassword) {
-
+        screenLoader.start();
         string route = "/user";
 
         UserUpdate data = new UserUpdate { name = oldName, password = oldPassword, newName = newName, newPassword = newPassword };
@@ -194,6 +196,7 @@ public class AccountQueryManager : MonoBehaviour {
         if (request.result == UnityWebRequest.Result.Success) {
             // Debug.Log("Usuario Modificado: " + request.downloadHandler.text);
             accountManager.UpdateUser(newName, newPassword);
+            screenLoader.stop();
         } else {
             Debug.Log("Error en la Modificación: " + request.error);
             accountManager.ShowError("edit");
@@ -201,7 +204,7 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     IEnumerator delete(string name, string password) {
-
+        screenLoader.start();
         string route = "/user";
 
         UserData data = new UserData { name = name, password = password };
@@ -226,6 +229,7 @@ public class AccountQueryManager : MonoBehaviour {
         if (request.result == UnityWebRequest.Result.Success) {
             // Debug.Log("Usuario eliminado");
             accountManager.LogUserOut();
+            screenLoader.stop();
         } else {
             Debug.Log("Error en la eliminación: " + request.error);
             accountManager.ShowError("delete");
@@ -233,6 +237,7 @@ public class AccountQueryManager : MonoBehaviour {
     }
 
     IEnumerator BuyCharacterCoroutine(int UserId, int CharId, int CoinAmount) {
+        screenLoader.start();
         string route = "/buy-character";
 
         CharCart data = new CharCart { UserId = UserId, CharId = CharId, CoinAmount = CoinAmount };
@@ -257,7 +262,7 @@ public class AccountQueryManager : MonoBehaviour {
         if (request.result == UnityWebRequest.Result.Success) {
             // Debug.Log("Personaje comprado");
             //accountManager.UpdateShop(CoinAmount);
-            
+            screenLoader.stop();
         } else {
             Debug.Log("Error en la compra: " + request.error);
             accountManager.ShowError("NotPurchased");
