@@ -40,7 +40,7 @@ public class Achievements : MonoBehaviour
 
     IEnumerator ShowAchievements()
     {
-        screenLoader.start();
+        screenLoader.loadScreen();
         using (UnityWebRequest request = UnityWebRequest.Get(serverUrl + "/achievements/" + userID))
         {
             yield return request.SendWebRequest();
@@ -69,7 +69,7 @@ public class Achievements : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Error: " + request.error);
+                UnityEngine.Debug.LogError("Error: " + request.error);
             }
 
         }

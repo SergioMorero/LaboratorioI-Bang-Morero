@@ -40,8 +40,6 @@ public class LocalPlayer : MonoBehaviour
     private KeyCode right;
     private KeyCode up;
 
-    private Transform transform;
-
     [Header("---------- Objects ----------")]
 
     [SerializeField] private PauseManager pauseManager;
@@ -61,7 +59,6 @@ public class LocalPlayer : MonoBehaviour
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         player = gameObject.name;
-        transform = GetComponent<Transform>();
         switch (player)
         {
             case "player1":
@@ -176,7 +173,7 @@ public class LocalPlayer : MonoBehaviour
     private void die()
     {
         alive = false;
-        nameDisplayer.setActive(false);
+        nameDisplayer.SetActive(false);
 
         int count = 0;
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
@@ -217,9 +214,9 @@ public class LocalPlayer : MonoBehaviour
         audioManager.playEnemy();
     }
 
-    public void revive(Vector3 position) {
+    public void revivePlayer(Vector3 position) {
         alive = true;
-        nameDisplayer.setActive(true);
+        nameDisplayer.SetActive(true);
         GetComponent<BoxCollider2D>().enabled = true;
         /*
         audioManager.playRevive();     -> Not implemented yet.

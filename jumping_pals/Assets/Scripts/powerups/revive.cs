@@ -1,20 +1,19 @@
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class Revive : Monobehaviour, PowerUp {
+public class Revive : MonoBehaviour, PowerUp {
 
-    [SerializeFiled] private Animator animator;
-    private Transform transform;
+    [SerializeField] private Animator animator;
 
-    void start() {
-        transform = GetComponent<Transform>();
+    void Start() {
+
     }
 
-    public void execute(localPlayer player) {
+    public void execute(LocalPlayer player) {
         // Iterate through all players: There are only two, and one must be alive
-        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
-            if (!player.GetComponent<LocalPlayer>().alive) {
-                player.revive(transform.position);
+        foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player")) {
+            if (!p.GetComponent<LocalPlayer>().alive) {
+                player.revivePlayer(transform.position);
             }
         }
     }

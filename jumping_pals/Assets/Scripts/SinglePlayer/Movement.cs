@@ -11,6 +11,9 @@ public class Movement : MonoBehaviour
     public int jumps;
     public int enemiesKilled;
     public int score;
+    public bool onIce;
+    public bool onSlime;
+    public bool onJump;
 
     [Header("---------- Variables ----------")]
 
@@ -33,7 +36,8 @@ public class Movement : MonoBehaviour
 
     public bool alive = true;
 
-    public float speed = 15;
+    public float defaultSpeed = 15;
+    public float speed;
     public float jumpForce;
     [SerializeField] private LayerMask floor;
     [SerializeField] private LayerMask enemy;
@@ -61,6 +65,10 @@ public class Movement : MonoBehaviour
         jumps = 0;
         enemiesKilled = 0;
         score = 0;
+
+        onIce = false;
+        onSlime = false;
+        onJump = false;
     }
 
     // Update is called once per frame
@@ -84,8 +92,33 @@ public class Movement : MonoBehaviour
             die();
         }
 
-
         //Movement
+
+        if (!isGrounded) {
+            onIce = false;
+            onSlime = false;
+            onJump = false;
+        }
+
+        string platformTag = hitFloor.collider != null ? hitFloor.collider.tag : "None";
+        switch (platformTag) {
+            case "ice_platform":
+                onIce = true;
+                break;
+            case "slime_platform":
+                onSlime = true;
+                break;
+            case "jump_platform":
+                onJump = true;
+                break;
+        }
+
+        if (onIce) {
+            speed = defaultSpeed / 2;
+        } else {
+            speed = defaultSpeed;
+        }
+
         hitFloor = Physics2D.Raycast(transform.position + Vector3.down * 0.75f, Vector2.down, 0.75f, floor);
         hitFloorLeft = Physics2D.Raycast(transform.position + Vector3.left * 0.8f + Vector3.down * 0.75f, Vector2.down, 0.75f, floor);
         hitFloorRight = Physics2D.Raycast(transform.position + Vector3.right * 0.8f + Vector3.down * 0.75f, Vector2.down, 0.75f, floor);
@@ -93,7 +126,12 @@ public class Movement : MonoBehaviour
         isGrounded = (hitFloor.collider != null || hitFloorLeft.collider != null || hitFloorRight.collider != null);
         animator.SetBool("IsJumping", !isGrounded);
 
-        MovX = Input.GetAxisRaw("Horizontal");
+        if (onSlime) {
+            MovX = MovX * 0.5f;
+        } else {
+            MovX = Input.GetAxisRaw("Horizontal");
+        }
+
         FlipSprite(MovX);
         transform.Translate(MovX * speed * Time.deltaTime, 0, 0);
         animator.SetFloat("Xvelocity", (float) Math.Abs(Math.Round(MovX)));
@@ -107,6 +145,12 @@ public class Movement : MonoBehaviour
         {
             lastGrounded -= Time.deltaTime;
         }
+
+        if (onJump && isGrounded) {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+        }
+
 
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && lastGrounded > 0f && !pauseManager.isPaused)
         {
@@ -140,11 +184,9 @@ public class Movement : MonoBehaviour
         }
     }
 
-    // Death by muncher, spike
-    private void OnCollisionEnter2D(Collision2D muncher)
-    {
-        if (muncher.collider.CompareTag("muncher"))
-        {
+    private void OnCollisionEnter2D(Collision2D other) {
+        // Death by muncher, spike
+        if (other.collider.CompareTag("muncher")) {
             die();
         }
 

@@ -32,7 +32,7 @@ public class Leaderboard : MonoBehaviour
 
     IEnumerator FetchLeaderboard()
     {
-        screenLoader.start();
+        screenLoader.loadScreen();
         using (UnityWebRequest request = UnityWebRequest.Get(serverUrl + "/leaderboard"))
         {
             yield return request.SendWebRequest();

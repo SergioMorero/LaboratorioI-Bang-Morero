@@ -8,56 +8,59 @@ using UnityEngine.Tilemaps;
 public class PlatformGenerator : MonoBehaviour
 {
     private MainCamera cameraScript;
-    private GameObject player;
+    public GameObject player;
     public bool isSinglePlayer = true;
-    private bool playerGrounded;
+    protected bool playerGrounded;
 
-    [SerializeField] private GameObject tMap1;
-    [SerializeField] private GameObject tMap2;
-    [SerializeField] private GameObject tMap3;
+    [SerializeField] protected GameObject tMap1;
+    [SerializeField] protected GameObject tMap2;
+    [SerializeField] protected GameObject tMap3;
 
-    [SerializeField] private GameObject plat1;
-    [SerializeField] private GameObject plat2;
-    [SerializeField] private GameObject plat3;
-    [SerializeField] private GameObject plat4;
-    [SerializeField] private GameObject plat5;
+    [SerializeField] protected GameObject plat1;
+    [SerializeField] protected GameObject plat2;
+    [SerializeField] protected GameObject plat3;
+    [SerializeField] protected GameObject plat4;
+    [SerializeField] protected GameObject plat5;
 
-    [SerializeField] private Sprite normalTile1;
-    [SerializeField] private Sprite normalTile2;
-    [SerializeField] private Sprite normalTile3;
+    [SerializeField] protected Sprite normalTile1;
+    [SerializeField] protected Sprite normalTile2;
+    [SerializeField] protected Sprite normalTile3;
 
-    [SerializeField] private Sprite bigTile1;
-    [SerializeField] private Sprite bigTile2;
-    [SerializeField] private Sprite bigTile3;
+    [SerializeField] protected Sprite bigTile1;
+    [SerializeField] protected Sprite bigTile2;
+    [SerializeField] protected Sprite bigTile3;
 
-    [SerializeField] private Transform platform1;
-    [SerializeField] private Transform platform2;
-    [SerializeField] private Transform movingPlatform1;
+    [SerializeField] protected Transform platform1;
+    [SerializeField] protected Transform platform2;
+    [SerializeField] protected Transform movingPlatform1;
+    [SerializeField] protected Transform icePlatform;
+    [SerializeField] protected Transform jumpPlatform;
+    [SerializeField] protected Transform slimePlatform;
 
-    [SerializeField] private Transform patrolEnemy;
-    [SerializeField] private Transform muncherEnemy;
+    [SerializeField] protected Transform patrolEnemy;
+    [SerializeField] protected Transform muncherEnemy;
 
-    [SerializeField] private Transform coin;
+    [SerializeField] protected Transform coin;
 
-    [SerializeField] private Transform laser;
+    [SerializeField] protected Transform laser;
     
     public float lastPlatformHeigh;
     public float lastXPosition;
     public float distanceOfGeneration;
 
     [SerializeField] private AudioManager audioManager;
-    private int colorChosen;
-    private float lastPlayerGroundedHeigh;
+    protected int colorChosen;
+    public float lastPlayerGroundedHeigh;
     private Movement singlePlayerScript;
     private LocalPlayer localGamePlayerScript;
-    private GameObject[] tileMaps = new GameObject[3];
-    private Sprite[] normalPlatformTiles = new Sprite[3];
-    private Sprite[] bigPlatformTiles = new Sprite[3];
-    private int[] coinPositionDeviation = new int[3];
-    private float[] horizontalValues = new float[8];
-    private float[] verticalValues = new float[3];
-    private Transform[] platforms = new Transform[9];
-    private Transform[] enemies = new Transform[4];
+    protected GameObject[] tileMaps = new GameObject[3];
+    protected Sprite[] normalPlatformTiles = new Sprite[3];
+    protected Sprite[] bigPlatformTiles = new Sprite[3];
+    protected int[] coinPositionDeviation = new int[3];
+    protected float[] horizontalValues = new float[8];
+    protected float[] verticalValues = new float[3];
+    protected Transform[] platforms = new Transform[12];
+    protected Transform[] enemies = new Transform[4];
 
     // Start is called before the first frame update
     void Start()
@@ -78,16 +81,17 @@ public class PlatformGenerator : MonoBehaviour
         // Elecci�n de color muy ineficaz, se optimizar� m�s adelante
         colorChosen = SelectMap();
 
+        // Already placed platforms
         plat1.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
         plat2.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
         plat3.GetComponent<SpriteRenderer>().sprite = bigPlatformTiles[colorChosen];
-        plat4.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
+        // plat4.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
         plat5.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
 
-
+        // Platform prefabs
         platform1.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
         platform2.GetComponent<SpriteRenderer>().sprite = bigPlatformTiles[colorChosen];
-        movingPlatform1.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
+        // movingPlatform1.GetComponent<SpriteRenderer>().sprite = normalPlatformTiles[colorChosen];
 
         coinPositionDeviation[0] = -2;
         coinPositionDeviation[1] = 0;
@@ -115,6 +119,9 @@ public class PlatformGenerator : MonoBehaviour
         platforms[6] = platform2;
         platforms[7] = platform2;
         platforms[8] = movingPlatform1;
+        platforms[9] = icePlatform;
+        platforms[10] = slimePlatform;
+        platforms[11] = jumpPlatform;
 
         enemies[0] = patrolEnemy;
         enemies[1] = patrolEnemy;
@@ -170,7 +177,7 @@ public class PlatformGenerator : MonoBehaviour
         {
             xPosition = horizontalValues[Random.Range(0, 8)];
         }
-        Transform chosenPlatform = platforms[Random.Range(0, 9)];
+        Transform chosenPlatform = platforms[Random.Range(0, platforms.Length)];
         Transform chosenEnemy = enemies[Random.Range(0, 4)];
         Instantiate(chosenPlatform, new Vector3(xPosition, lastPlatformHeigh + heighIncrease, 0), Quaternion.identity);
         lastXPosition = xPosition;

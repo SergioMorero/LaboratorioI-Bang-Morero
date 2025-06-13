@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -74,8 +73,8 @@ public class easter : MonoBehaviour {
     }
 
     /** Activate or deactivate on death */
-    void enable(Boolean enable)
+    void notDead(bool a)
     {
-        enable = enable;
+        enable = a;
     }
 }

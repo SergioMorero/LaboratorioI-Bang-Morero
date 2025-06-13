@@ -1,5 +1,5 @@
 interface PowerUp {
 
-    void execute(localPlayer player);
+    void execute(LocalPlayer player);
 
 }

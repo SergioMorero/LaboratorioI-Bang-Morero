@@ -18,8 +18,8 @@ public class ScreenLoader : MonoBehaviour
         }
     }
 
-    public void start() {
-        loadingPanle.setActive(true);
+    public void loadScreen() {
+        loadingPanel.SetActive(true);
     }
 
     public void stop() {
