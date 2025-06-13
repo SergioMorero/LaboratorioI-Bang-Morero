@@ -13,6 +13,11 @@ TagManager:
   - muncher
   - ScoreManager
   - Bottom
+  - Camera
+  - PlatformGenerator
+  - ice_platform
+  - slime_platform
+  - jump_platform
   layers:
   - Default
   - TransparentFX
