@@ -111,10 +111,7 @@ public class OnlinePlayerMovement : NetworkBehaviour
 
     public void setClientPlayer()
     {
-        if (GameObject.Find("PlatformGenerator2") != null)
-        {
-            clientPlayer = GameObject.Find("PlatformGenerator2").GetComponent<OnlinePlatformGenerator>();
-        }       
+        clientPlayer = GameObject.Find("PlatformGenerator2").GetComponent<OnlinePlatformGenerator>();
     }
 
     // Update is called once per frame
@@ -210,14 +207,10 @@ public class OnlinePlayerMovement : NetworkBehaviour
             lastPlayerGroundedHeigh = transform.position.y;
         }
 
-        if (clientPlayer != null)
+        if (clientPlayer.playerIsGrounded)
         {
-            if (clientPlayer.playerIsGrounded)
-            {
-                clientPlayer.lastPlayerGroundedHeigh = clientPlayer.transform.position.y;
-            }
+            clientPlayer.lastPlayerGroundedHeigh = clientPlayer.transform.position.y;
         }
-        
 
         
 

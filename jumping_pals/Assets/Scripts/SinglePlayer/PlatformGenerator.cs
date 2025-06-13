@@ -33,9 +33,6 @@ public class PlatformGenerator : MonoBehaviour
     [SerializeField] protected Transform platform1;
     [SerializeField] protected Transform platform2;
     [SerializeField] protected Transform movingPlatform1;
-    [SerializeField] protected Transform icePlatform;
-    [SerializeField] protected Transform jumpPlatform;
-    [SerializeField] protected Transform slimePlatform;
 
     [SerializeField] protected Transform patrolEnemy;
     [SerializeField] protected Transform muncherEnemy;
@@ -59,7 +56,7 @@ public class PlatformGenerator : MonoBehaviour
     protected int[] coinPositionDeviation = new int[3];
     protected float[] horizontalValues = new float[8];
     protected float[] verticalValues = new float[3];
-    protected Transform[] platforms = new Transform[12];
+    protected Transform[] platforms = new Transform[9];
     protected Transform[] enemies = new Transform[4];
 
     // Start is called before the first frame update

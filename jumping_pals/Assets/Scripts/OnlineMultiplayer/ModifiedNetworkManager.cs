@@ -1,8 +1,5 @@
 using UnityEngine;
 using Mirror;
-using System.Collections;
-using System.Security;
-using UnityEngine.Networking;
 public class ModifiedNetworkManager : NetworkManager
 {
     public Transform[] spawnPoints;
@@ -29,37 +26,6 @@ public class ModifiedNetworkManager : NetworkManager
         else
         {
             base.OnServerConnect(conn);
-        }
-    }
-
-    public override void OnStopServer()
-    {
-        base.OnStopServer();
-        DeleteRoom();
-    }
-
-    public void DeleteRoom()
-    {
-        StartCoroutine(DeleteRoomCoroutine());
-    }
-
-    IEnumerator DeleteRoomCoroutine()
-    {
-        string roomId = PlayerPrefs.GetString("roomId");
-        if (!string.IsNullOrEmpty(roomId))
-        {
-            string serverURL = "https://jumping-pals.onrender.com/delete-room/" + roomId;
-            UnityWebRequest request = UnityWebRequest.Delete(serverURL);
-            yield return request.SendWebRequest();
-
-            if (request.result == UnityWebRequest.Result.Success)
-            {
-                Debug.Log("Sala eliminada exitosamente");
-            }
-            else
-            {
-                Debug.LogError("No se pudo eliminar la sala: " + request.error);
-            }
         }
     }
 }

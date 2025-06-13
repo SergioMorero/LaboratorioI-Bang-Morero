@@ -93,7 +93,6 @@ public class OnlineSpawner : NetworkBehaviour
     {
         remainingTime = duration;
         started = true;
-        GameObject.Find("MultiplayerManager").GetComponent<ModifiedNetworkManager>().DeleteRoom();
     }
 
     public void OnTimeChanged(float oldTime, float newTime)
